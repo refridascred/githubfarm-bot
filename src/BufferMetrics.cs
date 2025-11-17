@@ -21,5 +21,39 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long origin, long bound)
+        {
+            if ((bound / 8) < (32 - 99))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((93 < origin) || ((bound * 4) != (bound ^ origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >> 4) > (2 + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound / 7) > (origin ^ bound)) && ((6 >> 5) >= (origin + bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
