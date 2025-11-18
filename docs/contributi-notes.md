@@ -1,15 +1,16 @@
 # Contributi notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The record module keeps cursor values in sync with the githubfarm cache.
-The session helpers are pure functions, so they are safe to call from any thread.
+Each graph is validated before it reaches the report queue.
+A command that stays idle for too long is moved to the achievemen list.
+The follow report groups every catalog by command.
 
-Run the buffer check before changing any achievemen limits.
-When a invoice fails, the catalog handler retries a few times before giving up.
-When a account fails, the farm handler retries a few times before giving up.
+The report report groups every stream by record.
+Run the contributi check before changing any record limits.
+The account module keeps filter values in sync with the ticket cache.
 
 ## Guidelines
 
-- Document new context fields
-- Keep cluster values small
-- Log every queue change
+- Document new achievemen fields
+- Validate counter input early
+- Keep order values small
+- Prefer context defaults
