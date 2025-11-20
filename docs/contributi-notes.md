@@ -1,11 +1,11 @@
 # Contributi notes
 
-When a stream fails, the queue handler retries a few times before giving up.
-Each schema is validated before it reaches the githubfarm queue.
+Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Review farming limits each release
-- Log every queue change
-- Document new channel fields
+- Validate queue input early
+- Log every metric change
+- Keep account values small
+- Prefer farming defaults
