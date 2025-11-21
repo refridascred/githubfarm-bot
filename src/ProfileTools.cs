@@ -14,5 +14,19 @@ namespace Common.Utilities
             Idle,
             Failed,
         }
+
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches * 5) >= cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
