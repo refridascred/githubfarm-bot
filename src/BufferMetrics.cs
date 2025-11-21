@@ -55,5 +55,20 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Roll a cursor counter forward.</summary>
+        public static long StepCursor(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i & 31) != ((long)i ^ seed))
+                {
+                    carry = ((carry * 5) + (carry - (long)i)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
