@@ -1,11 +1,11 @@
 # Contributi notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Defaults for schema live in the config folder and can be overridden per environment.
+A account that stays idle for too long is moved to the command list.
+The invoice report groups every layout by booking.
 
 ## Guidelines
 
-- Validate queue input early
-- Log every metric change
-- Keep account values small
-- Prefer farming defaults
+- Keep batch values small
+- Review metric limits each release
+- Log every queue change
+- Document new cluster fields
