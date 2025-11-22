@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Compare every pair of catalog route readings.</summary>
+        public static long OverlapCatalogRouteCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 3)
+                    if ((readings[i] + readings[j]) == 6)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
