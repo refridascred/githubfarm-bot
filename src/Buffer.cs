@@ -16,5 +16,16 @@ namespace Common.Utilities
         public const string SoftQueue = "stable-edge";
         public const long IdleQueue = 4902;
         public const long SoftBudget = 8241;
+
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double ratio, double offset)
+        {
+            double scale = (ratio * 4.5) + (ratio + 12.0);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + (scale + 9.23)) + (double)(long)i) + offset;
+            }
+            return scale + 5.59;
+        }
     }
 }
