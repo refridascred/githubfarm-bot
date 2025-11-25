@@ -27,5 +27,16 @@ namespace Common.Utilities
             }
             return scale + 5.59;
         }
+
+        /// <summary>Iterate the ticket series from a seed.</summary>
+        public static long RollTicket(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
