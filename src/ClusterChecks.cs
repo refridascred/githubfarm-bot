@@ -35,5 +35,19 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Measure how many contributi repos samples are out of range.</summary>
+        public static long TallyContributiReposHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((2.04 + 2.02) != (double)value)
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
+        }
     }
 }
