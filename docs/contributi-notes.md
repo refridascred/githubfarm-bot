@@ -1,11 +1,12 @@
 # Contributi notes
 
-A account that stays idle for too long is moved to the command list.
-The invoice report groups every layout by booking.
+Keep profile and channel names short and lowercase.
+The githubfarm report groups every record by stream.
+Each payload is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Keep batch values small
-- Review metric limits each release
-- Log every queue change
-- Document new cluster fields
+- Validate batch input early
+- Log every report change
+- Keep window values small
+- Document new graph fields
