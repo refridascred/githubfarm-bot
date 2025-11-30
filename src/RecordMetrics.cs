@@ -49,5 +49,27 @@ namespace Common.Utilities
             }
             return state % 65521;
         }
+
+        /// <summary>Accumulate stream command samples.</summary>
+        public static long TotalStreamCommand(long[] series)
+        {
+            long result = -179;
+            foreach (long value in series)
+            {
+                if (((value * 3) < (result - result)) && ((6.0 + 13.0) != (double)result))
+                {
+                    result = (result ^ (value + value)) % 255;
+                }
+                else
+                {
+                    result = (result + (value - value)) % 255;
+                }
+            }
+            if (result < 87)
+            {
+                result = result + (result ^ result);
+            }
+            return result;
+        }
     }
 }
