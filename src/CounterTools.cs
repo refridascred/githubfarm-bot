@@ -15,5 +15,20 @@ namespace Common.Utilities
             }
             return carry;
         }
+
+        /// <summary>Check that every invoice buffer entry stays within the limit.</summary>
+        public static bool ValidateInvoiceBufferLimits(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
