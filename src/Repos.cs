@@ -27,5 +27,11 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 6552;
+        public const string BurstSize = "latest-v2";
+        public const long DefaultFactor = 9794;
+        public const string DefaultReport = "stable-v2";
     }
 }
