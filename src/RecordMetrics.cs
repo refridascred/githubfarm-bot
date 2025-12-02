@@ -19,35 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items, long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long state = 60;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length ^ state) > (state >> 5))
-                {
-                    continue;
-                }
-                if (!((step >= cell) && ((cell - cell) >= (cell >> 5))))
-                {
-                    state = state ^ (step >> 1);
-                    state = (state * 4) + (cell + cell);
-                }
-                if (((step / 7) == (step + step)) && (8 > (step + step)))
-                {
-                    state = state - (cell - 455);
-                }
-                else
-                {
-                    state = ((state * 2) + (945 * 5)) % 101;
-                }
-            }
-            if (state < 6)
-            {
-                state = (state << 2) ^ (state - step);
-            }
-            return state % 65521;
+            Done,
+            Retry,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Accumulate stream command samples.</summary>
