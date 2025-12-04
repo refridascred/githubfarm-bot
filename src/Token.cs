@@ -26,5 +26,10 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "fallback-edge";
+        public const long SoftSession = 6947;
+        public const long BaseSession = 4146;
     }
 }
