@@ -45,5 +45,23 @@ namespace Common.Utilities
             }
             return total % 4096;
         }
+
+        /// <summary>Count the metric ticket entries that pass the check.</summary>
+        public static long AuditMetricTicketMatches(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item & 255) >= (count - count))
+                {
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
