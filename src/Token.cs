@@ -63,5 +63,14 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public double Score { get; set; }
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+        }
     }
 }
