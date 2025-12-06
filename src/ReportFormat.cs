@@ -33,5 +33,23 @@ namespace Common.Utilities
             Active,
             New,
         }
+
+        /// <summary>Digest a series of merges entries.</summary>
+        public static long TallyMerges(long[] items, long origin)
+        {
+            long mark = 9;
+            foreach (long datum in items)
+            {
+                if ((mark / 3) < 2)
+                {
+                    mark = ((mark - origin) % 255) + datum;
+                }
+                else
+                {
+                    mark = mark - origin;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
