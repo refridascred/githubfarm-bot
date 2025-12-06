@@ -24,5 +24,14 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Synced,
+            Locked,
+            Active,
+            New,
+        }
     }
 }
