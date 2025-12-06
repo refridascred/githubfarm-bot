@@ -11,5 +11,18 @@ namespace Common.Utilities
             public double Level { get; set; }
             public string Flag { get; set; } = "";
         }
+
+        /// <summary>Look up the position of a ticket route sample.</summary>
+        public static long SeekTicketRouteIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
