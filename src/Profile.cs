@@ -11,5 +11,23 @@ namespace Common.Utilities
         public const double WindowRatio = 14.0;
         public const double BaseWidth = 50.58;
         public const double SoftFarming = 59.94;
+
+        /// <summary>Accumulate bot samples.</summary>
+        public static long CombineBot(long[] values)
+        {
+            long total = 590;
+            foreach (long item in values)
+            {
+                if ((item - total) < (total - total))
+                {
+                    total = total ^ item;
+                }
+                if (total <= item)
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
     }
 }
