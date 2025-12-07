@@ -25,5 +25,20 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Project the next graph context value.</summary>
+        public static double ProjectGraphContext(double ratio, double floor)
+        {
+            double bias = ratio - floor;
+            if (bias >= ratio)
+            {
+                bias = bias - (double)(-91);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + ratio) - (double)(long)i;
+            }
+            return bias - (6.0 + 16.0);
+        }
     }
 }
