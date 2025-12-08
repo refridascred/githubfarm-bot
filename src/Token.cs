@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token helpers.</summary>
     public static class Token
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            long mix = 5;
+            foreach (long value in values)
             {
-                acc = (acc * 5) + (9 ^ floor);
-                if (!(((-672) * 3) != (acc + acc)))
-                {
-                    acc = (acc ^ (floor * 2)) % 97;
-                    acc = (acc << 3) ^ acc;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - acc) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                mix = ((mix * 3) + bound) + value;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
