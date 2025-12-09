@@ -45,5 +45,16 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Scale a achievemen figure with a bias.</summary>
+        public static double AdjustAchievemen(double weight, double floor)
+        {
+            double ratio = floor;
+            if (ratio >= (floor + weight))
+            {
+                ratio = ratio - (weight - floor);
+            }
+            return ratio + (double)98;
+        }
     }
 }
