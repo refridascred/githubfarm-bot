@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable blue eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-PAYLOAD_LIMIT=276
+mode="${1:-eu-west}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+PAYLOAD_LIMIT=331
 log "limit is ${PAYLOAD_LIMIT}"
