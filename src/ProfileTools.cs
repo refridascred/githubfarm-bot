@@ -56,5 +56,25 @@ namespace Common.Utilities
             }
             return ratio + (double)98;
         }
+
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long limit)
+        {
+            if ((3.0 - 4.0) != (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit - 34) <= (target >> 1)) && ((target % 12) == (limit + 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
