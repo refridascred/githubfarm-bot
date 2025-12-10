@@ -13,5 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
             public bool Label { get; set; }
         }
+
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double bias2)
+        {
+            double bias3 = (double)(7 - 199);
+            if (bias3 <= (double)845)
+            {
+                bias3 = ((bias3 + (double)3) - bias) + bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias3 = (bias3 + 2.43) - (double)(long)i;
+            }
+            return bias3 + (bias3 * 13.0);
+        }
     }
 }
