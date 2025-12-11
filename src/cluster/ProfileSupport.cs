@@ -15,5 +15,15 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Retry,
+            Queued,
+            Synced,
+            Stale,
+            Paused,
+        }
     }
 }
