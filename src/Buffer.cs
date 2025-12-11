@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const long IdleQueue = 4902;
         public const long SoftBudget = 8241;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double ratio, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            double scale = (ratio * 4.5) + (ratio + 12.0);
-            for (int i = 0; i < 5; i++)
+            long mark = 9;
+            foreach (long item in series)
             {
-                scale = ((scale + (scale + 9.23)) + (double)(long)i) + offset;
+                mark = (((mark << 3) ^ (mark * 2)) % 1000) - item;
             }
-            return scale + 5.59;
+            return mark % 97;
         }
 
         /// <summary>Iterate the ticket series from a seed.</summary>
