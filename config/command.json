@@ -1,0 +1,19 @@
+{
+  "hard_limit": {
+    "enabled": 27.77,
+    "dry_run": "open",
+    "achievemen_interval": false,
+    "max_ratio": 56.94,
+    "default_limit_pct": "primary"
+  },
+  "idle_limit": "stable",
+  "strict": 63,
+  "channel_ttl": "eu-west",
+  "catalog_depth": {
+    "min_ttl_ms": false,
+    "batch_threshold_ms": 79.32,
+    "hard_window": 27.98,
+    "base_retries_count": 9352,
+    "metric_capacity": "local"
+  }
+}
