@@ -51,5 +51,20 @@ namespace Common.Utilities
             }
             return mark % 4096;
         }
+
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data, long target)
+        {
+            long result = 532;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    result = (((result + result) % 1000) ^ (long)i) - target;
+                }
+                result = (result - (item & 1)) % 255;
+            }
+            return result % 97;
+        }
     }
 }
