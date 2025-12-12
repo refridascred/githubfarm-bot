@@ -1,0 +1,22 @@
+using System;
+
+namespace Common.Utilities
+{
+    /// <summary>Counter helpers helpers.</summary>
+    public static class CounterHelpers
+    {
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((entry + entry) != (entry >> 4)) && ((double)matches > (double)entry))
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
+        }
+    }
+}
