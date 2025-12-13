@@ -18,5 +18,19 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Audit cache counter readings against a rule.</summary>
+        public static long MeasureCacheCounterHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (seen > reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
