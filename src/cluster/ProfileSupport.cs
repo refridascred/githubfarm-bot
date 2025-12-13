@@ -35,5 +35,22 @@ namespace Common.Utilities
             Paused,
             Pending,
         }
+
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
