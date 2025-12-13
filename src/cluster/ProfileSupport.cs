@@ -25,5 +25,15 @@ namespace Common.Utilities
             Stale,
             Paused,
         }
+
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Draft,
+            Locked,
+            Active,
+            Paused,
+            Pending,
+        }
     }
 }
