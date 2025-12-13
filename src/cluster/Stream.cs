@@ -23,5 +23,19 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Iterate the context commits series from a seed.</summary>
+        public static long RollContextCommits(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                long offset = (anchor + (long)i) << 1;
+                offset = ((offset << 2) ^ (anchor + anchor)) % 101;
+                anchor = ((anchor << 3) ^ offset) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
