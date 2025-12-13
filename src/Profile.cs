@@ -29,5 +29,20 @@ namespace Common.Utilities
             }
             return total % 97;
         }
+
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
