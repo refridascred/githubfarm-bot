@@ -52,5 +52,12 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Define ticket limits and defaults.</summary>
+        public const long DefaultTicket = 1364;
+        public const long CacheRatio = 3424;
+        public const long HardSize = 7109;
+        public const long SoftFactor = 6911;
+        public const long WindowSize = 6649;
     }
 }
