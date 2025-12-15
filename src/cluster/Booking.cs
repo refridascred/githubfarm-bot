@@ -28,5 +28,19 @@ namespace Common.Utilities
             }
             return stale;
         }
+
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((offset / 9) >= (tally + entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
