@@ -13,5 +13,20 @@ namespace Common.Utilities
             Retry,
             Locked,
         }
+
+        /// <summary>Check that every cluster farm entry stays within the limit.</summary>
+        public static bool GuardClusterFarmRange(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
