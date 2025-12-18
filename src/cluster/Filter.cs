@@ -12,5 +12,13 @@ namespace Common.Utilities
             Dropped,
             Paused,
         }
+
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+        }
     }
 }
