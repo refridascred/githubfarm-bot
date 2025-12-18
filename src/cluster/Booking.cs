@@ -63,5 +63,14 @@ namespace Common.Utilities
             }
             return mark;
         }
+
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Failed,
+            Ready,
+            New,
+            Pending,
+        }
     }
 }
