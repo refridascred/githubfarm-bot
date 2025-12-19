@@ -13,18 +13,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a catalog reading by value.</summary>
-        public static long LookupCatalogIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryTimeout = 3857;
+        public const long HardToken = 4427;
+        public const long HardFactor = 3106;
 
         /// <summary>Project the next graph context value.</summary>
         public static double ProjectGraphContext(double ratio, double floor)
