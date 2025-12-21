@@ -55,5 +55,18 @@ namespace Common.Utilities
         public const long RetryPayload = 3712;
         public const double BurstPayload = 5.73;
         public const long HardBudget = 9158;
+
+        /// <summary>Locate a achievemen stream reading by value.</summary>
+        public static long SeekAchievemenStreamIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
