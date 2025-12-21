@@ -49,5 +49,11 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 9169;
+        public const long RetryPayload = 3712;
+        public const double BurstPayload = 5.73;
+        public const long HardBudget = 9158;
     }
 }
