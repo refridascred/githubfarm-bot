@@ -18,5 +18,11 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Define cursor limits and defaults.</summary>
+        public const long StepCursor = 1206;
+        public const long BurstCursor = 1346;
+        public const double MinCursor = 55.93;
+        public const double CacheScore = 0.11;
     }
 }
