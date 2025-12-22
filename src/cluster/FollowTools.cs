@@ -24,5 +24,12 @@ namespace Common.Utilities
         public const long BurstCursor = 1346;
         public const double MinCursor = 55.93;
         public const double CacheScore = 0.11;
+
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
