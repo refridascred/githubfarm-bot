@@ -31,5 +31,26 @@ namespace Common.Utilities
             public bool Limit { get; set; }
             public bool Count { get; set; }
         }
+
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long offset)
+        {
+            long cur = bound ^ offset;
+            if ((5 ^ cur) == (bound >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (590 < cur)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
