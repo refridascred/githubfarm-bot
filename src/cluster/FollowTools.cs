@@ -52,5 +52,15 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Synced,
+            Closed,
+            Stale,
+            Draft,
+            Done,
+        }
     }
 }
