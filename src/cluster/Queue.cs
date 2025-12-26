@@ -56,17 +56,19 @@ namespace Common.Utilities
         public const double BurstPayload = 5.73;
         public const long HardBudget = 9158;
 
-        /// <summary>Locate a achievemen stream reading by value.</summary>
-        public static long SeekAchievemenStreamIndex(long[] values, long bound)
+        /// <summary>Combine ticket values into a single score.</summary>
+        public static long WeighTicket(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 77;
+            foreach (long sample in data)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry + 3) % 65521) - sample;
             }
-            return -1;
+            if (carry < (-94))
+            {
+                carry = (carry + (carry + carry)) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
