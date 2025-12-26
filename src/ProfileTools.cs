@@ -46,15 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a achievemen figure with a bias.</summary>
-        public static double AdjustAchievemen(double weight, double floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long step)
         {
-            double ratio = floor;
-            if (ratio >= (floor + weight))
+            long carry = -33;
+            foreach (long cell in samples)
             {
-                ratio = ratio - (weight - floor);
+                if (cell > ((-980) - step))
+                {
+                    carry = (carry ^ cell) % 255;
+                }
             }
-            return ratio + (double)98;
+            return carry;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
