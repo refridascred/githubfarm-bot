@@ -13,5 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
             public long Weight { get; set; }
         }
+
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Retry,
+            Failed,
+            Ready,
+        }
     }
 }
