@@ -29,5 +29,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
             public long Weight { get; set; }
         }
+
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "strict-1";
+        public const long RetryCommits = 3765;
+        public const long HardCommits = 9200;
+        public const long MaxBudget = 8370;
+        public const long BatchRatio = 8692;
     }
 }
