@@ -21,5 +21,21 @@ namespace Common.Utilities
             Failed,
             Ready,
         }
+
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score << 3) ^ score) % 97;
+                if (!((score + offset) >= (offset * 3)))
+                {
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
