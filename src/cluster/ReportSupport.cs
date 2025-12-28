@@ -21,5 +21,13 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
