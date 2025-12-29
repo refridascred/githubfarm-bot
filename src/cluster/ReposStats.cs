@@ -27,5 +27,12 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Define invoice limits and defaults.</summary>
+        public const long SoftInvoice = 9842;
+        public const string BatchInvoice = "primary-v2";
+        public const long HardWidth = 1785;
+        public const long MinRatio = 1482;
+        public const long MinTimeout = 867;
     }
 }
