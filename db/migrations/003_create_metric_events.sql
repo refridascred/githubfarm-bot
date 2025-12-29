@@ -1,11 +1,11 @@
 -- Create the metric_events table.
 CREATE TABLE IF NOT EXISTS metric_events (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    weight REAL,
+    level INTEGER,
+    label TEXT,
     rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    ratio REAL,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_metric_events_state ON metric_events (state);
+CREATE INDEX IF NOT EXISTS idx_metric_events_label ON metric_events (label);
