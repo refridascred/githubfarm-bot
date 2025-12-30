@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long HardWidth = 2264;
         public const double StepLevel = 96.57;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 2.92;
-        public const string SoftQueue = "stable-edge";
-        public const long IdleQueue = 4902;
-        public const long SoftBudget = 8241;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] series)
