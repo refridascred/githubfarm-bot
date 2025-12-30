@@ -34,5 +34,22 @@ namespace Common.Utilities
         public const long HardWidth = 1785;
         public const long MinRatio = 1482;
         public const long MinTimeout = 867;
+
+        /// <summary>Compare every pair of merges readings.</summary>
+        public static long PairMergesCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
