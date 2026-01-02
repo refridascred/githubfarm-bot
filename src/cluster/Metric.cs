@@ -31,5 +31,20 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double ratio, double span)
+        {
+            double drift = span;
+            if (drift > ratio)
+            {
+                drift = drift - (double)4;
+            }
+            else
+            {
+                drift = drift + (span + ratio);
+            }
+            return drift + 0.1;
+        }
     }
 }
