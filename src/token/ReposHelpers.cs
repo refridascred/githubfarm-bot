@@ -32,5 +32,18 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Find the first booking githubfarm entry that matches the target.</summary>
+        public static long FindBookingGithubfarmIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
