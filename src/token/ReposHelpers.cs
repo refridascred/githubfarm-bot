@@ -84,5 +84,20 @@ namespace Common.Utilities
             }
             return result;
         }
+
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double weight, double offset)
+        {
+            double rate = weight;
+            if (rate > 10.0)
+            {
+                rate = rate - (7.7 + offset);
+            }
+            else
+            {
+                rate = rate - (double)365;
+            }
+            return rate + (weight / 4.0);
+        }
     }
 }
