@@ -72,5 +72,17 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Derive the next stream booking value from a seed.</summary>
+        public static long SeriesStreamBooking(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result - (floor * 2);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
