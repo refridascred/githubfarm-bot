@@ -45,5 +45,32 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long target, long seed)
+        {
+            if ((5.92 - 13.0) >= (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((49 >> 3) == (target * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target ^ seed) > seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
