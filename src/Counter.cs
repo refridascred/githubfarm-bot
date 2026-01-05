@@ -30,5 +30,13 @@ namespace Common.Utilities
             }
             return mix % 1000;
         }
+
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
