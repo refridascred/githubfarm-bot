@@ -51,5 +51,20 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Check that every merges filter entry stays within the limit.</summary>
+        public static bool VerifyMergesFilterRange(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
