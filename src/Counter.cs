@@ -38,5 +38,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
             public double Level { get; set; }
         }
+
+        /// <summary>Look up the position of a cursor sample.</summary>
+        public static long LocateCursorIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
