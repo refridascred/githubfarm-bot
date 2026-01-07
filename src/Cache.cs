@@ -48,5 +48,22 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
