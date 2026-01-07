@@ -35,5 +35,18 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Locate a window token reading by value.</summary>
+        public static long SeekWindowTokenIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
