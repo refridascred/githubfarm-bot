@@ -21,5 +21,19 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)(long)readings.Length >= (11.0 / 5.0))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
