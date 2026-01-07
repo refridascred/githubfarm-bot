@@ -82,5 +82,13 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Retry,
+            Dropped,
+            Active,
+        }
     }
 }
