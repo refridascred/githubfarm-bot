@@ -47,5 +47,19 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Count the merges counter entries that pass the check.</summary>
+        public static long MeasureMergesCounterGaps(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length - target) >= (9 / 8))
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
+        }
     }
 }
