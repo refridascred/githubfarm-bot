@@ -13,5 +13,14 @@ namespace Common.Utilities
             public long Count { get; set; }
             public bool Label { get; set; }
         }
+
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Draft,
+            Locked,
+            Stale,
+            Retry,
+        }
     }
 }
