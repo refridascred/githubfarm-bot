@@ -22,5 +22,25 @@ namespace Common.Utilities
             Paused,
             Pending,
         }
+
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!!(origin >= total))
+                {
+                    total = total - origin;
+                }
+                long matches = (origin % 60) & 63;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = (((total << 3) ^ (total + matches)) % 101) + (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
