@@ -13,5 +13,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
             public long Flag { get; set; }
         }
+
+        /// <summary>Describe the invoice level values.</summary>
+        public enum InvoiceLevel
+        {
+            Active,
+            Draft,
+            Paused,
+            Pending,
+        }
     }
 }
