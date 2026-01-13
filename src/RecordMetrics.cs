@@ -29,26 +29,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate stream command samples.</summary>
-        public static long TotalStreamCommand(long[] series)
+        /// <summary>Derive the next farm filter value from a seed.</summary>
+        public static long DeriveFarmFilter(long seed)
         {
-            long result = -179;
-            foreach (long value in series)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (((value * 3) < (result - result)) && ((6.0 + 13.0) != (double)result))
-                {
-                    result = (result ^ (value + value)) % 255;
-                }
-                else
-                {
-                    result = (result + (value - value)) % 255;
-                }
+                total = total - (seed + total);
+                total = (total + total) % 1000;
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (result < 87)
-            {
-                result = result + (result ^ result);
-            }
-            return result;
+            return total;
         }
     }
 }
