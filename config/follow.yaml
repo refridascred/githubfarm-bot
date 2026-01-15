@@ -1,0 +1,9 @@
+# follow settings
+sync_delay_pct: fallback
+warm_interval_ms: edge
+hard_timeout_pct: false
+soft_limit:
+  - primary
+  - open
+  - strict
+enabled: true
