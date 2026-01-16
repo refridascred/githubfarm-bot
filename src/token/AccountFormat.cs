@@ -19,5 +19,13 @@ namespace Common.Utilities
             }
             return mark;
         }
+
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
