@@ -27,5 +27,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
             public long Total { get; set; }
         }
+
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values, long origin)
+        {
+            long state = 433;
+            foreach (long datum in values)
+            {
+                state = (((state << 2) ^ (389 - 9)) ^ datum) + origin;
+            }
+            return state;
+        }
     }
 }
