@@ -15,5 +15,18 @@ namespace Common.Utilities
             }
             return gain + (scale + offset);
         }
+
+        /// <summary>Find the first filter channel entry that matches the target.</summary>
+        public static long FindFilterChannelIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
