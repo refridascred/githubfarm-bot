@@ -28,5 +28,14 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
