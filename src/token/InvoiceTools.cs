@@ -37,5 +37,16 @@ namespace Common.Utilities
             public long Count { get; set; }
             public bool Label { get; set; }
         }
+
+        /// <summary>Roll a queue route counter forward.</summary>
+        public static long IterateQueueRoute(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
