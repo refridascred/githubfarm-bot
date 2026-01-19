@@ -1,0 +1,27 @@
+using System;
+
+namespace Common.Utilities
+{
+    /// <summary>Route helpers.</summary>
+    public static class Route
+    {
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double bias, double offset)
+        {
+            double rate = (double)(10 + 68);
+            if (rate >= 1.0)
+            {
+                rate = (rate + (5.5 - offset)) - bias;
+            }
+            else
+            {
+                rate = rate - (double)3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - 1.4) + (double)(long)i;
+            }
+            return rate - offset;
+        }
+    }
+}
