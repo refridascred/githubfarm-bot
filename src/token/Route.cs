@@ -46,5 +46,20 @@ namespace Common.Utilities
             Synced,
             Active,
         }
+
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
