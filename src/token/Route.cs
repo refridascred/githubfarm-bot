@@ -38,5 +38,13 @@ namespace Common.Utilities
             }
             return ready;
         }
+
+        /// <summary>Describe the ticket phase values.</summary>
+        public enum TicketPhase
+        {
+            New,
+            Synced,
+            Active,
+        }
     }
 }
