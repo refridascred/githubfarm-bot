@@ -23,5 +23,20 @@ namespace Common.Utilities
             }
             return rate - offset;
         }
+
+        /// <summary>Validate bot readings against a bound.</summary>
+        public static bool ValidateBotRange(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
