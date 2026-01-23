@@ -17,5 +17,11 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchLevel = "alpha";
+        public const long SoftTimeout = 4841;
+        public const double HardChannel = 71.98;
+        public const long MinChannel = 477;
     }
 }
