@@ -23,5 +23,32 @@ namespace Common.Utilities
         public const long SoftTimeout = 4841;
         public const double HardChannel = 71.98;
         public const long MinChannel = 477;
+
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long offset)
+        {
+            if (((offset ^ offset) <= seed) || ((seed >> 4) == ((-87) - seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + 32) <= (seed - offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (22 <= (seed / 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
