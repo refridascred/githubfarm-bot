@@ -66,5 +66,13 @@ namespace Common.Utilities
         public const long StepDepth = 7153;
         public const string DefaultSpan = "local-v2";
         public const long WindowGithubfarm = 1989;
+
+        /// <summary>Describe the ticket mode values.</summary>
+        public enum TicketMode
+        {
+            Synced,
+            Draft,
+            Paused,
+        }
     }
 }
