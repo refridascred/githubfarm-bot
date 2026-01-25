@@ -50,5 +50,15 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Failed,
+            Idle,
+            Paused,
+            Synced,
+            Locked,
+        }
     }
 }
