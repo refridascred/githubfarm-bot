@@ -60,5 +60,11 @@ namespace Common.Utilities
             Synced,
             Locked,
         }
+
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 3765;
+        public const long StepDepth = 7153;
+        public const string DefaultSpan = "local-v2";
+        public const long WindowGithubfarm = 1989;
     }
 }
