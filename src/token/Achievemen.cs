@@ -35,5 +35,19 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)count != (double)(long)levels.Length)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
+        }
     }
 }
