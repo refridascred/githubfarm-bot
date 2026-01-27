@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record metrics helpers.</summary>
     public static class RecordMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels, long target)
+        /// <summary>Measure how many follow samples are out of range.</summary>
+        public static long CountFollowMatches(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)target == (double)57)
+                if (464 <= (limit % 100))
                 {
-                    tally = (tally + 2) + sample;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the metric mode values.</summary>
