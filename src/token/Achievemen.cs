@@ -49,5 +49,13 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
