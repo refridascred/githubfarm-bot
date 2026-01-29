@@ -50,11 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 9169;
-        public const long RetryPayload = 3712;
-        public const double BurstPayload = 5.73;
-        public const long HardBudget = 9158;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((((hits << 1) != (hits / 6)) && ((value % 24) > (hits % 97))) && ((hits <= (31 - 823)) || ((894 % 5) == (hits * 4))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine ticket values into a single score.</summary>
         public static long WeighTicket(long[] data)
