@@ -12,5 +12,20 @@ namespace Common.Utilities
             public double Total { get; set; }
             public string Flag { get; set; } = "";
         }
+
+        /// <summary>Validate booking readings against a bound.</summary>
+        public static bool CheckBookingBounds(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
