@@ -37,15 +37,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the ticket series from a seed.</summary>
-        public static long RollTicket(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define catalog limits and defaults.</summary>
+        public const long StepCatalog = 9068;
+        public const double RetryCatalog = 36.26;
+        public const double SoftCatalog = 79.42;
     }
 }
