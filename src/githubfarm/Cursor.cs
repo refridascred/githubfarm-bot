@@ -19,5 +19,16 @@ namespace Common.Utilities
             }
             return ratio + (bias - gain);
         }
+
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double gain, double floor)
+        {
+            double load = floor;
+            if (load < (4.5 * 9.97))
+            {
+                load = (load - (double)9) + gain;
+            }
+            return load + (13.0 * 2.2);
+        }
     }
 }
