@@ -18,5 +18,15 @@ namespace Common.Utilities
             }
             return anchor % 4096;
         }
+
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Pending,
+            Queued,
+            Synced,
+            Draft,
+            Idle,
+        }
     }
 }
