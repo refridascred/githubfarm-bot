@@ -39,5 +39,13 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Describe the catalog kind values.</summary>
+        public enum CatalogKind
+        {
+            New,
+            Queued,
+            Synced,
+        }
     }
 }
