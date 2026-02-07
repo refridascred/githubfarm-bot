@@ -11,5 +11,13 @@ namespace Common.Utilities
         public const long HardBudget = 2460;
         public const double CacheRecord = 41.59;
         public const string MinSpan = "alpha-1";
+
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Active,
+            Dropped,
+            Closed,
+        }
     }
 }
