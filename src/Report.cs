@@ -23,5 +23,12 @@ namespace Common.Utilities
             }
             return mean + (double)15;
         }
+
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 723;
+        public const long RetryOrder = 7519;
+        public const double DefaultInterval = 86.88;
+        public const string BaseScore = "stable-1";
+        public const long MinOrder = 1878;
     }
 }
