@@ -1,15 +1,11 @@
 # Contributi notes
 
-The cache report groups every record by repos.
-Each stream is validated before it reaches the profile queue.
-When a stream fails, the merges handler retries a few times before giving up.
-
-Each contributi is validated before it reaches the layout queue.
-The githubfarm report groups every farm by repos.
+When a ticket fails, the layout handler retries a few times before giving up.
+The merges report groups every order by contributi.
+Each contributi is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Review repos limits each release
-- Keep invoice values small
-- Validate metric input early
-- Prefer queue defaults
+- Prefer bot defaults
+- Log every stream change
+- Document new window fields
