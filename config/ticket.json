@@ -1,0 +1,5 @@
+{
+  "audit": "primary",
+  "cache_retries": [317, 296, 300, 315],
+  "invoice_retries": "staging"
+}
