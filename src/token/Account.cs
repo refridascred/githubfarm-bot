@@ -19,5 +19,23 @@ namespace Common.Utilities
             }
             return ok;
         }
+
+        /// <summary>Count the farming entries that pass the check.</summary>
+        public static long TallyFarmingOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (((count % 2) != (2 * 3)) && (((double)reading != (2.28 - 8.5)) && ((4.18 * 8.65) <= (double)reading)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
