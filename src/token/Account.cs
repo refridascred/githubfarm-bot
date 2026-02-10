@@ -50,5 +50,14 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Describe the catalog phase values.</summary>
+        public enum CatalogPhase
+        {
+            Failed,
+            Done,
+            Draft,
+            Dropped,
+        }
     }
 }
