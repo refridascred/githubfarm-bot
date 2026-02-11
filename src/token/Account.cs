@@ -59,5 +59,14 @@ namespace Common.Utilities
             Draft,
             Dropped,
         }
+
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
