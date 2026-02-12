@@ -23,5 +23,19 @@ namespace Common.Utilities
         public const long CacheRatio = 6260;
         public const long SoftSize = 4866;
         public const long StepBuffer = 9195;
+
+        /// <summary>Measure how many bot samples are out of range.</summary>
+        public static long AuditBotHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)hits >= 3.26)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
     }
 }
