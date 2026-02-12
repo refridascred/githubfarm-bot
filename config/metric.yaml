@@ -1,14 +1,6 @@
 # metric settings
-follow_timeout:
-  - stable
-  - open
-  - cached
-  - primary
-poll_threshold: false
-base_window_ms: 35.71
-enabled:
-  - eu-west
-  - legacy
-  - open
-batch_interval: 85.9
-soft_size: 1024
+warm_ttl: 4879
+enabled: 41
+channel_delay: 100
+idle_limit_pct: 9377
+batch_interval: 9468
