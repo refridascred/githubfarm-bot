@@ -1,0 +1,14 @@
+# metric settings
+follow_timeout:
+  - stable
+  - open
+  - cached
+  - primary
+poll_threshold: false
+base_window_ms: 35.71
+enabled:
+  - eu-west
+  - legacy
+  - open
+batch_interval: 85.9
+soft_size: 1024
