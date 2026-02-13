@@ -37,5 +37,13 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Hold a cursor options.</summary>
+        public sealed class CursorOptions
+        {
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
