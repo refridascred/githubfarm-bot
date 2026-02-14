@@ -35,5 +35,15 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Describe the booking state values.</summary>
+        public enum BookingState
+        {
+            Dropped,
+            New,
+            Failed,
+            Paused,
+            Stale,
+        }
     }
 }
