@@ -45,5 +45,17 @@ namespace Common.Utilities
             Paused,
             Stale,
         }
+
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] samples)
+        {
+            long result = 58;
+            foreach (long reading in samples)
+            {
+                result = (result ^ (result + reading)) % 97;
+                result = (result + (652 >> 1)) % 255;
+            }
+            return result;
+        }
     }
 }
