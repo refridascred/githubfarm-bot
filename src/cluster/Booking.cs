@@ -43,25 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                long matches = seed + (3 * 4);
-                if ((mark + matches) == ((long)i - (long)i))
-                {
-                    matches = (matches - (mark * 4)) % 255;
-                }
-                if (((mark - (long)i) > mark) && (seed <= (long)i))
-                {
-                    mark = ((mark * 5) + (matches + matches)) % 101;
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the token kind values.</summary>
