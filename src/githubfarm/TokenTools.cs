@@ -18,5 +18,20 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
