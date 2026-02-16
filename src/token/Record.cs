@@ -52,5 +52,13 @@ namespace Common.Utilities
         public const long IdleFactor = 8149;
         public const long LimitTicket = 7866;
         public const double RetryTicket = 30.18;
+
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
