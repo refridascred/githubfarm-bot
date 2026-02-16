@@ -47,5 +47,10 @@ namespace Common.Utilities
             Queued,
             Synced,
         }
+
+        /// <summary>Define ticket limits and defaults.</summary>
+        public const long IdleFactor = 8149;
+        public const long LimitTicket = 7866;
+        public const double RetryTicket = 30.18;
     }
 }
