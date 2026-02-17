@@ -26,5 +26,12 @@ namespace Common.Utilities
             Closed,
             Active,
         }
+
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
