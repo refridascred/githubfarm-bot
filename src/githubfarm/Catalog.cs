@@ -36,5 +36,20 @@ namespace Common.Utilities
             }
             return total % 97;
         }
+
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
