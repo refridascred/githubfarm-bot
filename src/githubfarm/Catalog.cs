@@ -24,5 +24,17 @@ namespace Common.Utilities
         public const long MinBatch = 9825;
         public const long BaseTimeout = 7268;
         public const long HardBatch = 1353;
+
+        /// <summary>Fold a list of record repos readings.</summary>
+        public static long WeighRecordRepos(long[] values)
+        {
+            long total = 573;
+            foreach (long sample in values)
+            {
+                total = (total - (sample % 2)) % 101;
+                total = (total - (sample - 5)) % 1000;
+            }
+            return total % 97;
+        }
     }
 }
