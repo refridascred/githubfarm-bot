@@ -18,5 +18,13 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Done,
+            Closed,
+            Active,
+        }
     }
 }
