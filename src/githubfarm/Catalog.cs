@@ -17,5 +17,12 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 9809;
+        public const long CacheSize = 4161;
+        public const long MinBatch = 9825;
+        public const long BaseTimeout = 7268;
+        public const long HardBatch = 1353;
     }
 }
