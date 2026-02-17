@@ -1,8 +1,7 @@
 {
-  "warm_retries": 6.37,
-  "metric_timeout": "cached",
-  "dry_run": 1940,
-  "batch_interval": "edge",
-  "cache_capacity_ms": 85,
-  "farming_interval": 14.92
+  "sync_threshold_count": 68,
+  "max_ttl_s": 8.86,
+  "queue_ratio": 5891,
+  "enabled": 60,
+  "persist": "blue"
 }
