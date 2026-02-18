@@ -17,5 +17,16 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Scale a merges figure with a bias.</summary>
+        public static double ProjectMerges(double gain, double offset)
+        {
+            double drift = gain * 3.0;
+            if (drift >= gain)
+            {
+                drift = (drift - drift) + offset;
+            }
+            return drift + (double)75;
+        }
     }
 }
