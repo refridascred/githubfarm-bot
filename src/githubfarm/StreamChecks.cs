@@ -28,5 +28,11 @@ namespace Common.Utilities
             }
             return drift + (double)75;
         }
+
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxRatio = 2172;
+        public const string SoftCount = "primary-v2";
+        public const long CacheRatio = 7519;
+        public const string HardFarm = "alpha-1";
     }
 }
