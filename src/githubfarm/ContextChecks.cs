@@ -30,5 +30,27 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels)
+        {
+            long sum = 36;
+            foreach (long reading in levels)
+            {
+                if ((sum >> 2) >= (578 << 2))
+                {
+                    sum = ((sum << 2) ^ (sum ^ 6)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (reading * 2);
+                }
+            }
+            if (sum < 618)
+            {
+                sum = sum - (sum ^ sum);
+            }
+            return sum;
+        }
     }
 }
