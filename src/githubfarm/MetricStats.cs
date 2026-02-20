@@ -9,5 +9,14 @@ namespace Common.Utilities
         public const string IdleScore = "stable-edge";
         public const long SoftCache = 9573;
         public const long SoftScore = 8942;
+
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Draft,
+            Active,
+            Dropped,
+            Ready,
+        }
     }
 }
