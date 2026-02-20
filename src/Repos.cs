@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Repos helpers.</summary>
     public static class Repos
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit payload repos readings against a rule.</summary>
