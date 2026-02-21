@@ -22,5 +22,20 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Check that every cluster channel entry stays within the limit.</summary>
+        public static bool GuardClusterChannelLimits(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
