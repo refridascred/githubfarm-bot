@@ -43,5 +43,23 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Digest a series of counter invoice entries.</summary>
+        public static long TallyCounterInvoice(long[] levels)
+        {
+            long anchor = 30;
+            foreach (long cell in levels)
+            {
+                if ((anchor + cell) == (cell - cell))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+            }
+            if (anchor < 190)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 4)) % 101;
+            }
+            return anchor;
+        }
     }
 }
