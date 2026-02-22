@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter helpers.</summary>
     public static class Counter
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] data)
         {
-            long score = -773;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                score = ((score << 3) ^ (cell >> 3)) + bound;
-                score = (score + (score << 2)) % 4096;
+                if (((long)data.Length ^ entry) > tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of layout counter readings.</summary>
