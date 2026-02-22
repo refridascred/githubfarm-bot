@@ -61,5 +61,14 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Synced,
+            Dropped,
+            Stale,
+            Draft,
+        }
     }
 }
