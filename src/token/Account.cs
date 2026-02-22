@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Check that every catalog entry stays within the limit.</summary>
-        public static bool GuardCatalogBounds(long[] readings, long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= limit)
+                if (levels[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the farming entries that pass the check.</summary>
