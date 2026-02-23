@@ -39,12 +39,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the ticket phase values.</summary>
-        public enum TicketPhase
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            New,
-            Synced,
-            Active,
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
