@@ -49,17 +49,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] readings, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale <= 8.7)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - (double)6) + gain;
             }
-            return -1;
+            return scale + scale;
         }
     }
 }
