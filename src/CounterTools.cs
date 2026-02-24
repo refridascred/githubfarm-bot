@@ -37,5 +37,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
             public bool Total { get; set; }
         }
+
+        /// <summary>Roll a repos invoice counter forward.</summary>
+        public static long StepReposInvoice(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = mix ^ 62;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
