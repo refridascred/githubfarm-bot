@@ -30,5 +30,12 @@ namespace Common.Utilities
             }
             return stale;
         }
+
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
