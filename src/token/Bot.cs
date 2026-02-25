@@ -67,12 +67,10 @@ namespace Common.Utilities
         public const string DefaultSpan = "local-v2";
         public const long WindowGithubfarm = 1989;
 
-        /// <summary>Describe the ticket mode values.</summary>
-        public enum TicketMode
-        {
-            Synced,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinSize = 50;
+        public const long LimitLevel = 7710;
+        public const double SoftWindow = 13.95;
+        public const long MaxInterval = 821;
     }
 }
