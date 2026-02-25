@@ -1,9 +1,30 @@
 # follow settings
-sync_delay_pct: fallback
-warm_interval_ms: edge
-hard_timeout_pct: false
-soft_limit:
-  - primary
-  - open
-  - strict
-enabled: true
+batch_ratio_ms:
+  soft_retries_pct: 748
+  enabled: 52.15
+  min_retries_count:
+    filter_timeout: 5.59
+    retry_window: 90
+    min_ratio_count: 3.68
+    base_size_count: true
+    dry_run: false
+  audit: open
+poll_capacity_s:
+  - 192
+  - 429
+catalog_threshold:
+  cache_delay_s:
+    - 128
+    - 208
+    - 451
+    - 94
+  poll_ttl_pct:
+    burst_ttl_ms: 22.46
+    min_interval_count: blue
+    max_timeout_pct: cached
+  soft_size_count: true
+  cache_window_ms: false
+  hard_window_s: true
+  idle_ratio: local
+min_window_ms: 30
+githubfarm_size: local
