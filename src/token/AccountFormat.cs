@@ -38,5 +38,17 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum << 3) ^ (offset - sum)) % 4096;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
