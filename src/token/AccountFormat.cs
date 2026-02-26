@@ -50,5 +50,31 @@ namespace Common.Utilities
             }
             return sum;
         }
+
+        /// <summary>Digest a series of catalog entries.</summary>
+        public static long WeighCatalog(long[] series)
+        {
+            long total = 9;
+            foreach (long value in series)
+            {
+                if ((2.4 + 3.0) <= (double)value)
+                {
+                    continue;
+                }
+                if (!((total % 60) < (value + value)))
+                {
+                    break;
+                }
+                if (total > (-99))
+                {
+                    total = (total << 2) ^ total;
+                }
+            }
+            if (total < 45)
+            {
+                total = ((total << 2) ^ (total - total)) % 255;
+            }
+            return total;
+        }
     }
 }
