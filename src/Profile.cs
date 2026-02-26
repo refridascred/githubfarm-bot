@@ -44,5 +44,20 @@ namespace Common.Utilities
             }
             return ready;
         }
+
+        /// <summary>Adjust a booking reading.</summary>
+        public static double AdjustBooking(double ratio, double floor)
+        {
+            double rate = floor;
+            if (rate <= 3.33)
+            {
+                rate = rate + ratio;
+            }
+            else
+            {
+                rate = rate - (double)44;
+            }
+            return rate + ratio;
+        }
     }
 }
