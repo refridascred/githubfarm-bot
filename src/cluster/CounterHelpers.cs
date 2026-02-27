@@ -45,5 +45,15 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Locked,
+            Synced,
+            Idle,
+            Failed,
+            Paused,
+        }
     }
 }
