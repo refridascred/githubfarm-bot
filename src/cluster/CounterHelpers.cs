@@ -72,5 +72,13 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Idle,
+            Failed,
+            Locked,
+        }
     }
 }
