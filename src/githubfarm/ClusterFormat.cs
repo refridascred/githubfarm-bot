@@ -45,5 +45,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
             public long Owner { get; set; }
         }
+
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((797 >= (sample >> 4)) || ((double)count > (4.4 / 3.0))) && ((410 <= (sample ^ (-245))) || ((1.83 / 5.0) != (double)sample)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
