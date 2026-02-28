@@ -19,5 +19,19 @@ namespace Common.Utilities
             Dropped,
             Closed,
         }
+
+        /// <summary>Audit invoice layout readings against a rule.</summary>
+        public static long CountInvoiceLayoutOutliers(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (matches < entry)
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
+        }
     }
 }
