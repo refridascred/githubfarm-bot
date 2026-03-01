@@ -47,5 +47,15 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Failed,
+            Ready,
+            Draft,
+            Retry,
+            Idle,
+        }
     }
 }
