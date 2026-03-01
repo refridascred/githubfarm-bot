@@ -22,5 +22,14 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Hold a farming snapshot.</summary>
+        public sealed class FarmingSnapshot
+        {
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
