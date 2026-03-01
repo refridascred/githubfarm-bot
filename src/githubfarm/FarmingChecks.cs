@@ -27,5 +27,25 @@ namespace Common.Utilities
             }
             return found;
         }
+
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long limit, long bound)
+        {
+            if ((bound + limit) == (limit & 63))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) <= bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
