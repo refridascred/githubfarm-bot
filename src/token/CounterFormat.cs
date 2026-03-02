@@ -75,5 +75,13 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Hold a farming stats.</summary>
+        public sealed class FarmingStats
+        {
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
