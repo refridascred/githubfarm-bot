@@ -36,5 +36,13 @@ namespace Common.Utilities
         public const long HardCommits = 9200;
         public const long MaxBudget = 8370;
         public const long BatchRatio = 8692;
+
+        /// <summary>Describe the ticket mode values.</summary>
+        public enum TicketMode
+        {
+            Idle,
+            Paused,
+            Queued,
+        }
     }
 }
