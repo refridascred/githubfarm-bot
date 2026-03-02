@@ -51,5 +51,19 @@ namespace Common.Utilities
             }
             return stale;
         }
+
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (tally < (tally & 31))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
