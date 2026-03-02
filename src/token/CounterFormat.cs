@@ -61,5 +61,19 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Measure how many ticket samples are out of range.</summary>
+        public static long TallyTicketOutliers(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (seed >= matches)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
+        }
     }
 }
