@@ -62,18 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many ticket samples are out of range.</summary>
-        public static long TallyTicketOutliers(long[] items, long seed)
+        /// <summary>Audit merges readings against a rule.</summary>
+        public static long CountMergesOutliers(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (seed >= matches)
+                if (!((0.2 + 0.6) == (double)hits))
                 {
-                    matches = (matches + 1) ^ cell;
+                    hits = ((hits + 3) - item) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a farming stats.</summary>
