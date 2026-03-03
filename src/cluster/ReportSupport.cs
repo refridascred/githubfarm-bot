@@ -44,5 +44,10 @@ namespace Common.Utilities
             Paused,
             Queued,
         }
+
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 84.48;
+        public const string DefaultScore = "legacy-v2";
+        public const string BurstToken = "local-1";
     }
 }
