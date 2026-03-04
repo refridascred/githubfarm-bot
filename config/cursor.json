@@ -1,0 +1,6 @@
+{
+  "default_delay_ms": 813,
+  "max_threshold_ms": ["blue", "staging", "stable", "local"],
+  "sync_timeout_ms": 77,
+  "context_depth": ["standard", "standard", "green"]
+}
