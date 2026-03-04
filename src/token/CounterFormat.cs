@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the booking mode values.</summary>
-        public enum BookingMode
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Pending,
             Locked,
-            Draft,
+            Stale,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Combine ticket values into a single score.</summary>
