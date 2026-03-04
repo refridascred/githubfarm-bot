@@ -48,10 +48,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define ticket limits and defaults.</summary>
-        public const long IdleFactor = 8149;
-        public const long LimitTicket = 7866;
-        public const double RetryTicket = 30.18;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Failed,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
