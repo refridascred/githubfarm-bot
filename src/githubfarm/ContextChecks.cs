@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] items, long step)
+        /// <summary>Validate commits buffer readings against a bound.</summary>
+        public static bool ValidateCommitsBufferLimits(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (items[i] <= step)
+                if (datum > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Fold a list of route readings.</summary>
