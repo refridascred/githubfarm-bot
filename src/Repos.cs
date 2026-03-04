@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Repos helpers.</summary>
     public static class Repos
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit payload repos readings against a rule.</summary>
