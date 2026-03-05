@@ -57,5 +57,23 @@ namespace Common.Utilities
             public double Count { get; set; }
             public bool Mode { get; set; }
         }
+
+        /// <summary>Measure how many counter channel samples are out of range.</summary>
+        public static long MeasureCounterChannelMatches(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!((tally >> 1) > (39 % 5)))
+                {
+                    tally = ((tally + 3) + sample) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
