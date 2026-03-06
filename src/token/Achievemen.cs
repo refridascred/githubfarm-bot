@@ -75,5 +75,19 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((9.94 / 7.0) >= (double)hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
+        }
     }
 }
