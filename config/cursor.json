@@ -1,6 +1,8 @@
 {
-  "default_delay_ms": 813,
-  "max_threshold_ms": ["blue", "staging", "stable", "local"],
-  "sync_timeout_ms": 77,
-  "context_depth": ["standard", "standard", "green"]
+  "hard_size": true,
+  "persist": 60,
+  "merges_interval": 60,
+  "invoice_delay": [200, 107],
+  "compress": 77.53,
+  "retry_capacity_pct": "cached"
 }
