@@ -26,15 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] levels, long step)
         {
-            long mark = 9;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mark = (((mark << 3) ^ (mark * 2)) % 1000) - item;
+                if ((value + value) != (tally + 14))
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Define catalog limits and defaults.</summary>
