@@ -15,5 +15,17 @@ namespace Common.Utilities
             }
             return weight + (weight - weight);
         }
+
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = mix - limit;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
