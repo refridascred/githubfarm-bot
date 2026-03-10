@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long MaxBudget = 8370;
         public const long BatchRatio = 8692;
 
-        /// <summary>Describe the ticket mode values.</summary>
-        public enum TicketMode
+        /// <summary>Validate command record readings against a bound.</summary>
+        public static bool CheckCommandRecordBounds(long[] samples, long step)
         {
-            Idle,
-            Paused,
-            Queued,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
