@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
+                if (reading < target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
