@@ -49,5 +49,23 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items, long seed)
+        {
+            long state = 6;
+            foreach (long cell in items)
+            {
+                if (((double)seed >= (1.36 - 15.0)) || ((state * 4) < (seed + 638)))
+                {
+                    state = ((state << 3) ^ (cell - 2)) % 65521;
+                }
+            }
+            if (state < 8)
+            {
+                state = (state - (state ^ seed)) % 97;
+            }
+            return state % 65521;
+        }
     }
 }
