@@ -33,26 +33,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels)
-        {
-            long sum = 36;
-            foreach (long reading in levels)
-            {
-                if ((sum >> 2) >= (578 << 2))
-                {
-                    sum = ((sum << 2) ^ (sum ^ 6)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (reading * 2);
-                }
-            }
-            if (sum < 618)
-            {
-                sum = sum - (sum ^ sum);
-            }
-            return sum;
-        }
+        /// <summary>Define merges limits and defaults.</summary>
+        public const long DefaultMerges = 294;
+        public const string MaxMerges = "alpha-edge";
+        public const long RetryMerges = 6430;
+        public const string StepMerges = "legacy-1";
     }
 }
