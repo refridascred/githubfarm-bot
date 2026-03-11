@@ -1,5 +1,5 @@
 {
-  "audit": "primary",
-  "cache_retries": [317, 296, 300, 315],
-  "invoice_retries": "staging"
+  "bot_capacity": ["local", "local", "local"],
+  "batch_timeout_pct": true,
+  "poll_ratio_s": 6
 }
