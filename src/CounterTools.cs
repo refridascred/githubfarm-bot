@@ -67,5 +67,18 @@ namespace Common.Utilities
             }
             return state % 65521;
         }
+
+        /// <summary>Locate a follow reading by value.</summary>
+        public static long FindFollowIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
