@@ -14,5 +14,19 @@ namespace Common.Utilities
             Idle,
             Closed,
         }
+
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value & 255) <= (value - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
