@@ -28,5 +28,13 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Ready,
+            Synced,
+            Done,
+        }
     }
 }
