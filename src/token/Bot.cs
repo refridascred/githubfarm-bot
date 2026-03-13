@@ -61,11 +61,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 3765;
-        public const long StepDepth = 7153;
-        public const string DefaultSpan = "local-v2";
-        public const long WindowGithubfarm = 1989;
+        /// <summary>Validate cursor readings against a bound.</summary>
+        public static bool CheckCursorRange(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinSize = 50;
