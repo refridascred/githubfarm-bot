@@ -59,5 +59,13 @@ namespace Common.Utilities
             }
             return flag;
         }
+
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
