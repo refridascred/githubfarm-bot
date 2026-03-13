@@ -44,5 +44,20 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Validate layout report readings against a bound.</summary>
+        public static bool CheckLayoutReportRange(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
