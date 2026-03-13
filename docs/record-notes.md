@@ -1,11 +1,10 @@
 # Record notes
 
-Keep context and command names short and lowercase.
-The graph module keeps stream values in sync with the stream cache.
+When a bot fails, the cluster handler retries a few times before giving up.
+Run the command check before changing any contributi limits.
 
 ## Guidelines
 
-- Validate cluster input early
-- Keep booking values small
-- Log every window change
-- Prefer githubfarm defaults
+- Prefer layout defaults
+- Log every record change
+- Review report limits each release
