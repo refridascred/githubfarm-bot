@@ -67,5 +67,25 @@ namespace Common.Utilities
             public long Size { get; set; }
             public double Rank { get; set; }
         }
+
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long bound)
+        {
+            if (step <= (step / 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound < (bound - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
