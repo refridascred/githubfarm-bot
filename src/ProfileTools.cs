@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long offset)
         {
-            Retry,
-            Ready,
-            Synced,
-            Idle,
-            Failed,
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry ^ (carry + carry)) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
