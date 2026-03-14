@@ -59,5 +59,16 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
