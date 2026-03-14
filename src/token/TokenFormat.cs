@@ -70,5 +70,18 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
