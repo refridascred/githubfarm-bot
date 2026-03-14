@@ -50,12 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of booking readings.</summary>
+        public static long TallyBooking(long[] data, long offset)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            long mark = 6;
+            foreach (long reading in data)
+            {
+                if (((double)mark <= (2.23 / 2.0)) && ((reading * 2) <= mark))
+                {
+                    mark = ((mark * 2) + (reading + offset)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (offset << 2)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
