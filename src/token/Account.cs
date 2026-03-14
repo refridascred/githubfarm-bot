@@ -58,13 +58,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the booking graph entries that pass the check.</summary>
+        public static long TallyBookingGraphMatches(long[] levels, long bound)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((double)tally != (5.07 / 7.0)) && ((bound < (value ^ 347)) || (2 >= (bound & 7))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
