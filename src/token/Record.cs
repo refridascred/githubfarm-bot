@@ -56,12 +56,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit cursor filter readings against a rule.</summary>
+        public static long TallyCursorFilterOutliers(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value & 127) != (hits / 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
