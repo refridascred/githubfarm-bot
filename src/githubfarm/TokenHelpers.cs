@@ -36,5 +36,10 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 58.99;
+        public const long BaseRatio = 8800;
+        public const string SoftInterval = "fallback-1";
     }
 }
