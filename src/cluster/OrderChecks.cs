@@ -36,5 +36,23 @@ namespace Common.Utilities
             }
             return carry;
         }
+
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((-83) >= (reading + seen)) || (((-8) - seen) >= reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
