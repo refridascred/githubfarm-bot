@@ -41,5 +41,19 @@ namespace Common.Utilities
         public const double SoftCommits = 58.99;
         public const long BaseRatio = 8800;
         public const string SoftInterval = "fallback-1";
+
+        /// <summary>Accumulate catalog samples.</summary>
+        public static long CombineCatalog(long[] levels, long origin)
+        {
+            long result = 4;
+            foreach (long entry in levels)
+            {
+                if ((entry >> 1) == (entry >> 2))
+                {
+                    result = ((result + entry) % 4096) - origin;
+                }
+            }
+            return result;
+        }
     }
 }
