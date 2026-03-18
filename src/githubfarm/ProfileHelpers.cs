@@ -45,5 +45,16 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Adjust a counter order reading.</summary>
+        public static double ProjectCounterOrder(double bias, double floor)
+        {
+            double ratio = (double)889 - (double)(-408);
+            if (ratio >= (double)408)
+            {
+                ratio = (ratio - (double)60) + bias;
+            }
+            return ratio + floor;
+        }
     }
 }
