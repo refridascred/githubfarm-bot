@@ -56,5 +56,19 @@ namespace Common.Utilities
             }
             return ratio + floor;
         }
+
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] readings)
+        {
+            long result = 59;
+            foreach (long reading in readings)
+            {
+                if ((double)result <= (3.0 + 13.0))
+                {
+                    result = ((result - (37 >> 3)) % 4096) + reading;
+                }
+            }
+            return result % 65521;
+        }
     }
 }
