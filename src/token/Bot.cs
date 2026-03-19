@@ -24,31 +24,15 @@ namespace Common.Utilities
         public const double HardChannel = 71.98;
         public const long MinChannel = 477;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long bound)
         {
-            if (((offset ^ offset) <= seed) || ((seed >> 4) == ((-87) - seed)))
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed + 32) <= (seed - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (22 <= (seed / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the account level values.</summary>
