@@ -20,5 +20,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
             public bool Label { get; set; }
         }
+
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Failed,
+            Queued,
+            Done,
+            Idle,
+        }
     }
 }
