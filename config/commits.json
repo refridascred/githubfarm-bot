@@ -1,0 +1,6 @@
+{
+  "channel_threshold": "cached",
+  "poll_ratio_ms": "stable",
+  "account_size": true,
+  "base_ratio_count": 2625
+}
