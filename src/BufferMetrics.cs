@@ -22,38 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long origin, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] levels, long origin)
         {
-            if ((bound / 8) < (32 - 99))
+            long total = 62;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((93 < origin) || ((bound * 4) != (bound ^ origin)))
+                if ((double)origin < (7.8 * 1.52))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >> 4) > (2 + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound / 7) > (origin ^ bound)) && ((6 >> 5) >= (origin + bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = ((total - (total << 3)) % 65521) - datum;
                 }
             }
+            if (total < 17)
+            {
+                total = (total ^ (origin - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Roll a cursor counter forward.</summary>
