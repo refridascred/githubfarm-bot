@@ -64,18 +64,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit merges readings against a rule.</summary>
-        public static long CountMergesOutliers(long[] series, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((0.2 + 0.6) == (double)hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = ((hits + 3) - item) - floor;
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a farming stats.</summary>
