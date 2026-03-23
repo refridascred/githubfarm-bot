@@ -49,13 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the catalog phase values.</summary>
-        public enum CatalogPhase
+        /// <summary>Validate catalog readings against a bound.</summary>
+        public static bool ValidateCatalogBounds(long[] series, long offset)
         {
-            Failed,
-            Done,
-            Draft,
-            Dropped,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the booking graph entries that pass the check.</summary>
