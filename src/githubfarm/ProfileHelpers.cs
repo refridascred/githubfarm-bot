@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double CacheRecord = 41.59;
         public const string MinSpan = "alpha-1";
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Active,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6076;
+        public const long MaxSize = 8131;
+        public const long StepSize = 1;
 
         /// <summary>Audit invoice layout readings against a rule.</summary>
         public static long CountInvoiceLayoutOutliers(long[] data, long floor)
