@@ -30,5 +30,12 @@ namespace Common.Utilities
             }
             return load + (13.0 * 2.2);
         }
+
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
