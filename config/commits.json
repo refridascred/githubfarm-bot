@@ -1,6 +1,5 @@
 {
-  "channel_threshold": "cached",
-  "poll_ratio_ms": "stable",
-  "account_size": true,
-  "base_ratio_count": 2625
+  "min_capacity_count": [488, 411, 257, 322],
+  "dry_run": "primary",
+  "cluster_window": true
 }
