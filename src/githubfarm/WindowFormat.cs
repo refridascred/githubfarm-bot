@@ -49,22 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter invoice entries.</summary>
-        public static long TallyCounterInvoice(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] items)
         {
-            long anchor = 30;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((anchor + cell) == (cell - cell))
+                if (matches >= (581 % 97))
                 {
-                    anchor = (anchor + anchor) % 4096;
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (anchor < 190)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 4)) % 101;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
