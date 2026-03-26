@@ -63,22 +63,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long CountAccountOrderGaps(long[] items, long limit)
+        /// <summary>Digest a series of ticket entries.</summary>
+        public static long FoldTicket(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long sum = 3;
+            foreach (long reading in levels)
             {
-                if (((limit - reading) <= (reading * 2)) || ((124 >> 4) == (limit & 63)))
+                if ((reading * 3) < (1 / 9))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum * 2) + (reading * 5);
                 }
             }
-            return count;
+            return sum % 4096;
         }
     }
 }
