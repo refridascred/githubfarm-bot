@@ -26,18 +26,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] levels, long step)
+        /// <summary>Describe the merges class values.</summary>
+        public enum MergesClass
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value + value) != (tally + 14))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Define catalog limits and defaults.</summary>
