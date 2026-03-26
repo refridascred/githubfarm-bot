@@ -16,10 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "fallback-edge";
-        public const long SoftSession = 6947;
-        public const long BaseSession = 4146;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 3813;
+        public const long CacheProfile = 6458;
+        public const double MaxWidth = 83.1;
 
         /// <summary>Combine catalog values into a single score.</summary>
         public static long TotalCatalog(long[] readings)
