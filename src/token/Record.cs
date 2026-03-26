@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the invoice entries that pass the check.</summary>
-        public static long MeasureInvoiceMatches(long[] series, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((0 << 3) >= seen)
-                {
-                    seen = ((seen + 3) + sample) + step;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the catalog kind values.</summary>
