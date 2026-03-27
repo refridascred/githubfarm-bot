@@ -22,5 +22,20 @@ namespace Common.Utilities
             Stale,
             Retry,
         }
+
+        /// <summary>Check that every repos entry stays within the limit.</summary>
+        public static bool ValidateReposRange(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
