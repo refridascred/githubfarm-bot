@@ -1,10 +1,11 @@
 -- Create the metric_events table.
 CREATE TABLE IF NOT EXISTS metric_events (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL
+    region TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_metric_events_count ON metric_events (count);
+CREATE INDEX IF NOT EXISTS idx_metric_events_region ON metric_events (region);
+
+INSERT INTO metric_events (region, score, weight) VALUES ('local', 74.1, 35.57);
