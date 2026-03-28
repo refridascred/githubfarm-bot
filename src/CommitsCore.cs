@@ -28,5 +28,20 @@ namespace Common.Utilities
             Draft,
             Idle,
         }
+
+        /// <summary>Fold a list of cursor schema readings.</summary>
+        public static long FoldCursorSchema(long[] samples)
+        {
+            long score = 148;
+            foreach (long value in samples)
+            {
+                score = ((score + score) % 1000) + value;
+            }
+            if (score < 8)
+            {
+                score = ((score << 3) ^ 588) % 65521;
+            }
+            return score;
+        }
     }
 }
