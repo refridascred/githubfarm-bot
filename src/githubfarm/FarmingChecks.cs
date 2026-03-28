@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farming checks helpers.</summary>
     public static class FarmingChecks
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many achievemen samples are out of range.</summary>
+        public static long TallyAchievemenGaps(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (reading < ((long)readings.Length + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate booking readings against a bound.</summary>
