@@ -14,13 +14,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            Draft,
-            Locked,
-            Stale,
-            Retry,
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every repos entry stays within the limit.</summary>
