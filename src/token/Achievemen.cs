@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((20.0 - 11.0) < (double)cell))
                 {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) - target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
