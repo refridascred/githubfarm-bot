@@ -50,5 +50,20 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Blend two cursor measurements.</summary>
+        public static double ProjectCursor(double weight, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < (double)12)
+            {
+                bias2 = bias2 - (bias2 + weight);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - (double)7;
+        }
     }
 }
