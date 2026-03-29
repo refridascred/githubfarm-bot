@@ -47,22 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of booking readings.</summary>
-        public static long TallyBooking(long[] data, long offset)
+        /// <summary>Match up achievemen samples.</summary>
+        public static long PairAchievemenCount(long[] items)
         {
-            long mark = 6;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)mark <= (2.23 / 2.0)) && ((reading * 2) <= mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark * 2) + (reading + offset)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (offset << 2)) % 101;
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
