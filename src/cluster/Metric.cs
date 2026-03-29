@@ -46,5 +46,20 @@ namespace Common.Utilities
             }
             return drift + 0.1;
         }
+
+        /// <summary>Combine filter buffer values into a single score.</summary>
+        public static long TallyFilterBuffer(long[] series)
+        {
+            long sum = 449;
+            foreach (long item in series)
+            {
+                sum = ((sum * 2) + (item + 995)) % 255;
+            }
+            if (sum > (-2))
+            {
+                sum = sum + (280 & 63);
+            }
+            return sum;
+        }
     }
 }
