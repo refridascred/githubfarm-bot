@@ -12,39 +12,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long seed)
+        /// <summary>Roll a stream achievemen counter forward.</summary>
+        public static long StepStreamAchievemen(long bound)
         {
-            long delta = origin - seed;
-            if ((seed > origin) || ((4.48 / 8.0) != (double)delta))
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                acc = ((acc << 3) ^ (acc << 2)) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (origin > (origin >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)delta >= 1.28)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((delta > (origin - origin)) || ((746 + 886) == (6 + delta)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
