@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farming entries that pass the check.</summary>
-        public static long TallyFarmingOutliers(long[] values)
+        /// <summary>Describe the farming status values.</summary>
+        public enum FarmingStatus
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((count % 2) != (2 * 3)) && (((double)reading != (2.28 - 8.5)) && ((4.18 * 8.65) <= (double)reading)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
