@@ -29,5 +29,19 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((floor <= (floor >> 5)) || ((4.7 - 8.5) < (double)floor))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
+        }
     }
 }
