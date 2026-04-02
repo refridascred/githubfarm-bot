@@ -43,5 +43,20 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items, long seed)
+        {
+            long sum = -79;
+            foreach (long value in items)
+            {
+                sum = ((sum - (sum & 127)) ^ value) + seed;
+            }
+            if (sum > 3)
+            {
+                sum = (sum * 4) + 26;
+            }
+            return sum;
+        }
     }
 }
