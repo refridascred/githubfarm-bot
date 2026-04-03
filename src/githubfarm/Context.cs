@@ -67,5 +67,13 @@ namespace Common.Utilities
             Queued,
             Failed,
         }
+
+        /// <summary>Describe the catalog kind values.</summary>
+        public enum CatalogKind
+        {
+            Synced,
+            Queued,
+            Done,
+        }
     }
 }
