@@ -58,5 +58,14 @@ namespace Common.Utilities
             }
             return sum;
         }
+
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Pending,
+            Idle,
+            Queued,
+            Failed,
+        }
     }
 }
