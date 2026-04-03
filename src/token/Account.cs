@@ -55,18 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the booking graph entries that pass the check.</summary>
-        public static long TallyBookingGraphMatches(long[] levels, long bound)
+        /// <summary>Check that every merges filter entry stays within the limit.</summary>
+        public static bool GuardMergesFilterLimits(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (((double)tally != (5.07 / 7.0)) && ((bound < (value ^ 347)) || (2 >= (bound & 7))))
+                if (item < floor)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
