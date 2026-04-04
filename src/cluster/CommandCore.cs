@@ -38,5 +38,12 @@ namespace Common.Utilities
             public long Label { get; set; }
             public long Rank { get; set; }
         }
+
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxFactor = 5852;
+        public const double SoftMetric = 91.99;
+        public const double BurstFactor = 73.53;
+        public const long SoftCount = 4999;
+        public const double BaseMetric = 26.47;
     }
 }
