@@ -31,5 +31,12 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public long Label { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
