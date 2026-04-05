@@ -57,5 +57,14 @@ namespace Common.Utilities
             }
             return result;
         }
+
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
