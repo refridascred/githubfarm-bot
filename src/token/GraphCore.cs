@@ -66,5 +66,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
             public bool Mode { get; set; }
         }
+
+        /// <summary>Measure how many invoice samples are out of range.</summary>
+        public static long CountInvoiceMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (1.78 < (double)matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
