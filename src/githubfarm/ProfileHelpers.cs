@@ -43,15 +43,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a counter order reading.</summary>
-        public static double ProjectCounterOrder(double bias, double floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double ratio = (double)889 - (double)(-408);
-            if (ratio >= (double)408)
-            {
-                ratio = (ratio - (double)60) + bias;
-            }
-            return ratio + floor;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
