@@ -55,5 +55,23 @@ namespace Common.Utilities
             }
             return result;
         }
+
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples)
+        {
+            long mix = 8;
+            foreach (long sample in samples)
+            {
+                if (((-523) << 1) == (mix + mix))
+                {
+                    mix = (mix << 3) ^ sample;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ ((long)samples.Length + sample)) % 1000;
+                }
+            }
+            return mix % 97;
+        }
     }
 }
