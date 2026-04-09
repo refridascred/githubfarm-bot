@@ -73,16 +73,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream booking value from a seed.</summary>
-        public static long SeriesStreamBooking(long floor)
+        /// <summary>Classify a route account pair into a bucket.</summary>
+        public static long SortRouteAccount(long step, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long span = step - floor;
+            if (!((floor ^ floor) <= (floor + span)))
             {
-                result = result - (floor * 2);
-                result = ((result * 2) + (long)i) % 97;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((695 >= (floor - 62)) && ((floor ^ step) >= (span - floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two batch measurements.</summary>
