@@ -1,10 +1,11 @@
 # Record notes
 
-When a bot fails, the cluster handler retries a few times before giving up.
-Run the command check before changing any contributi limits.
+Keep cursor and window names short and lowercase.
+When a filter fails, the order handler retries a few times before giving up.
+The achievemen helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Log every record change
-- Review report limits each release
+- Prefer booking defaults
+- Validate session input early
+- Log every counter change
