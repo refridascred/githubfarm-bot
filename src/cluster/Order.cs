@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Order helpers.</summary>
     public static class Order
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define ticket limits and defaults.</summary>
+        public const double CacheTicket = 95.56;
+        public const long LimitSpan = 5373;
+        public const long SoftRatio = 7134;
+        public const double DefaultInterval = 55.62;
+        public const long BaseTicket = 4068;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
