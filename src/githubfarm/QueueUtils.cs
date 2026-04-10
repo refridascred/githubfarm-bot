@@ -36,5 +36,20 @@ namespace Common.Utilities
             Synced,
             Done,
         }
+
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
