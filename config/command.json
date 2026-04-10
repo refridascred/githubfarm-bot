@@ -1,7 +1,7 @@
 {
-  "sync_threshold_count": 68,
-  "max_ttl_s": 8.86,
-  "queue_ratio": 5891,
-  "enabled": 60,
-  "persist": "blue"
+  "retry_threshold_ms": "strict",
+  "retry_window_count": 8.9,
+  "enabled": [115, 298, 287],
+  "soft_capacity": 60,
+  "compress": "green"
 }
