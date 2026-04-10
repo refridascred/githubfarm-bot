@@ -15,21 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of cluster repos readings.</summary>
-        public static long MatchClusterReposCount(long[] items)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 654;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ value) % 255;
             }
-            return count;
+            if (mark > 90)
+            {
+                mark = mark ^ (mark % 12);
+            }
+            return mark;
         }
 
         /// <summary>Match up commits samples.</summary>
