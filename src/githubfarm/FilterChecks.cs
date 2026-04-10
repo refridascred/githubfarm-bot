@@ -31,5 +31,14 @@ namespace Common.Utilities
             public long Token { get; set; }
             public long Rank { get; set; }
         }
+
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public double Owner { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
