@@ -1,11 +1,6 @@
-id,active,level,state
-1,38.93,open,standard
-2,63.41,green,16.52
-3,standard,82.45,fallback
-4,928,76.95,394
-5,824,273,green
-6,72.82,116,79.98
-7,157,eu-west,523
-8,38.0,edge,primary
-9,standard,47.52,676
-10,stable,86.76,32.4
+id,state,owner,level
+1,legacy,90.68,69.97
+2,916,88.16,572
+3,55.19,35.51,local
+4,267,64.03,96.64
+5,eu-west,762,edge
