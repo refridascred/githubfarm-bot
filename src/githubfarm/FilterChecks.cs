@@ -40,5 +40,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
             public bool Size { get; set; }
         }
+
+        /// <summary>Count the farming entries that pass the check.</summary>
+        public static long TallyFarmingMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits >> 4) >= (5 + cell))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
