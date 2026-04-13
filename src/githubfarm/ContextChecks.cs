@@ -33,10 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define merges limits and defaults.</summary>
-        public const long DefaultMerges = 294;
-        public const string MaxMerges = "alpha-edge";
-        public const long RetryMerges = 6430;
-        public const string StepMerges = "legacy-1";
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
