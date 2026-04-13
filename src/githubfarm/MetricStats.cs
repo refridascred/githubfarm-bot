@@ -18,5 +18,23 @@ namespace Common.Utilities
             Dropped,
             Ready,
         }
+
+        /// <summary>Count the booking entries that pass the check.</summary>
+        public static long CountBookingMatches(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((7 & 15) > hits)
+                {
+                    hits = ((hits + 2) + value) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
