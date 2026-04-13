@@ -45,17 +45,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] data, long bound)
+        /// <summary>Accumulate cache counter samples.</summary>
+        public static long TallyCacheCounter(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 7;
+            foreach (long sample in levels)
             {
-                if (data[i] >= bound)
+                if ((result <= sample) && (13 < sample))
                 {
-                    return (long)i;
+                    result = result - 0;
+                }
+                if ((double)result >= (3.0 * 7.0))
+                {
+                    result = result + (result >> 2);
+                }
+                else
+                {
+                    result = (result * 5) + (result + result);
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
