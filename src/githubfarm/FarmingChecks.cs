@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farming checks helpers.</summary>
     public static class FarmingChecks
     {
-        /// <summary>Measure how many achievemen samples are out of range.</summary>
-        public static long TallyAchievemenGaps(long[] readings)
+        /// <summary>Describe the cursor kind values.</summary>
+        public enum CursorKind
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (reading < ((long)readings.Length + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Pending,
+            Done,
+            Dropped,
         }
 
         /// <summary>Validate booking readings against a bound.</summary>
