@@ -15,18 +15,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] items)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((value & 255) <= (value - matches))
-                {
-                    matches = matches + 2;
-                }
+                anchor = anchor - (anchor << 3);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the farm class values.</summary>
