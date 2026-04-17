@@ -39,16 +39,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Match up ticket route samples.</summary>
+        public static long OverlapTicketRouteCount(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 3) ^ (offset - sum)) % 4096;
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Digest a series of catalog entries.</summary>
