@@ -1,7 +1,6 @@
 {
-  "flush_delay_count": 4169,
-  "session_capacity": true,
-  "retry_depth": "open",
-  "readonly": 5,
-  "min_size": "fallback"
+  "max_capacity_pct": 37.26,
+  "warm_threshold_ms": true,
+  "min_ratio_count": false,
+  "flush_size_s": "cached"
 }
