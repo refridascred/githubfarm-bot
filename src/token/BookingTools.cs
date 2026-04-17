@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Check that every repos entry stays within the limit.</summary>
