@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardFactor = "standard-edge";
-        public const long CacheRatio = 6260;
-        public const long SoftSize = 4866;
-        public const long StepBuffer = 9195;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many bot samples are out of range.</summary>
         public static long AuditBotHits(long[] levels)
