@@ -43,5 +43,20 @@ namespace Common.Utilities
             }
             return score;
         }
+
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
