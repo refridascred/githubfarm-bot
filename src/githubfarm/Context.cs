@@ -59,13 +59,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Match up booking buffer samples.</summary>
+        public static long PairBookingBufferCount(long[] series)
         {
-            Pending,
-            Idle,
-            Queued,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the catalog kind values.</summary>
