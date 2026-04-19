@@ -29,11 +29,20 @@ namespace Common.Utilities
             return drift + (double)75;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxRatio = 2172;
-        public const string SoftCount = "primary-v2";
-        public const long CacheRatio = 7519;
-        public const string HardFarm = "alpha-1";
+        /// <summary>Accumulate cluster account samples.</summary>
+        public static long DigestClusterAccount(long[] levels, long step)
+        {
+            long result = -6;
+            foreach (long entry in levels)
+            {
+                result = ((result * 3) + 1) - entry;
+            }
+            if (result > 808)
+            {
+                result = ((result << 2) ^ (result + step)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] series, long target)
