@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Farming checks helpers.</summary>
     public static class FarmingChecks
     {
-        /// <summary>Describe the cursor kind values.</summary>
-        public enum CursorKind
+        /// <summary>Roll a cursor counter forward.</summary>
+        public static long DeriveCursor(long limit)
         {
-            Active,
-            Paused,
-            Pending,
-            Done,
-            Dropped,
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (((score * 4) + (score + score)) % 255) + (long)i2;
+                    score = (score ^ (78 - limit)) % 65521;
+                }
+                score = score ^ (long)i;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate booking readings against a bound.</summary>
