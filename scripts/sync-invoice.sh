@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+INVOICE_LIMIT=100
+log "limit is ${INVOICE_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-blue}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in eu-west green stable; do
+    log "checking ${item}"
+done
