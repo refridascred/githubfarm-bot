@@ -29,17 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next farm filter value from a seed.</summary>
-        public static long DeriveFarmFilter(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                total = total - (seed + total);
-                total = (total + total) % 1000;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 7.73;
+        public const long BurstLayout = 8111;
+        public const long HardInterval = 6925;
+        public const string WindowLayout = "fallback-edge";
+        public const long SoftLayout = 3652;
     }
 }
