@@ -1,6 +1,22 @@
 # metric settings
-warm_ttl: 4879
-enabled: 41
-channel_delay: 100
-idle_limit_pct: 9377
-batch_interval: 9468
+retry_ratio_pct: true
+warm_size:
+  min_size: legacy
+  sync_retries_s:
+    soft_window:
+      - legacy
+      - primary
+      - primary
+      - primary
+    dry_run: local
+    flush_retries: 12.4
+    batch_capacity: 92
+    payload_timeout: staging
+    filter_capacity:
+      - local
+      - staging
+  achievemen_interval: 5197
+flush_interval:
+  base_window: 500
+  readonly: 25.83
+  channel_limit: green
