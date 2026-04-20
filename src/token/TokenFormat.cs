@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a catalog options.</summary>
-        public sealed class CatalogOptions
-        {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "legacy-1";
+        public const long LimitToken = 2043;
+        public const long HardToken = 7329;
+        public const long MaxToken = 8995;
+        public const string BaseToken = "strict";
 
         /// <summary>Describe the invoice level values.</summary>
         public enum InvoiceLevel
