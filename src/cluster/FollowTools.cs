@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Follow tools helpers.</summary>
     public static class FollowTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] levels)
+        /// <summary>Adjust a graph githubfarm reading.</summary>
+        public static double AdjustGraphGithubfarm(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double weight = (double)(-45) - (bias / 7.0);
+            if (weight <= (weight / 2.0))
             {
-                if (!((double)seen > (9.0 - 3.49)) && (((seen * 5) > (cell + (-50))) || ((3.23 + 20.0) <= (double)seen)))
-                {
-                    seen = seen + 2;
-                }
+                weight = weight + (span * 1.77);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (span / 9.0)) + (double)(long)i;
+            }
+            return weight - (double)423;
         }
 
         /// <summary>Define cursor limits and defaults.</summary>
