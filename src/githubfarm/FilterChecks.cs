@@ -58,5 +58,19 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items)
+        {
+            long state = 4;
+            foreach (long reading in items)
+            {
+                if (((reading & 255) != (state >> 4)) && (25 >= (reading >> 2)))
+                {
+                    state = ((state << 3) ^ (452 ^ reading)) % 255;
+                }
+            }
+            return state;
+        }
     }
 }
