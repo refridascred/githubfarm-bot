@@ -33,15 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Measure how many achievemen cluster samples are out of range.</summary>
+        public static long MeasureAchievemenClusterGaps(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((sample & 3) >= (sample << 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
