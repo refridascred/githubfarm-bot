@@ -72,5 +72,13 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Stale,
+            Retry,
+            Failed,
+        }
     }
 }
