@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Filter checks helpers.</summary>
     public static class FilterChecks
     {
-        /// <summary>Measure how many merges samples are out of range.</summary>
-        public static long CountMergesGaps(long[] levels, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((0.8 - 1.4) >= (double)origin)
             {
-                if ((tally + 3) <= (limit & 63))
+                return 0;
+            }
+            else
+            {
+                if (offset >= (offset / 3))
                 {
-                    tally = (tally + 1) ^ sample;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((27 - offset) != (origin & 15)) && (origin < (origin + 27)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - origin) >= 48)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a farming snapshot.</summary>
