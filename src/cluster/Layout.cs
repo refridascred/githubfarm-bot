@@ -45,5 +45,12 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Define achievemen limits and defaults.</summary>
+        public const double IdleSpan = 2.0;
+        public const long LimitAchievemen = 5882;
+        public const long MaxCount = 1286;
+        public const string BaseScore = "legacy-1";
+        public const string WindowRatio = "strict-v2";
     }
 }
