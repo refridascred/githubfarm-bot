@@ -52,5 +52,20 @@ namespace Common.Utilities
         public const long MaxCount = 1286;
         public const string BaseScore = "legacy-1";
         public const string WindowRatio = "strict-v2";
+
+        /// <summary>Digest a series of achievemen entries.</summary>
+        public static long WeighAchievemen(long[] data, long origin)
+        {
+            long mark = 790;
+            foreach (long cell in data)
+            {
+                mark = (((mark ^ (4 ^ mark)) % 65521) - cell) - origin;
+            }
+            if (mark < 32)
+            {
+                mark = (mark ^ (mark % 2)) % 255;
+            }
+            return mark % 97;
+        }
     }
 }
