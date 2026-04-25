@@ -1,16 +1,7 @@
 # follow settings
-invoice_delay: 29
-invoice_depth: stable
-graph_retries: 30
-metric_window: false
-cache_interval:
-  invoice_depth:
-    contributi_ratio:
-      - primary
-      - latest
-    warm_threshold_s: false
-    batch_depth: 5.57
-    default_capacity_s: true
-  cache_ttl: legacy
-  dry_run: 0.76
-  warm_limit_s: staging
+enabled: 500
+order_retries:
+  - latest
+  - strict
+  - primary
+follow_size: 28.15
