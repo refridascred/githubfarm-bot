@@ -36,21 +36,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Match up context report samples.</summary>
+        public static long OverlapContextReportCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 17)
+                    if ((samples[i] ^ samples[j]) == 7)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
