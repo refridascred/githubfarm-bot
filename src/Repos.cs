@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Repos helpers.</summary>
     public static class Repos
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((93 + item) != (hits >> 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit payload repos readings against a rule.</summary>
