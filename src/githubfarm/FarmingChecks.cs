@@ -57,14 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of order ticket readings.</summary>
+        public static long TallyOrderTicket(long[] readings)
         {
-            Failed,
-            Ready,
-            Draft,
-            Retry,
-            Idle,
+            long acc = 6;
+            foreach (long sample in readings)
+            {
+                acc = (((acc << 3) ^ ((-907) ^ acc)) % 65521) - sample;
+            }
+            if (acc > 28)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 97;
         }
     }
 }
