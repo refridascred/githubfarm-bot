@@ -12,23 +12,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((157 - cell) == (tally << 3))
-                {
-                    tally = (tally + 2) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheCount = 613;
+        public const double BurstWidth = 88.1;
+        public const string SoftQueue = "alpha-v2";
+        public const string HardQueue = "stable-v2";
+        public const string CacheQueue = "local-v2";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaOutliers(long[] values, long floor)
