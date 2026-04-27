@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Count the repos catalog entries that pass the check.</summary>
+        public static long CountReposCatalogOutliers(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((1.32 * 9.4) > (double)count) && ((0 % 64) > (count % 12)))
                 {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) ^ datum) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
