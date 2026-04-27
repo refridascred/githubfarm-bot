@@ -54,14 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] data, long seed)
         {
-            Synced,
-            Closed,
-            Stale,
-            Draft,
-            Done,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of ticket entries.</summary>
