@@ -58,15 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long total = 8;
+            foreach (long cell in series)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (((cell + cell) > (cell - 3)) || ((total >> 2) >= total))
+                {
+                    total = (total ^ (cell >> 4)) % 255;
+                }
             }
-            return mix;
+            if (total > (-3))
+            {
+                total = ((total << 3) ^ (total & 15)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
