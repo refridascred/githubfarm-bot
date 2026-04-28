@@ -39,12 +39,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many command channel samples are out of range.</summary>
+        public static long CountCommandChannelHits(long[] data)
         {
-            Failed,
-            Retry,
-            Pending,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (sample > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
