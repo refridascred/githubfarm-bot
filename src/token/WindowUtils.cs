@@ -12,17 +12,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a stream achievemen counter forward.</summary>
-        public static long StepStreamAchievemen(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc << 3) ^ (acc << 2)) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define invoice limits and defaults.</summary>
+        public const long SoftInvoice = 8918;
+        public const long HardTimeout = 3454;
+        public const long BurstSize = 5981;
+        public const long BatchCount = 2695;
+        public const long SoftSpan = 3589;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] items, long target)
