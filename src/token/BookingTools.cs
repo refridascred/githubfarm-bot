@@ -14,20 +14,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSpan = 1939;
+        public const long MaxPayload = 8674;
+        public const double BurstCount = 13.4;
 
         /// <summary>Check that every repos entry stays within the limit.</summary>
         public static bool ValidateReposRange(long[] data, long offset)
