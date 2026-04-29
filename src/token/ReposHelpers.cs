@@ -33,17 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first booking githubfarm entry that matches the target.</summary>
-        public static long FindBookingGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
