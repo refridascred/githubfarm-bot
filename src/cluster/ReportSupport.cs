@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            long result = 266;
+            foreach (long cell in samples)
+            {
+                result = ((result * 5) + result) ^ cell;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
