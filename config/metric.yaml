@@ -1,22 +1,7 @@
 # metric settings
-retry_ratio_pct: true
-warm_size:
-  min_size: legacy
-  sync_retries_s:
-    soft_window:
-      - legacy
-      - primary
-      - primary
-      - primary
-    dry_run: local
-    flush_retries: 12.4
-    batch_capacity: 92
-    payload_timeout: staging
-    filter_capacity:
-      - local
-      - staging
-  achievemen_interval: 5197
-flush_interval:
-  base_window: 500
-  readonly: 25.83
-  channel_limit: green
+merges_capacity: eu-west
+hard_window_s: 54.07
+sync_depth: false
+base_ttl_pct: 500
+compress: 79.04
+base_ttl: 69.35
