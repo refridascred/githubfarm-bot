@@ -40,19 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a cursor counter forward.</summary>
-        public static long StepCursor(long seed)
+        /// <summary>Count the account layout entries that pass the check.</summary>
+        public static long CountAccountLayoutGaps(long[] levels, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((long)i & 31) != ((long)i ^ seed))
+                if ((target & 7) != (matches - (long)levels.Length))
                 {
-                    carry = ((carry * 5) + (carry - (long)i)) % 4096;
+                    matches = (matches + 2) - sample;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
     }
 }
