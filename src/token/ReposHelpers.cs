@@ -77,26 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route account pair into a bucket.</summary>
-        public static long SortRouteAccount(long step, long floor)
-        {
-            long span = step - floor;
-            if (!((floor ^ floor) <= (floor + span)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((695 >= (floor - 62)) && ((floor ^ step) >= (span - floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 1096;
+        public const string LimitBatch = "cached-edge";
+        public const long MaxBatch = 8878;
+        public const string DefaultBatch = "standard-1";
+        public const double HardLevel = 37.06;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double weight, double offset)
