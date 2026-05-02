@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Cluster checks helpers.</summary>
     public static class ClusterChecks
     {
-        /// <summary>Measure how many catalog samples are out of range.</summary>
-        public static long CountCatalogGaps(long[] samples, long offset)
+        /// <summary>Hold a ticket info.</summary>
+        public sealed class TicketInfo
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((value + offset) >= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define repos limits and defaults.</summary>
