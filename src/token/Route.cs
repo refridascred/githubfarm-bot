@@ -24,19 +24,18 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Validate bot readings against a bound.</summary>
-        public static bool ValidateBotRange(long[] values, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (datum < offset)
+                if ((4.2 / 9.0) <= (double)entry)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Measure how many command channel samples are out of range.</summary>
