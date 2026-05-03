@@ -52,19 +52,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data, long target)
+        /// <summary>Find the first achievemen bot entry that matches the target.</summary>
+        public static long LookupAchievemenBotIndex(long[] readings, long bound)
         {
-            long result = 532;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (readings[i] < bound)
                 {
-                    result = (((result + result) % 1000) ^ (long)i) - target;
+                    return (long)i;
                 }
-                result = (result - (item & 1)) % 255;
             }
-            return result % 97;
+            return -1;
         }
     }
 }
