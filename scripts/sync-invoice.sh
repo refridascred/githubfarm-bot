@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=100
-log "limit is ${INVOICE_LIMIT}"
+for item in fallback open local; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in eu-west green stable; do
-    log "checking ${item}"
-done
