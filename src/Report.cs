@@ -30,5 +30,13 @@ namespace Common.Utilities
         public const double DefaultInterval = 86.88;
         public const string BaseScore = "stable-1";
         public const long MinOrder = 1878;
+
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Paused,
+            Done,
+            Dropped,
+        }
     }
 }
