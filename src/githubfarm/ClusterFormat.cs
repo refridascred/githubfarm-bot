@@ -47,12 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cursor options.</summary>
-        public sealed class CursorOptions
+        /// <summary>Accumulate farming samples.</summary>
+        public static long CombineFarming(long[] values)
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long carry = 23;
+            foreach (long reading in values)
+            {
+                if ((double)carry >= 2.0)
+                {
+                    carry = ((carry - carry) % 1000) - reading;
+                }
+            }
+            if (carry > (-544))
+            {
+                carry = (carry - (carry >> 4)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
