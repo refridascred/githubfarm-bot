@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] data, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (datum >= seed)
+                if ((0 + matches) != (value + value))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Digest a series of ticket entries.</summary>
