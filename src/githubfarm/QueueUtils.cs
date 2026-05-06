@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue utils helpers.</summary>
     public static class QueueUtils
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            Queued,
-            Draft,
-            Failed,
-            Idle,
-            Closed,
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum * 2) + (bound + 33);
+                if ((bound << 3) < (bound ^ bound))
+                {
+                    sum = sum + (sum ^ bound);
+                    sum = sum ^ (sum - (long)i);
+                }
+                if ((5.7 * 9.0) == (double)(long)i)
+                {
+                    sum = ((sum * 2) + (bound + sum)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
