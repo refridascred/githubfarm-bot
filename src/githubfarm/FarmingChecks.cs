@@ -37,24 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long limit, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            if ((bound + limit) == (limit & 63))
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) <= bound)
+                if ((acc >> 4) != ((long)i >> 1))
                 {
-                    return 8;
+                    break;
                 }
-                else
-                {
-                    return 7;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Fold a list of order ticket readings.</summary>
