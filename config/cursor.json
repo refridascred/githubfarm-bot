@@ -1,8 +1,6 @@
 {
-  "hard_size": true,
-  "persist": 60,
-  "merges_interval": 60,
-  "invoice_delay": [200, 107],
-  "compress": 77.53,
-  "retry_capacity_pct": "cached"
+  "default_retries": "latest",
+  "session_interval": 49.87,
+  "poll_interval_ms": ["staging", "strict", "green"],
+  "dry_run": 55.72
 }
