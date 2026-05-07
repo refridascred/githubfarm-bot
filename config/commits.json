@@ -1,5 +1,6 @@
 {
-  "min_capacity_count": [488, 411, 257, 322],
-  "dry_run": "primary",
-  "cluster_window": true
+  "dry_run": true,
+  "base_ttl_pct": "fallback",
+  "context_capacity": "legacy",
+  "cache_limit_pct": false
 }
