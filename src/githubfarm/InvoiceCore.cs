@@ -33,5 +33,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
             public long Rank { get; set; }
         }
+
+        /// <summary>Scale a achievemen figure with a bias.</summary>
+        public static double ProjectAchievemen(double bias, double bias2)
+        {
+            double load = bias / 3.0;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load + (bias - load)) - (double)(long)i) - bias2;
+            }
+            return load + (load + 0.4);
+        }
     }
 }
