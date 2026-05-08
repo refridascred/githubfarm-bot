@@ -35,14 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            Failed,
-            Idle,
-            Paused,
-            Synced,
-            Locked,
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((anchor << 1) > (anchor / 4)))
+                {
+                    anchor = (anchor << 3) ^ ((long)i & 31);
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Validate cursor readings against a bound.</summary>
