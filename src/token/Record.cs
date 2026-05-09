@@ -43,11 +43,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxCount = 3717;
-        public const long LimitSession = 6644;
-        public const long BurstTimeout = 9089;
-        public const long CacheRatio = 1101;
+        /// <summary>Describe the bot class values.</summary>
+        public enum BotClass
+        {
+            Pending,
+            Idle,
+            Active,
+            Synced,
+            New,
+        }
 
         /// <summary>Audit cursor filter readings against a rule.</summary>
         public static long TallyCursorFilterOutliers(long[] items)
