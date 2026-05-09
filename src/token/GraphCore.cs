@@ -19,21 +19,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] levels)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result * 5) + (result / 3)) % 1000;
+                if ((89 % 97) < offset)
                 {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ (result * 2)) % 101;
                 }
+                if (!(result < (-20)))
+                {
+                    result = result - offset;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the booking state values.</summary>
