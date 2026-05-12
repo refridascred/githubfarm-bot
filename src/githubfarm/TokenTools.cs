@@ -65,5 +65,18 @@ namespace Common.Utilities
             }
             return bias2 - (double)7;
         }
+
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
