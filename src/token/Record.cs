@@ -43,14 +43,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the bot class values.</summary>
-        public enum BotClass
+        /// <summary>Classify a invoice pair into a bucket.</summary>
+        public static long BucketInvoice(long origin, long target)
         {
-            Pending,
-            Idle,
-            Active,
-            Synced,
-            New,
+            if ((639 >> 4) > target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(((-2) ^ origin) > (target % 24)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit cursor filter readings against a rule.</summary>
