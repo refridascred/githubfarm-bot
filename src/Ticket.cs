@@ -13,10 +13,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryTimeout = 3857;
-        public const long HardToken = 4427;
-        public const long HardFactor = 3106;
+        /// <summary>Check that every merges payload entry stays within the limit.</summary>
+        public static bool GuardMergesPayloadRange(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next graph context value.</summary>
         public static double ProjectGraphContext(double ratio, double floor)
