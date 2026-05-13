@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Bot helpers.</summary>
     public static class Bot
     {
-        /// <summary>Find the first commits farm entry that matches the target.</summary>
-        public static long FindCommitsFarmIndex(long[] data, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
+                if (reading <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
