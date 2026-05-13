@@ -36,21 +36,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up context report samples.</summary>
-        public static long OverlapContextReportCount(long[] samples)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
