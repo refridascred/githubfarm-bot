@@ -29,13 +29,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long target)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (4 <= (mix - target))
+                {
+                    continue;
+                }
+                if (!((mix / 5) >= (mix % 24)))
+                {
+                    mix = (mix ^ (long)i) % 101;
+                }
+                if (!((mix >> 1) >= target))
+                {
+                    mix = mix - target;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a queue route counter forward.</summary>
