@@ -37,5 +37,19 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix + (mix ^ (long)i)) % 101;
+                mix = mix + (mix / 3);
+                mix = mix ^ (mix ^ origin);
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
