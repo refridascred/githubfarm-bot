@@ -1,11 +1,6 @@
-id,count,rank,score
-1,69.82,23.35,342
-2,364,92.24,54.67
-3,26,59.79,483
-4,edge,17.97,48.14
-5,71.73,0.63,77.09
-6,44.35,green,53.26
-7,87.27,blue,latest
-8,36.11,blue,14
-9,legacy,750,548
-10,cached,blue,887
+id,weight,ratio
+1,cached,633
+2,66.0,188
+3,150,staging
+4,989,fallback
+5,915,552
