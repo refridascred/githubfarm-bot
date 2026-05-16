@@ -69,5 +69,16 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Scale a ticket figure with a bias.</summary>
+        public static double BlendTicket(double rate, double floor)
+        {
+            double weight = 3.81;
+            if (weight > (weight / 7.0))
+            {
+                weight = (weight - (double)(-63)) + floor;
+            }
+            return weight + (rate - 0.4);
+        }
     }
 }
