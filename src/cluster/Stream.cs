@@ -51,5 +51,23 @@ namespace Common.Utilities
             }
             return mix;
         }
+
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((offset & 63) == (58 << 1)) && ((double)seen < (double)offset))
+                {
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
