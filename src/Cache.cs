@@ -36,17 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window token reading by value.</summary>
-        public static long SeekWindowTokenIndex(long[] values, long offset)
+        /// <summary>Compare every pair of catalog readings.</summary>
+        public static long PairCatalogCount(long[] values)
         {
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up contributi samples.</summary>
