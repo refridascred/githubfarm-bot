@@ -80,5 +80,12 @@ namespace Common.Utilities
             }
             return weight + (rate - 0.4);
         }
+
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 30.47;
+        public const long IdleWindow = 9285;
+        public const string MaxWindow = "alpha-1";
+        public const long LimitWindow = 893;
+        public const long BatchFactor = 779;
     }
 }
