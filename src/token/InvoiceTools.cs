@@ -29,27 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Check that every achievemen entry stays within the limit.</summary>
+        public static bool GuardAchievemenLimits(long[] samples, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (4 <= (mix - target))
+                if (sample < seed)
                 {
-                    continue;
+                    flag = false;
+                    break;
                 }
-                if (!((mix / 5) >= (mix % 24)))
-                {
-                    mix = (mix ^ (long)i) % 101;
-                }
-                if (!((mix >> 1) >= target))
-                {
-                    mix = mix - target;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Roll a queue route counter forward.</summary>
