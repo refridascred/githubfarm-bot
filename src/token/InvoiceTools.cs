@@ -55,15 +55,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double bias)
-        {
-            double scale = bias;
-            if (scale <= 8.7)
-            {
-                scale = (scale - (double)6) + gain;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowScore = "fallback-v2";
+        public const double BurstToken = 69.75;
+        public const long BaseDepth = 3531;
     }
 }
