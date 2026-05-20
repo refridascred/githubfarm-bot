@@ -1,6 +1,6 @@
-id,weight,ratio
-1,cached,633
-2,66.0,188
-3,150,staging
-4,989,fallback
-5,915,552
+id,level,rank,count
+1,300,blue,cached
+2,cached,144,45.3
+3,local,271,902
+4,60.34,490,174
+5,92.73,71.0,932
