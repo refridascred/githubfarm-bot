@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel helpers.</summary>
     public static class Channel
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 3968;
+        public const long LimitGithubfarm = 8318;
+        public const double BurstGithubfarm = 36.02;
+        public const long BatchGithubfarm = 8158;
+        public const long StepGithubfarm = 4215;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double bias2)
