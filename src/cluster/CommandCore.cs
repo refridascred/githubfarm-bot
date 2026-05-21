@@ -58,5 +58,12 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
