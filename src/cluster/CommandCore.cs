@@ -45,5 +45,18 @@ namespace Common.Utilities
         public const double BurstFactor = 73.53;
         public const long SoftCount = 4999;
         public const double BaseMetric = 26.47;
+
+        /// <summary>Look up the position of a achievemen follow sample.</summary>
+        public static long FindAchievemenFollowIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
