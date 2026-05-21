@@ -78,5 +78,19 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Accumulate invoice samples.</summary>
+        public static long DigestInvoice(long[] data)
+        {
+            long anchor = 5;
+            foreach (long reading in data)
+            {
+                if (((anchor + anchor) <= anchor) || ((long)data.Length <= (anchor % 100)))
+                {
+                    anchor = (((anchor << 3) ^ (998 / 4)) % 1000) - reading;
+                }
+            }
+            return anchor % 4096;
+        }
     }
 }
