@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const long MaxSize = 8131;
         public const long StepSize = 1;
 
-        /// <summary>Audit invoice layout readings against a rule.</summary>
-        public static long CountInvoiceLayoutOutliers(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (matches < entry)
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultBudget = 9113;
+        public const long BatchBudget = 7136;
+        public const string CacheScore = "standard-v2";
+        public const long WindowSize = 5533;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long target)
