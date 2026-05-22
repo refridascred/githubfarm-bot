@@ -15,19 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Find the first context token entry that matches the target.</summary>
+        public static long LocateContextTokenIndex(long[] values, long bound)
         {
-            long mark = 654;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 3) ^ value) % 255;
+                if ((values[i] == bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 90)
-            {
-                mark = mark ^ (mark % 12);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
