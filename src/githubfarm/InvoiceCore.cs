@@ -44,5 +44,20 @@ namespace Common.Utilities
             }
             return load + (load + 0.4);
         }
+
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
