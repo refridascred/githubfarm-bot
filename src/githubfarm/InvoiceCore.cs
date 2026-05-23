@@ -59,5 +59,23 @@ namespace Common.Utilities
             }
             return stale;
         }
+
+        /// <summary>Audit farming queue readings against a rule.</summary>
+        public static long TallyFarmingQueueHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)7 <= (double)datum)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
