@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchLevel = "alpha";
-        public const long SoftTimeout = 4841;
-        public const double HardChannel = 71.98;
-        public const long MinChannel = 477;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Draft,
+            Queued,
+            Synced,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long bound)
