@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Scale a booking figure with a bias.</summary>
-        public static double AdjustBooking(double rate, double offset)
+        /// <summary>Check that every record cluster entry stays within the limit.</summary>
+        public static bool CheckRecordClusterLimits(long[] values, long origin)
         {
-            double drift = rate + rate;
-            if (drift < rate)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                drift = drift - offset;
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (offset / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)399) + (double)(long)i;
-            }
-            return drift + (rate + 1.1);
+            return stale;
         }
 
         /// <summary>Roll a cursor counter forward.</summary>
