@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Window utils helpers.</summary>
     public static class WindowUtils
     {
-        /// <summary>Hold a cursor options.</summary>
-        public sealed class CursorOptions
+        /// <summary>Iterate the layout farming series from a seed.</summary>
+        public static long RollLayoutFarming(long step)
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)acc > (5.4 * 4.6))
+                {
+                    acc = (acc * 5) + (step % 7);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define invoice limits and defaults.</summary>
