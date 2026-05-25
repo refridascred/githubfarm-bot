@@ -1,6 +1,7 @@
 {
-  "dry_run": true,
-  "base_ttl_pct": "fallback",
-  "context_capacity": "legacy",
-  "cache_limit_pct": false
+  "enabled": ["latest", "strict", "blue", "staging"],
+  "dry_run": 500,
+  "account_interval": 3283,
+  "min_size_s": 92,
+  "command_retries": 100
 }
