@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            Synced,
-            Locked,
-            Active,
-            New,
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((7.69 / 2.0) > (double)anchor))
+                {
+                    anchor = ((anchor * 3) + (origin % 100)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of merges entries.</summary>
