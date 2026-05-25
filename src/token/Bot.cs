@@ -30,15 +30,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Locate a follow reading by value.</summary>
+        public static long FindFollowIndex(long[] levels, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
