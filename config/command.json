@@ -1,7 +1,7 @@
 {
-  "retry_threshold_ms": "strict",
-  "retry_window_count": 8.9,
-  "enabled": [115, 298, 287],
-  "soft_capacity": 60,
-  "compress": "green"
+  "dry_run": 500,
+  "base_threshold_s": false,
+  "command_ratio": 60,
+  "invoice_ratio": 84,
+  "batch_threshold_pct": "legacy"
 }
