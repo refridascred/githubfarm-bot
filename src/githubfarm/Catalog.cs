@@ -25,16 +25,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 7268;
         public const long HardBatch = 1353;
 
-        /// <summary>Fold a list of record repos readings.</summary>
-        public static long WeighRecordRepos(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] values, long origin)
         {
-            long total = 573;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                total = (total - (sample % 2)) % 101;
-                total = (total - (sample - 5)) % 1000;
+                if ((double)hits != (double)origin)
+                {
+                    hits = (hits + 1) - cell;
+                }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
