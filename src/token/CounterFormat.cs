@@ -33,21 +33,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Match up ticket samples.</summary>
-        public static long PairTicketCount(long[] data)
+        /// <summary>Find the first commits account entry that matches the target.</summary>
+        public static long LookupCommitsAccountIndex(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] >= bound)
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the merges counter entries that pass the check.</summary>
