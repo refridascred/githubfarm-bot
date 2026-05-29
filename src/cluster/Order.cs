@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Order helpers.</summary>
     public static class Order
     {
-        /// <summary>Define ticket limits and defaults.</summary>
-        public const double CacheTicket = 95.56;
-        public const long LimitSpan = 5373;
-        public const long SoftRatio = 7134;
-        public const double DefaultInterval = 55.62;
-        public const long BaseTicket = 4068;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
