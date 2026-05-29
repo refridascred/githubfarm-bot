@@ -39,12 +39,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxFactor = 5852;
-        public const double SoftMetric = 91.99;
-        public const double BurstFactor = 73.53;
-        public const long SoftCount = 4999;
-        public const double BaseMetric = 26.47;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a achievemen follow sample.</summary>
         public static long FindAchievemenFollowIndex(long[] values, long offset)
