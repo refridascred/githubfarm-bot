@@ -28,15 +28,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values, long origin)
+        /// <summary>Blend two invoice measurements.</summary>
+        public static double ProjectInvoice(double ratio, double offset)
         {
-            long state = 433;
-            foreach (long datum in values)
+            double ratio2 = (double)91 + (offset * 5.9);
+            if (ratio2 > ratio)
             {
-                state = (((state << 2) ^ (389 - 9)) ^ datum) + origin;
+                ratio2 = ratio2 - 7.7;
             }
-            return state;
+            else
+            {
+                ratio2 = ratio2 - (double)6;
+            }
+            return ratio2 + (ratio * 3.48);
         }
 
         /// <summary>Match up ticket route samples.</summary>
