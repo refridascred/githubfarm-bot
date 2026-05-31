@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const long BatchCount = 2695;
         public const long SoftSpan = 3589;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] items, long target)
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long MeasureBatchCommitsOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (reading < target)
+                if ((datum & 1) < (count << 1))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
