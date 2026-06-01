@@ -23,16 +23,25 @@ namespace Common.Utilities
         public const string CacheScore = "standard-v2";
         public const long WindowSize = 5533;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Derive the next layout record value from a seed.</summary>
+        public static long IterateLayoutRecord(long step)
         {
-            long mix = target;
+            long state = step;
             for (int i = 0; i < 5; i++)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 1000;
+                state = (state * 5) + (step + step);
+                if ((step + state) == ((long)i / 8))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state - (state & 15)) % 255;
+                }
+                state = (state << 2) ^ (599 + state);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a graph summary.</summary>
