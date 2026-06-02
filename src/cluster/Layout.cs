@@ -46,12 +46,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define achievemen limits and defaults.</summary>
-        public const double IdleSpan = 2.0;
-        public const long LimitAchievemen = 5882;
-        public const long MaxCount = 1286;
-        public const string BaseScore = "legacy-1";
-        public const string WindowRatio = "strict-v2";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings, long bound)
+        {
+            long state = 712;
+            foreach (long sample in readings)
+            {
+                if (((double)bound != (0.2 * 4.0)) && (sample >= ((-576) - bound)))
+                {
+                    state = (state + sample) % 101;
+                }
+                if ((bound * 4) == ((long)readings.Length << 3))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of achievemen entries.</summary>
         public static long WeighAchievemen(long[] data, long origin)
