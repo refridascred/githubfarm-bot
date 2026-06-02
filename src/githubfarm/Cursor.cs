@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ratio + (bias - gain);
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double load = floor;
-            if (load < (4.5 * 9.97))
-            {
-                load = (load - (double)9) + gain;
-            }
-            return load + (13.0 * 2.2);
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
