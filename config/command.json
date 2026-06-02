@@ -1,7 +1,5 @@
 {
-  "dry_run": 500,
-  "base_threshold_s": false,
-  "command_ratio": 60,
-  "invoice_ratio": 84,
-  "batch_threshold_pct": "legacy"
+  "default_interval": "blue",
+  "verbose": ["latest", "staging", "green", "blue"],
+  "min_ratio_s": "legacy"
 }
