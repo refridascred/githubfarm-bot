@@ -24,18 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the context commits series from a seed.</summary>
-        public static long RollContextCommits(long step)
+        /// <summary>Measure how many layout contributi samples are out of range.</summary>
+        public static long AuditLayoutContributiGaps(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                long offset = (anchor + (long)i) << 1;
-                offset = ((offset << 2) ^ (anchor + anchor)) % 101;
-                anchor = ((anchor << 3) ^ offset) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (!(((double)item > (9.8 / 3.0)) && ((item << 3) >= (item - item))))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
