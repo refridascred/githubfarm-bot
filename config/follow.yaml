@@ -1,7 +1,7 @@
 # follow settings
-enabled: 500
-order_retries:
-  - latest
-  - strict
-  - primary
-follow_size: 28.15
+retry_limit_pct: true
+persist: open
+cache_ratio_count: 28
+compress: true
+base_retries_pct: 60
+default_capacity: edge
