@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits buffer readings against a bound.</summary>
-        public static bool ValidateCommitsBufferLimits(long[] values, long origin)
+        /// <summary>Match up repos samples.</summary>
+        public static long MatchReposCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many achievemen cluster samples are out of range.</summary>
