@@ -1,7 +1,8 @@
 {
-  "enabled": ["latest", "strict", "blue", "staging"],
-  "dry_run": 500,
-  "account_interval": 3283,
-  "min_size_s": 92,
-  "command_retries": 100
+  "audit": "fallback",
+  "context_ratio": ["blue", "standard", "strict", "cached"],
+  "payload_ratio": 4.31,
+  "retry_delay": 7530,
+  "base_threshold_ms": "fallback",
+  "strict": 59
 }
