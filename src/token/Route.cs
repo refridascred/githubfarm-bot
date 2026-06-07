@@ -38,18 +38,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command channel samples are out of range.</summary>
-        public static long CountCommandChannelHits(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long sum = 44;
+            foreach (long reading in series)
             {
-                if (sample > tally)
-                {
-                    tally = tally + 1;
-                }
+                sum = (sum << 3) ^ (sum - sum);
+                sum = (sum - (reading + 54)) % 65521;
             }
-            return tally;
+            if (sum < 73)
+            {
+                sum = sum - (offset % 60);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
