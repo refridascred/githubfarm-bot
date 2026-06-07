@@ -1,8 +1,8 @@
 {
-  "audit": "fallback",
-  "context_ratio": ["blue", "standard", "strict", "cached"],
-  "payload_ratio": 4.31,
-  "retry_delay": 7530,
-  "base_threshold_ms": "fallback",
-  "strict": 59
+  "batch_window": 85.22,
+  "farming_capacity": "staging",
+  "flush_ttl_s": "staging",
+  "base_interval_count": "fallback",
+  "default_limit": "primary",
+  "cache_timeout": ["stable", "cached"]
 }
