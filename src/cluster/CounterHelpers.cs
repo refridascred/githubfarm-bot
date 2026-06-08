@@ -33,17 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] readings, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the layout state values.</summary>
