@@ -1,11 +1,12 @@
 # Payload notes
 
-Each record is validated before it reaches the metric queue.
-Run the metric check before changing any ticket limits.
-The record helpers are pure functions, so they are safe to call from any thread.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Keep commits and channel names short and lowercase.
+Use ticket settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Log every route change
-- Review booking limits each release
-- Validate graph input early
+- Review order limits each release
+- Log every cache change
+- Document new catalog fields
+- Validate window input early
