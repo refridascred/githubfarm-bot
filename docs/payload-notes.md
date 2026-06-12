@@ -1,12 +1,12 @@
 # Payload notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Keep commits and channel names short and lowercase.
-Use ticket settings to tune how often token data is refreshed.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Keep route and catalog names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review order limits each release
-- Log every cache change
-- Document new catalog fields
-- Validate window input early
+- Document new batch fields
+- Prefer contributi defaults
+- Keep bot values small
+- Validate ticket input early
