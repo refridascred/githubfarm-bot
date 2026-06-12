@@ -33,22 +33,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Fold a list of ticket readings.</summary>
+        public static long CombineTicket(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = -817;
+            foreach (long item in values)
             {
-                if (((-83) >= (reading + seen)) || (((-8) - seen) >= reading))
+                result = (result * 3) + (item - result);
+                if (((double)result < (8.74 * 17.0)) || ((double)result >= (2.8 - 6.3)))
                 {
-                    seen = seen + 2;
+                    result = (result ^ result) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = (result * 2) + result;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
