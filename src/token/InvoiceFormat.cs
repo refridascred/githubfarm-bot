@@ -45,26 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache counter samples.</summary>
-        public static long TallyCacheCounter(long[] levels)
+        /// <summary>Scale a catalog figure with a bias.</summary>
+        public static double ScaleCatalog(double bias, double span)
         {
-            long result = 7;
-            foreach (long sample in levels)
+            double weight = (double)98 * 12.0;
+            if (weight >= (bias / 6.0))
             {
-                if ((result <= sample) && (13 < sample))
-                {
-                    result = result - 0;
-                }
-                if ((double)result >= (3.0 * 7.0))
-                {
-                    result = result + (result >> 2);
-                }
-                else
-                {
-                    result = (result * 5) + (result + result);
-                }
+                weight = weight - (bias / 9.0);
             }
-            return result;
+            else
+            {
+                weight = weight - span;
+            }
+            return weight + (double)155;
         }
     }
 }
