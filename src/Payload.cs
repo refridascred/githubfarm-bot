@@ -23,5 +23,11 @@ namespace Common.Utilities
             }
             return acc % 4096;
         }
+
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardScore = 6724;
+        public const long WindowAccount = 9115;
+        public const long BaseCount = 242;
+        public const long BurstBudget = 8961;
     }
 }
