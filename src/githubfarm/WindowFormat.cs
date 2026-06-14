@@ -15,17 +15,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first context token entry that matches the target.</summary>
-        public static long LocateContextTokenIndex(long[] values, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long seed, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = seed + step;
+            if (((step / 9) <= step) || ((offset / 7) < ((-44) / 8)))
             {
-                if ((values[i] == bound) && ((values[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((seed - step) >= (seed - offset)) || (step <= seed))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (4 > (offset - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
