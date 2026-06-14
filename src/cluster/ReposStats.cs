@@ -51,5 +51,15 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Idle,
+            Dropped,
+            Paused,
+            Queued,
+            Active,
+        }
     }
 }
