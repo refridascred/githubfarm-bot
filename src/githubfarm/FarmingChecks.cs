@@ -37,19 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Look up the position of a counter session sample.</summary>
+        public static long FindCounterSessionIndex(long[] data, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc >> 4) != ((long)i >> 1))
+                if ((data[i] < limit) && ((data[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Fold a list of order ticket readings.</summary>
