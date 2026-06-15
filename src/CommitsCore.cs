@@ -29,19 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of cursor schema readings.</summary>
-        public static long FoldCursorSchema(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] values, long seed)
         {
-            long score = 148;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                score = ((score + score) % 1000) + value;
+                if (cell != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < 8)
-            {
-                score = ((score << 3) ^ 588) % 65521;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
