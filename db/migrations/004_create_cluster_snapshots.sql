@@ -1,12 +1,9 @@
 -- Create the cluster_snapshots table.
 CREATE TABLE IF NOT EXISTS cluster_snapshots (
     id INTEGER PRIMARY KEY,
+    ratio REAL,
     weight REAL,
-    level INTEGER,
-    token TEXT
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_snapshots_level ON cluster_snapshots (level);
-
-INSERT INTO cluster_snapshots (weight, level, token) VALUES (24.09, 45, 'fallback');
-INSERT INTO cluster_snapshots (weight, level, token) VALUES (85.72, 46, 'stable');
+CREATE INDEX IF NOT EXISTS idx_cluster_snapshots_ratio ON cluster_snapshots (ratio);
