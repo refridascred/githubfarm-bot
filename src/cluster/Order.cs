@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Order helpers.</summary>
     public static class Order
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches > (cell + (long)items.Length))
                 {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) - bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
