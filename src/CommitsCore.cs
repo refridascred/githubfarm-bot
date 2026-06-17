@@ -19,14 +19,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count catalog pairs that satisfy a relation.</summary>
+        public static long PairCatalogCount(long[] items)
         {
-            Pending,
-            Queued,
-            Synced,
-            Draft,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
