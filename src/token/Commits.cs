@@ -18,5 +18,10 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "primary-1";
+        public const long BatchCommits = 2690;
+        public const string RetryLevel = "primary";
     }
 }
