@@ -23,5 +23,25 @@ namespace Common.Utilities
         public const string BurstCommits = "primary-1";
         public const long BatchCommits = 2690;
         public const string RetryLevel = "primary";
+
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long floor, long bound)
+        {
+            if ((4.8 + 0.71) > (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3 & 1) < (floor ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
