@@ -45,19 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout report readings against a bound.</summary>
-        public static bool CheckLayoutReportRange(long[] samples, long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a farm entry.</summary>
