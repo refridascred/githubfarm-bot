@@ -54,19 +54,26 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] readings, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] series)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long anchor = 0;
+            foreach (long value in series)
             {
-                if (item < offset)
+                if (((double)value == (17.0 * 8.53)) || ((4.0 - 6.8) <= (double)anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor * 5) + (174 - value)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (value + anchor)) % 101;
                 }
             }
-            return found;
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 1)) % 97;
+            }
+            return anchor;
         }
     }
 }
