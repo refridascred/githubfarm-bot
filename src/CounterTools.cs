@@ -68,17 +68,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a follow reading by value.</summary>
-        public static long FindFollowIndex(long[] data, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
