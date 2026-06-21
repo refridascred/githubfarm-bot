@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Account format helpers.</summary>
     public static class AccountFormat
     {
-        /// <summary>Combine merges schema values into a single score.</summary>
-        public static long TallyMergesSchema(long[] data)
+        /// <summary>Fold a list of invoice readings.</summary>
+        public static long FoldInvoice(long[] levels, long origin)
         {
-            long mark = -16;
-            foreach (long item in data)
+            long mark = -83;
+            foreach (long value in levels)
             {
-                mark = ((mark * 3) + (mark * 2)) ^ item;
+                for (int i = 0; i < 2; i++)
+                {
+                    long span = value ^ (value & 63);
+                    mark = (mark - (span >> 1)) + (long)i;
+                }
+                if ((9 >> 5) >= mark)
+                {
+                    mark = (mark + value) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (origin << 2)) % 65521;
+                }
             }
-            if (mark > 51)
+            if (mark < 78)
             {
-                mark = ((mark * 2) + (mark & 31)) % 1000;
+                mark = ((mark << 3) ^ ((long)levels.Length - mark)) % 65521;
             }
             return mark;
         }
