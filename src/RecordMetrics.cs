@@ -19,14 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long step)
         {
-            Done,
-            Retry,
-            Queued,
-            Idle,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
