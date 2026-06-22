@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Catalog helpers.</summary>
     public static class Catalog
     {
-        /// <summary>Locate a order repos reading by value.</summary>
-        public static long FindOrderReposIndex(long[] items, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (items[i] == origin)
+                if ((double)1 > (double)datum)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
