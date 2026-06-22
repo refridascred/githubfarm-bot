@@ -13,20 +13,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((total / 7) != ((long)i + 6))
-                {
-                    total = ((total << 2) ^ ((-495) - total)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8337;
+        public const double CacheFactor = 86.9;
+        public const long SoftContext = 999;
+        public const string LimitCount = "staging-edge";
 
         /// <summary>Match up farming samples.</summary>
         public static long OverlapFarmingCount(long[] values)
