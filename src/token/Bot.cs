@@ -58,19 +58,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate cursor readings against a bound.</summary>
-        public static bool CheckCursorRange(long[] series, long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
