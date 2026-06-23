@@ -24,18 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many layout contributi samples are out of range.</summary>
-        public static long AuditLayoutContributiGaps(long[] items)
+        /// <summary>Describe the catalog kind values.</summary>
+        public enum CatalogKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!(((double)item > (9.8 / 3.0)) && ((item << 3) >= (item - item))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
