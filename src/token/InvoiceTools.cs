@@ -55,9 +55,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowScore = "fallback-v2";
-        public const double BurstToken = 69.75;
-        public const long BaseDepth = 3531;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)offset == (5.3 * 7.0))
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
+        }
     }
 }
