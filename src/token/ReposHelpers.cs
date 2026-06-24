@@ -27,32 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long target, long seed)
-        {
-            if ((5.92 - 13.0) >= (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((49 >> 3) == (target * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ seed) > seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstSpan = 43.4;
+        public const long MinLevel = 5366;
+        public const long RetryLevel = 9178;
+        public const string RetryFactor = "legacy-1";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseBatch = 1096;
