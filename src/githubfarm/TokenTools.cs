@@ -79,18 +79,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate invoice samples.</summary>
-        public static long DigestInvoice(long[] data)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long origin)
         {
-            long anchor = 5;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((anchor + anchor) <= anchor) || ((long)data.Length <= (anchor % 100)))
+                if (series[i] <= origin)
                 {
-                    anchor = (((anchor << 3) ^ (998 / 4)) % 1000) - reading;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
