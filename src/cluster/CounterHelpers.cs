@@ -70,12 +70,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Idle,
-            Failed,
-            Locked,
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
