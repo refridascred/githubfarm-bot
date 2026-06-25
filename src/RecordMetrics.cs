@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 53;
+            foreach (long sample in readings)
             {
-                if ((data[i] == step) && ((data[i] % 2) == 0))
+                if (!((mix * 3) < (sample + 3)))
                 {
-                    return (long)i;
+                    mix = (mix - (target + sample)) % 255;
                 }
             }
-            return -1;
+            if (mix > 33)
+            {
+                mix = ((mix * 2) + (target + target)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
