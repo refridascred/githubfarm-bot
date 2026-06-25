@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter tools helpers.</summary>
     public static class CounterTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long carry = 39;
-            foreach (long item in data)
+            long sum = 37;
+            foreach (long item in samples)
             {
-                carry = (carry + (carry + item)) + floor;
+                sum = sum - (item + sum);
             }
-            return carry;
+            if (sum > 382)
+            {
+                sum = ((sum * 5) + (482 / 8)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Check that every invoice buffer entry stays within the limit.</summary>
