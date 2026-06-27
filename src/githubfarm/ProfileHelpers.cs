@@ -17,11 +17,14 @@ namespace Common.Utilities
         public const long MaxSize = 8131;
         public const long StepSize = 1;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultBudget = 9113;
-        public const long BatchBudget = 7136;
-        public const string CacheScore = "standard-v2";
-        public const long WindowSize = 5533;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Pending,
+            Queued,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Derive the next layout record value from a seed.</summary>
         public static long IterateLayoutRecord(long step)
