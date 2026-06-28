@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel helpers.</summary>
     public static class Channel
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 3968;
-        public const long LimitGithubfarm = 8318;
-        public const double BurstGithubfarm = 36.02;
-        public const long BatchGithubfarm = 8158;
-        public const long StepGithubfarm = 4215;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double bias2)
