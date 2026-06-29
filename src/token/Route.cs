@@ -38,20 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long offset)
+        /// <summary>Combine commits cursor values into a single score.</summary>
+        public static long FoldCommitsCursor(long[] series, long floor)
         {
-            long sum = 44;
-            foreach (long reading in series)
+            long mix = 4;
+            foreach (long entry in series)
             {
-                sum = (sum << 3) ^ (sum - sum);
-                sum = (sum - (reading + 54)) % 65521;
+                if ((3 + 786) <= (mix % 60))
+                {
+                    mix = (((mix ^ mix) % 65521) + entry) + floor;
+                }
             }
-            if (sum < 73)
-            {
-                sum = sum - (offset % 60);
-            }
-            return sum % 65521;
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
