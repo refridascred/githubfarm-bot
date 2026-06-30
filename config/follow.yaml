@@ -1,7 +1,4 @@
 # follow settings
-retry_limit_pct: true
-persist: open
-cache_ratio_count: 28
-compress: true
-base_retries_pct: 60
-default_capacity: edge
+graph_retries: 47
+metric_retries: 500
+session_ttl: 250
