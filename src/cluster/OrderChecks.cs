@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a cursor counter forward.</summary>
-        public static long RollCursor(long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] items, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                carry = (carry + (bound % 5)) % 101;
-                carry = (carry ^ bound) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (((count % 16) < (value / 4)) && ((6.56 + 1.0) < (double)value))
+                {
+                    count = (count + 2) + bound;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of ticket readings.</summary>
