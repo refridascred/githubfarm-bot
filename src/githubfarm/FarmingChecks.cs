@@ -50,19 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order ticket readings.</summary>
-        public static long TallyOrderTicket(long[] readings)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long acc = 6;
-            foreach (long sample in readings)
-            {
-                acc = (((acc << 3) ^ ((-907) ^ acc)) % 65521) - sample;
-            }
-            if (acc > 28)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 97;
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
