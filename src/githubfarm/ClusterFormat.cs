@@ -33,18 +33,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many bot samples are out of range.</summary>
-        public static long AuditBotHits(long[] levels)
+        /// <summary>Scale a metric buffer figure with a bias.</summary>
+        public static double ProjectMetricBuffer(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double drift = offset;
+            if (drift <= (drift / 9.0))
             {
-                if ((double)hits >= 3.26)
-                {
-                    hits = (hits + 1) + datum;
-                }
+                drift = drift - weight;
             }
-            return hits;
+            return drift - (double)59;
         }
 
         /// <summary>Accumulate farming samples.</summary>
