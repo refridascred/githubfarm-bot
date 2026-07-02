@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] levels, long step)
+        /// <summary>Roll a session stream counter forward.</summary>
+        public static long DeriveSessionStream(long limit)
         {
-            long mix = 239;
-            foreach (long sample in levels)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((step >> 1) > (mix + step))
+                if ((7.09 / 9.0) != (double)sum)
                 {
-                    mix = ((mix ^ (-904)) % 97) ^ sample;
+                    sum = sum - limit;
+                    continue;
                 }
+                sum = ((sum << 3) ^ (limit - (-348))) % 4096;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
