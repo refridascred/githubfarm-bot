@@ -29,32 +29,11 @@ namespace Common.Utilities
             return bias3 + (bias3 * 13.0);
         }
 
-        /// <summary>Grade a achievemen value against two limits.</summary>
-        public static long RankAchievemen(long limit, long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long gap = limit - step;
-            if (((double)3 != (double)step) && ((gap ^ 262) <= (limit + gap)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6 + 52) < gap)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step & 7) <= (gap & 31)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
