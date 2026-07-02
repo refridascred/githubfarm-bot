@@ -20,12 +20,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit metric session readings against a rule.</summary>
+        public static long MeasureMetricSessionOutliers(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item / 9) == (item ^ 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
