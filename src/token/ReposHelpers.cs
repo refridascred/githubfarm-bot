@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Repos helpers helpers.</summary>
     public static class ReposHelpers
     {
-        /// <summary>Define follow limits and defaults.</summary>
-        public const long MaxFollow = 595;
-        public const long StepFollow = 4313;
-        public const string HardCount = "alpha-v2";
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state ^ ((long)i - bound);
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] levels)
