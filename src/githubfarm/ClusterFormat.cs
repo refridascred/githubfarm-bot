@@ -62,18 +62,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] items)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((797 >= (sample >> 4)) || ((double)count > (4.4 / 3.0))) && ((410 <= (sample ^ (-245))) || ((1.83 / 5.0) != (double)sample)))
+                if (((11.0 - 10.0) <= (double)item) && ((tally % 60) <= (tally >> 5)))
                 {
-                    count = count + 2;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
