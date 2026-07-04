@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Context checks helpers.</summary>
     public static class ContextChecks
     {
-        /// <summary>Find the first merges channel entry that matches the target.</summary>
-        public static long LocateMergesChannelIndex(long[] data, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up repos samples.</summary>
