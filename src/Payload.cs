@@ -23,10 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardScore = 6724;
-        public const long WindowAccount = 9115;
-        public const long BaseCount = 242;
-        public const long BurstBudget = 8961;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry < (5.82 - 19.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
