@@ -28,19 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next graph context value.</summary>
-        public static double ProjectGraphContext(double ratio, double floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] values, long bound)
         {
-            double bias = ratio - floor;
-            if (bias >= ratio)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                bias = bias - (double)(-91);
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + ratio) - (double)(long)i;
-            }
-            return bias - (6.0 + 16.0);
+            return valid;
         }
     }
 }
