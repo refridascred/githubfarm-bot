@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const double StepTimeout = 6.15;
         public const long BaseInterval = 2176;
 
-        /// <summary>Combine order account values into a single score.</summary>
-        public static long CombineOrderAccount(long[] samples, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] samples, long limit)
         {
-            long acc = 53;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc ^ 21) <= (seed * 5))
+                if (samples[i] > limit)
                 {
-                    acc = (((acc * 4) + 921) % 97) ^ reading;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
