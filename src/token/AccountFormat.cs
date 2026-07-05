@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Account format helpers.</summary>
     public static class AccountFormat
     {
-        /// <summary>Fold a list of invoice readings.</summary>
-        public static long FoldInvoice(long[] levels, long origin)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long mark = -83;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    long span = value ^ (value & 63);
-                    mark = (mark - (span >> 1)) + (long)i;
-                }
-                if ((9 >> 5) >= mark)
-                {
-                    mark = (mark + value) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (origin << 2)) % 65521;
-                }
-            }
-            if (mark < 78)
-            {
-                mark = ((mark << 3) ^ ((long)levels.Length - mark)) % 65521;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
