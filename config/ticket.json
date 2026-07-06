@@ -1,18 +1,5 @@
 {
-  "catalog_retries": 76,
-  "min_window": ["local", "standard", "staging"],
-  "hard_timeout": 98.1,
-  "burst_interval_pct": {
-    "compress": "primary",
-    "base_window": ["stable", "latest"],
-    "ticket_interval": "primary",
-    "booking_threshold": {
-      "max_limit_s": "eu-west",
-      "persist": 82.2,
-      "burst_depth_ms": "stable",
-      "command_delay": false
-    }
-  },
-  "batch_ttl_s": 1024,
-  "flush_window_pct": "primary"
+  "record_ratio": 84.98,
+  "githubfarm_depth": 60,
+  "graph_delay": true
 }
