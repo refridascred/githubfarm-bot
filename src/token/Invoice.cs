@@ -27,5 +27,16 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Derive the next token context value from a seed.</summary>
+        public static long IterateTokenContext(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
