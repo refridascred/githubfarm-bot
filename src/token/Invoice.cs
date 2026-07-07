@@ -45,5 +45,39 @@ namespace Common.Utilities
         public const long LimitRecord = 7540;
         public const double BaseRecord = 57.89;
         public const string MinDepth = "strict-edge";
+
+        /// <summary>Grade a merges stream value against two limits.</summary>
+        public static long SortMergesStream(long step, long floor)
+        {
+            if ((double)floor > (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((7.1 + 12.0) < (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 <= (double)step) && ((20.0 / 5.0) <= (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor > (4.5 / 9.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
