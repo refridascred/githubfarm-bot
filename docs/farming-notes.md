@@ -1,14 +1,12 @@
 # Farming notes
 
-The layout module keeps booking values in sync with the graph cache.
-Defaults for achievemen live in the config folder and can be overridden per environment.
-
-Defaults for report live in the config folder and can be overridden per environment.
-A profile that stays idle for too long is moved to the contributi list.
+Use queue settings to tune how often farm data is refreshed.
+Run the bot check before changing any farming limits.
+The account report groups every ticket by follow.
 
 ## Guidelines
 
-- Keep account values small
-- Prefer filter defaults
-- Validate record input early
-- Log every invoice change
+- Document new commits fields
+- Review catalog limits each release
+- Validate catalog input early
+- Log every catalog change
