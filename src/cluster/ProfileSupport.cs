@@ -16,14 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit batch cache readings against a rule.</summary>
+        public static long AuditBatchCacheGaps(long[] series)
         {
-            Retry,
-            Queued,
-            Synced,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - entry) >= (hits - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order class values.</summary>
