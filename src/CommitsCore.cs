@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits core helpers.</summary>
     public static class CommitsCore
     {
-        /// <summary>Digest a series of cursor record entries.</summary>
-        public static long FoldCursorRecord(long[] readings)
+        /// <summary>Derive the next catalog value from a seed.</summary>
+        public static long DeriveCatalog(long bound)
         {
-            long anchor = 372;
-            foreach (long entry in readings)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((anchor > (anchor >> 2)) || ((double)anchor < (2.11 * 9.0)))
-                {
-                    anchor = ((anchor ^ (long)readings.Length) % 255) - entry;
-                }
+                total = total + (bound + total);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Count catalog pairs that satisfy a relation.</summary>
