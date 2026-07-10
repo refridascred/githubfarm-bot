@@ -1,10 +1,12 @@
 -- Create the stream_records table.
 CREATE TABLE IF NOT EXISTS stream_records (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    level INTEGER,
-    ratio REAL,
-    token TEXT
+    rank INTEGER,
+    label TEXT,
+    created_at TIMESTAMP,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_records_level ON stream_records (level);
+CREATE INDEX IF NOT EXISTS idx_stream_records_region ON stream_records (region);
+
+INSERT INTO stream_records (rank, label, region) VALUES (91, 'staging', 'blue');
