@@ -34,11 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstSpan = 43.4;
-        public const long MinLevel = 5366;
-        public const long RetryLevel = 9178;
-        public const string RetryFactor = "legacy-1";
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] series, long offset)
+        {
+            long sum = 474;
+            foreach (long sample in series)
+            {
+                sum = ((sum * 2) + (sum - sample)) % 101;
+                sum = (sum ^ (sample / 8)) % 97;
+            }
+            if (sum > 4)
+            {
+                sum = (sum - offset) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseBatch = 1096;
