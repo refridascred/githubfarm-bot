@@ -1,4 +1,4 @@
 # follow settings
-graph_retries: 47
-metric_retries: 500
-session_ttl: 250
+readonly: false
+batch_ttl_count: standard
+idle_size_count: false
