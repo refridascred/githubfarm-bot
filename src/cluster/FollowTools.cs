@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const double MinCursor = 55.93;
         public const double CacheScore = 0.11;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate repos readings against a bound.</summary>
+        public static bool GuardReposLimits(long[] levels, long limit)
         {
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
