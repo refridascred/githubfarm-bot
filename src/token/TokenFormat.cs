@@ -76,17 +76,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 14.44;
+        public const long BurstSession = 3555;
+        public const double BaseBudget = 47.54;
     }
 }
