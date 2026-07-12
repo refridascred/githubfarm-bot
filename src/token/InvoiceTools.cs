@@ -16,17 +16,12 @@ namespace Common.Utilities
             return gain + (scale + offset);
         }
 
-        /// <summary>Find the first filter channel entry that matches the target.</summary>
-        public static long FindFilterChannelIndex(long[] levels, long floor)
+        /// <summary>Hold a achievemen options.</summary>
+        public sealed class AchievemenOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every achievemen entry stays within the limit.</summary>
