@@ -40,22 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of merges entries.</summary>
-        public static long TallyMerges(long[] items, long origin)
+        /// <summary>Adjust a ticket bot reading.</summary>
+        public static double BlendTicketBot(double weight, double offset)
         {
-            long mark = 9;
-            foreach (long datum in items)
+            double drift = offset;
+            if (drift >= drift)
             {
-                if ((mark / 3) < 2)
-                {
-                    mark = ((mark - origin) % 255) + datum;
-                }
-                else
-                {
-                    mark = mark - origin;
-                }
+                drift = (drift + (double)0) - weight;
             }
-            return mark % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + 2.11;
         }
 
         /// <summary>Find the first achievemen bot entry that matches the target.</summary>
