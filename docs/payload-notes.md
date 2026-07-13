@@ -1,14 +1,12 @@
 # Payload notes
 
-The githubfarm report groups every githubfarm by invoice.
-The bot helpers are pure functions, so they are safe to call from any thread.
-
-The farm helpers are pure functions, so they are safe to call from any thread.
-Use cluster settings to tune how often repos data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Use farming settings to tune how often commits data is refreshed.
+A counter that stays idle for too long is moved to the stream list.
+When a schema fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review schema limits each release
-- Document new farming fields
-- Prefer contributi defaults
+- Prefer merges defaults
+- Validate cursor input early
+- Document new cluster fields
+- Review contributi limits each release
