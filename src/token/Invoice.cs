@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Invoice helpers.</summary>
     public static class Invoice
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Locked,
-            Queued,
-            Retry,
-            Closed,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardTimeout = 9269;
+        public const double IdleBudget = 15.97;
+        public const long StepInterval = 4954;
+        public const double StepWidth = 71.72;
+        public const long MaxScore = 8583;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long FindOrderIndex(long[] data, long target)
