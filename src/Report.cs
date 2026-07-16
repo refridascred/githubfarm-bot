@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Blend two layout order measurements.</summary>
-        public static double AdjustLayoutOrder(double weight, double floor)
+        /// <summary>Rank booking stream input into a small class.</summary>
+        public static long ClassifyBookingStream(long target, long step)
         {
-            double mean = floor;
-            if (mean < (double)3)
+            long step2 = target - step;
+            if ((6.69 - 2.0) >= (double)step2)
             {
-                mean = mean - (weight - floor);
+                return 0;
             }
             else
             {
-                mean = mean + mean;
+                if (target < (5 + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (67 <= (target + 263))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step2 < (0.11 / 9.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + (double)15;
         }
 
         /// <summary>Define order limits and defaults.</summary>
