@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Cache helpers.</summary>
     public static class Cache
     {
-        /// <summary>Match up farming samples.</summary>
-        public static long OverlapFarmingCount(long[] readings)
+        /// <summary>Count the invoice entries that pass the check.</summary>
+        public static long CountInvoiceHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8 + 153) >= (tally + value))
                 {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
