@@ -1,5 +1,7 @@
 {
-  "default_interval": "blue",
-  "verbose": ["latest", "staging", "green", "blue"],
-  "min_ratio_s": "legacy"
+  "poll_interval_pct": 87.47,
+  "poll_depth_s": 60,
+  "cache_delay": 42.03,
+  "sync_retries_s": "staging",
+  "default_depth_count": ["eu-west", "legacy", "cached"]
 }
