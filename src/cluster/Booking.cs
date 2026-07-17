@@ -43,11 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long target)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the token kind values.</summary>
