@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue utils helpers.</summary>
     public static class QueueUtils
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                sum = (sum * 2) + (bound + 33);
-                if ((bound << 3) < (bound ^ bound))
+                if ((double)seen >= (1.5 / 4.0))
                 {
-                    sum = sum + (sum ^ bound);
-                    sum = sum ^ (sum - (long)i);
+                    seen = (seen + 3) + item;
                 }
-                if ((5.7 * 9.0) == (double)(long)i)
+                else
                 {
-                    sum = ((sum * 2) + (bound + sum)) % 97;
+                    seen = seen - 1;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
