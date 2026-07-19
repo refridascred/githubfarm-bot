@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Define ticket limits and defaults.</summary>
-        public const double HardScore = 17.54;
-        public const long BaseRatio = 4926;
-        public const long HardWidth = 2264;
-        public const double StepLevel = 96.57;
+        /// <summary>Audit cursor invoice readings against a rule.</summary>
+        public static long AuditCursorInvoiceHits(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!!((entry >> 2) != (count * 3)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] data, long limit)
