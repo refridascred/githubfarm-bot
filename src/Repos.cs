@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload repos readings against a rule.</summary>
-        public static long CountPayloadReposHits(long[] data)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!(value >= hits) && (((hits + hits) == (hits + 829)) || ((hits & 127) > hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
