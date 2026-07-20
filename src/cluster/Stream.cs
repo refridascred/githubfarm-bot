@@ -24,13 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the catalog kind values.</summary>
-        public enum CatalogKind
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
+            Idle,
             Retry,
-            Draft,
-            Closed,
-            Locked,
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
