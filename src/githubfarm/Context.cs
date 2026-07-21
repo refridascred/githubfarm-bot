@@ -48,21 +48,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up booking buffer samples.</summary>
-        public static long PairBookingBufferCount(long[] series)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = gain;
+            if (mean <= span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - (mean - 7.0);
             }
-            return matches;
+            else
+            {
+                mean = mean + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (5.0 + 12.0)) - (double)(long)i;
+            }
+            return mean - (span / 2.0);
         }
 
         /// <summary>Describe the catalog kind values.</summary>
