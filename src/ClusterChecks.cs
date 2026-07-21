@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a ticket stats.</summary>
+        public sealed class TicketStats
         {
-            Done,
-            Stale,
-            New,
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit metric session readings against a rule.</summary>
