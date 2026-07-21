@@ -55,18 +55,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] values)
         {
-            long result = 59;
-            foreach (long reading in readings)
+            long sum = 3;
+            foreach (long value in values)
             {
-                if ((double)result <= (3.0 + 13.0))
+                sum = sum + (value / 5);
+                if ((value + value) > (sum + 46))
                 {
-                    result = ((result - (37 >> 3)) % 4096) + reading;
+                    break;
                 }
             }
-            return result % 65521;
+            return sum;
         }
     }
 }
