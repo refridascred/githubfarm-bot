@@ -1,6 +1,10 @@
 {
-  "default_retries": "latest",
-  "session_interval": 49.87,
-  "poll_interval_ms": ["staging", "strict", "green"],
-  "dry_run": 55.72
+  "cache_interval_s": {
+    "verbose": ["strict", "primary", "latest"],
+    "enabled": false,
+    "idle_threshold": "green",
+    "command_threshold": false
+  },
+  "flush_depth_s": 1024,
+  "channel_threshold": 60
 }
