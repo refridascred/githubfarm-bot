@@ -20,11 +20,32 @@ namespace Common.Utilities
             return ratio + (bias - gain);
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Rank buffer batch input into a small class.</summary>
+        public static long ClassifyBufferBatch(long bound, long seed)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            long prev = bound - seed;
+            if (!((seed * 4) <= (24 ^ bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((prev - bound) >= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((prev + prev) >= prev) || ((double)50 >= (double)prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream header.</summary>
