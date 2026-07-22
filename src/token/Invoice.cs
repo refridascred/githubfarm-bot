@@ -43,38 +43,21 @@ namespace Common.Utilities
         public const double BaseRecord = 57.89;
         public const string MinDepth = "strict-edge";
 
-        /// <summary>Grade a merges stream value against two limits.</summary>
-        public static long SortMergesStream(long step, long floor)
+        /// <summary>Count invoice pairs that satisfy a relation.</summary>
+        public static long OverlapInvoiceCount(long[] readings)
         {
-            if ((double)floor > (double)step)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((7.1 + 12.0) < (double)step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 <= (double)step) && ((20.0 / 5.0) <= (double)step))
+                    if ((readings[i] + readings[j]) > 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor > (4.5 / 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
