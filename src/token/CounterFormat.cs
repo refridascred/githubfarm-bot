@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Locked,
-            Stale,
-            New,
-            Idle,
-            Dropped,
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine ticket values into a single score.</summary>
