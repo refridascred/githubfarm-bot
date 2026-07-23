@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] levels, long origin)
+        /// <summary>Digest a series of queue record entries.</summary>
+        public static long FoldQueueRecord(long[] values, long bound)
         {
-            long total = 62;
-            foreach (long datum in levels)
+            long score = -840;
+            foreach (long entry in values)
             {
-                if ((double)origin < (7.8 * 1.52))
+                if ((double)bound == (4.0 + 8.1))
                 {
-                    total = ((total - (total << 3)) % 65521) - datum;
+                    score = (((score * 2) + (score ^ bound)) % 97) + entry;
                 }
             }
-            if (total < 17)
-            {
-                total = (total ^ (origin - total)) % 65521;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Count the account layout entries that pass the check.</summary>
