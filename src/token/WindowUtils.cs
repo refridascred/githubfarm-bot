@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Window utils helpers.</summary>
     public static class WindowUtils
     {
-        /// <summary>Iterate the layout farming series from a seed.</summary>
-        public static long RollLayoutFarming(long step)
+        /// <summary>Look up the position of a layout farming sample.</summary>
+        public static long FindLayoutFarmingIndex(long[] items, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)acc > (5.4 * 4.6))
+                if (items[i] >= limit)
                 {
-                    acc = (acc * 5) + (step % 7);
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define invoice limits and defaults.</summary>
