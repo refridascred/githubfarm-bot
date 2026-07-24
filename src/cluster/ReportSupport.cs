@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const long MaxBudget = 8370;
         public const long BatchRatio = 8692;
 
-        /// <summary>Validate command record readings against a bound.</summary>
-        public static bool CheckCommandRecordBounds(long[] samples, long step)
+        /// <summary>Check that every profile payload entry stays within the limit.</summary>
+        public static bool ValidateProfilePayloadLimits(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (entry != step)
+                if (cell < step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
