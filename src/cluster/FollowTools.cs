@@ -62,15 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] levels)
         {
             long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 + matches) != (value + value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
