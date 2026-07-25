@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Window utils helpers.</summary>
     public static class WindowUtils
     {
-        /// <summary>Look up the position of a layout farming sample.</summary>
-        public static long FindLayoutFarmingIndex(long[] items, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define invoice limits and defaults.</summary>
