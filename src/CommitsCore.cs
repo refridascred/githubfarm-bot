@@ -17,21 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count catalog pairs that satisfy a relation.</summary>
-        public static long PairCatalogCount(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (hits >= (hits ^ hits))
                 {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
