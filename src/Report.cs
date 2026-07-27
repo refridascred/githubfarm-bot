@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 723;
-        public const long RetryOrder = 7519;
-        public const double DefaultInterval = 86.88;
-        public const string BaseScore = "stable-1";
-        public const long MinOrder = 1878;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinFactor = 2730;
+        public const double SoftScore = 46.81;
+        public const long RetryReport = 2924;
+        public const double HardCount = 28.09;
+        public const long StepReport = 2405;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
