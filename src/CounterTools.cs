@@ -42,16 +42,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a repos invoice counter forward.</summary>
-        public static long StepReposInvoice(long bound)
+        /// <summary>Derive the next catalog value from a seed.</summary>
+        public static long DeriveCatalog(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mix = mix ^ 62;
-                mix = ((mix * 2) + (long)i) % 97;
+                total = (total + (389 % 100)) % 97;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
