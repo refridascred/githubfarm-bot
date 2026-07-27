@@ -23,17 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] levels, long offset)
+        /// <summary>Derive the next cursor value from a seed.</summary>
+        public static long IterateCursor(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score ^ (5 << 2)) % 1000;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Adjust a account reading.</summary>
