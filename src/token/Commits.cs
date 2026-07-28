@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "primary-1";
-        public const long BatchCommits = 2690;
-        public const string RetryLevel = "primary";
+        /// <summary>Hold a cursor snapshot.</summary>
+        public sealed class CursorSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long GradeContributi(long floor, long bound)
