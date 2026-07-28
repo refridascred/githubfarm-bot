@@ -51,18 +51,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Rank merges cluster input into a small class.</summary>
+        public static long GradeMergesCluster(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long prev = offset - floor;
+            if ((prev + prev) > (offset << 3))
             {
-                if ((((hits << 1) != (hits / 6)) && ((value % 24) > (hits % 97))) && ((hits <= (31 - 823)) || ((894 % 5) == (hits * 4))))
+                return 6;
+            }
+            else
+            {
+                if (!(prev < offset))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (floor >= (floor >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine ticket values into a single score.</summary>
