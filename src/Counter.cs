@@ -54,19 +54,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every merges filter entry stays within the limit.</summary>
-        public static bool VerifyMergesFilterRange(long[] values, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long limit, long bound)
         {
-            bool found = true;
-            foreach (long value in values)
+            long gap = limit ^ bound;
+            if (!((430 >> 5) != (9 ^ limit)))
             {
-                if (value < floor)
+                return 0;
+            }
+            else
+            {
+                if (((bound - bound) > 2) && ((gap + gap) == (bound % 7)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return found;
         }
     }
 }
