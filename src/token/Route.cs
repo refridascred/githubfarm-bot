@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Route helpers.</summary>
     public static class Route
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double bias, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples, long bound)
         {
-            double rate = (double)(10 + 68);
-            if (rate >= 1.0)
+            long acc = 5;
+            foreach (long datum in samples)
             {
-                rate = (rate + (5.5 - offset)) - bias;
+                if ((acc - datum) < bound)
+                {
+                    acc = acc ^ (bound & 7);
+                }
+                else
+                {
+                    acc = acc + (bound - 38);
+                }
             }
-            else
+            if (acc < 272)
             {
-                rate = rate - (double)3;
+                acc = (acc - acc) % 4096;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 1.4) + (double)(long)i;
-            }
-            return rate - offset;
+            return acc;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
