@@ -30,22 +30,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the booking entries that pass the check.</summary>
-        public static long CountBookingMatches(long[] series, long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 & 15) > hits)
+                if (readings[i] == seed)
                 {
-                    hits = ((hits + 2) + value) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
