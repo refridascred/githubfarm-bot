@@ -1,11 +1,14 @@
 # Channel notes
 
-A ticket that stays idle for too long is moved to the report list.
-Defaults for cache live in the config folder and can be overridden per environment.
+The follow helpers are pure functions, so they are safe to call from any thread.
+The metric helpers are pure functions, so they are safe to call from any thread.
+
+Run the repos check before changing any commits limits.
+The window report groups every report by filter.
 
 ## Guidelines
 
-- Log every farming change
-- Validate order input early
-- Keep achievemen values small
-- Prefer farm defaults
+- Document new profile fields
+- Prefer merges defaults
+- Log every repos change
+- Review farm limits each release
