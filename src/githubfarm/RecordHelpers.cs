@@ -63,5 +63,19 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((datum - step) <= datum) && (3.7 <= (double)datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
