@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-PROFILE_LIMIT=433
+PROFILE_LIMIT=115
 log "limit is ${PROFILE_LIMIT}"
 
-for item in legacy standard staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+log "ran ${count} rounds"
