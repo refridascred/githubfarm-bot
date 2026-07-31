@@ -1,8 +1,5 @@
 {
-  "batch_window": 85.22,
-  "farming_capacity": "staging",
-  "flush_ttl_s": "staging",
-  "base_interval_count": "fallback",
-  "default_limit": "primary",
-  "cache_timeout": ["stable", "cached"]
+  "max_capacity": 9515,
+  "compress": [332, 157],
+  "flush_depth_count": 86.03
 }
