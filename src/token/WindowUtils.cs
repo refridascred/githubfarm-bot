@@ -21,22 +21,17 @@ namespace Common.Utilities
         public const long BatchCount = 2695;
         public const long SoftSpan = 3589;
 
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long MeasureBatchCommitsOutliers(long[] values)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum & 1) < (count << 1))
+                if (values[i] > limit)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
