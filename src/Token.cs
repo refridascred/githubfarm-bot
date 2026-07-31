@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Token helpers.</summary>
     public static class Token
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values, long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long target, long seed)
         {
-            long mix = 5;
-            foreach (long value in values)
+            if ((920 + seed) == (seed << 1))
             {
-                mix = ((mix * 3) + bound) + value;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((target >> 3) != (target + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed == (13.0 * 4.25))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target == (1.68 / 8.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
