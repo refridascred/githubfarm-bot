@@ -79,19 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine ticket values into a single score.</summary>
-        public static long WeighTicket(long[] data)
+        /// <summary>Validate queue repos readings against a bound.</summary>
+        public static bool ValidateQueueReposRange(long[] series, long bound)
         {
-            long carry = 77;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                carry = ((carry + 3) % 65521) - sample;
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < (-94))
-            {
-                carry = (carry + (carry + carry)) % 97;
-            }
-            return carry % 4096;
+            return stale;
         }
     }
 }
