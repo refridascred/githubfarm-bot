@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "legacy-1";
-        public const long LimitToken = 2043;
-        public const long HardToken = 7329;
-        public const long MaxToken = 8995;
-        public const string BaseToken = "strict";
+        /// <summary>Fold a list of token session readings.</summary>
+        public static long TotalTokenSession(long[] samples)
+        {
+            long total = 661;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ total) >= sample)
+                {
+                    total = ((total << 2) ^ (total - (-5))) % 255;
+                }
+                if (!((sample % 64) < 3))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Describe the invoice level values.</summary>
         public enum InvoiceLevel
