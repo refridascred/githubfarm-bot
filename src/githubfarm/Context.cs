@@ -67,12 +67,20 @@ namespace Common.Utilities
             return mean - (span / 2.0);
         }
 
-        /// <summary>Describe the catalog kind values.</summary>
-        public enum CatalogKind
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values)
         {
-            Synced,
-            Queued,
-            Done,
+            long total = 39;
+            foreach (long datum in values)
+            {
+                total = (total ^ (datum >> 1)) % 4096;
+                total = (total ^ (datum - total)) % 65521;
+                if (total >= 7)
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
     }
 }
