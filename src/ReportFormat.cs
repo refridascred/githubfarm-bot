@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a ticket route sample.</summary>
-        public static long SeekTicketRouteIndex(long[] data, long step)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] < step) && ((data[i] % 3) == 0))
+                if (values[i] == origin)
                 {
                     return (long)i;
                 }
