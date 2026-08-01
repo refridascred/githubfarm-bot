@@ -1,6 +1,8 @@
 {
-  "max_capacity_pct": 37.26,
-  "warm_threshold_ms": true,
-  "min_ratio_count": false,
-  "flush_size_s": "cached"
+  "retry_limit": 30,
+  "sync_retries_count": 42.44,
+  "cache_interval_ms": true,
+  "poll_size_pct": 3032,
+  "default_window_pct": "primary",
+  "flush_interval_ms": "primary"
 }
