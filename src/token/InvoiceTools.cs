@@ -50,18 +50,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] items, long offset)
+        /// <summary>Count the merges entries that pass the check.</summary>
+        public static long CountMergesGaps(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)offset == (5.3 * 7.0))
+                if ((count % 12) < (543 - count))
                 {
-                    tally = (tally + 2) - entry;
+                    count = ((count + 1) ^ reading) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
