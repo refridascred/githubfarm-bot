@@ -19,18 +19,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit metric session readings against a rule.</summary>
-        public static long MeasureMetricSessionOutliers(long[] items)
+        /// <summary>Validate booking readings against a bound.</summary>
+        public static bool ValidateBookingBounds(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((item / 9) == (item ^ 5))
+                if (sample < origin)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
