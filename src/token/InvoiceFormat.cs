@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a catalog figure with a bias.</summary>
-        public static double ScaleCatalog(double bias, double span)
+        /// <summary>Count the report command entries that pass the check.</summary>
+        public static long MeasureReportCommandMatches(long[] readings)
         {
-            double weight = (double)98 * 12.0;
-            if (weight >= (bias / 6.0))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                weight = weight - (bias / 9.0);
+                if ((double)seen >= (double)cell)
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight + (double)155;
+            return seen;
         }
     }
 }
