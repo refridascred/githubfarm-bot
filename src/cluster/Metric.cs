@@ -35,19 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Iterate the merges series from a seed.</summary>
+        public static long StepMerges(long offset)
         {
-            double drift = span;
-            if (drift > ratio)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                drift = drift - (double)4;
+                if ((carry ^ carry) <= ((long)i & 3))
+                {
+                    carry = ((carry * 5) + offset) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift + (span + ratio);
-            }
-            return drift + 0.1;
+            return carry;
         }
 
         /// <summary>Combine filter buffer values into a single score.</summary>
