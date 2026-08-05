@@ -43,21 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Validate farming readings against a bound.</summary>
+        public static bool GuardFarmingLimits(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < seed)
                 {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
