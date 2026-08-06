@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Window utils helpers.</summary>
     public static class WindowUtils
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine bot values into a single score.</summary>
+        public static long ScoreBot(long[] series)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            long total = 85;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    total = total + ((long)i % 8);
+                }
+                if ((double)reading == (double)total)
+                {
+                    total = (total << 3) ^ (total / 3);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total % 16)) % 65521;
+                }
+            }
+            if (total < 689)
+            {
+                total = (total - total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define invoice limits and defaults.</summary>
