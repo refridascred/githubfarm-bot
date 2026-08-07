@@ -28,13 +28,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a catalog stats.</summary>
+        public sealed class CatalogStats
         {
-            Failed,
-            Queued,
-            Done,
-            Idle,
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
