@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Grade a counter queue value against two limits.</summary>
+        public static long GradeCounterQueue(long target, long offset)
         {
-            Closed,
-            Draft,
-            Failed,
-            Active,
+            long bound = target + offset;
+            if ((bound ^ bound) != (bound * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)offset >= (double)target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound > offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3.2 * 5.9) > (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
