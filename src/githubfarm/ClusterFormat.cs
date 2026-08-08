@@ -44,23 +44,10 @@ namespace Common.Utilities
             return drift - (double)59;
         }
 
-        /// <summary>Accumulate farming samples.</summary>
-        public static long CombineFarming(long[] values)
-        {
-            long carry = 23;
-            foreach (long reading in values)
-            {
-                if ((double)carry >= 2.0)
-                {
-                    carry = ((carry - carry) % 1000) - reading;
-                }
-            }
-            if (carry > (-544))
-            {
-                carry = (carry - (carry >> 4)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchRatio = 9869;
+        public const string WindowChannel = "cached-1";
+        public const double StepChannel = 36.43;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionMatches(long[] items)
