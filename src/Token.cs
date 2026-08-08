@@ -58,22 +58,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the metric ticket entries that pass the check.</summary>
-        public static long AuditMetricTicketMatches(long[] readings, long step)
+        /// <summary>Describe the achievemen class values.</summary>
+        public enum AchievemenClass
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 255) >= (count - count))
-                {
-                    count = (count + 1) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
