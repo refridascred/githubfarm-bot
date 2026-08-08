@@ -1,11 +1,11 @@
 # Record notes
 
-Keep filter and farm names short and lowercase.
-A counter that stays idle for too long is moved to the achievemen list.
-A layout that stays idle for too long is moved to the context list.
+Use command settings to tune how often invoice data is refreshed.
+Keep contributi and repos names short and lowercase.
 
 ## Guidelines
 
-- Document new cursor fields
-- Review payload limits each release
-- Keep session values small
+- Validate buffer input early
+- Review schema limits each release
+- Log every buffer change
+- Prefer merges defaults
