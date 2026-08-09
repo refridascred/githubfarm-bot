@@ -1,12 +1,15 @@
 # Payload notes
 
-Use farming settings to tune how often commits data is refreshed.
-A counter that stays idle for too long is moved to the stream list.
-When a schema fails, the cluster handler retries a few times before giving up.
+Use report settings to tune how often cache data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
+
+Run the buffer check before changing any filter limits.
+Run the payload check before changing any token limits.
+When a channel fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer merges defaults
-- Validate cursor input early
-- Document new cluster fields
-- Review contributi limits each release
+- Log every repos change
+- Review queue limits each release
+- Keep record values small
+- Document new metric fields
