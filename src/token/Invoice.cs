@@ -36,12 +36,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRatio = 26.27;
-        public const long DefaultTimeout = 2746;
-        public const long LimitRecord = 7540;
-        public const double BaseRecord = 57.89;
-        public const string MinDepth = "strict-edge";
+        /// <summary>Check that every bot booking entry stays within the limit.</summary>
+        public static bool VerifyBotBookingBounds(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count invoice pairs that satisfy a relation.</summary>
         public static long OverlapInvoiceCount(long[] readings)
