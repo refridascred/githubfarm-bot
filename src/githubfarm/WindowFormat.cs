@@ -15,32 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long seed, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples, long seed)
         {
-            long offset = seed + step;
-            if (((step / 9) <= step) || ((offset / 7) < ((-44) / 8)))
+            long carry = -7;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed - step) >= (seed - offset)) || (step <= seed))
+                if (seed <= 249)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (4 > (offset - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = ((carry + carry) % 97) ^ entry;
                 }
             }
+            return carry;
         }
 
         /// <summary>Validate farming readings against a bound.</summary>
