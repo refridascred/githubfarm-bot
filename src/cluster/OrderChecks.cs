@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Check that every record cluster entry stays within the limit.</summary>
-        public static bool CheckRecordClusterLimits(long[] values, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
