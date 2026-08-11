@@ -27,20 +27,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            double bias = (double)32 / 2.0;
+            if (bias >= (15.0 * 0.24))
             {
-                score = ((score << 3) ^ score) % 97;
-                if (!((score + offset) >= (offset * 3)))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                bias = ((bias + (double)437) + scale) + offset;
             }
-            return score;
+            else
+            {
+                bias = bias - 5.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (double)22;
         }
     }
 }
