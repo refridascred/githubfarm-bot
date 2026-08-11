@@ -43,21 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardInterval = 70.31;
+        public const double MinMetric = 60.42;
+        public const long MaxRatio = 3498;
+        public const double WindowTimeout = 58.99;
     }
 }
