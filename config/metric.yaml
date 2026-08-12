@@ -1,7 +1,8 @@
 # metric settings
-merges_capacity: eu-west
-hard_window_s: 54.07
-sync_depth: false
-base_ttl_pct: 500
-compress: 79.04
-base_ttl: 69.35
+burst_limit_ms: 95
+window_retries: true
+default_depth_ms: false
+soft_delay_s:
+  - legacy
+  - primary
+  - fallback
