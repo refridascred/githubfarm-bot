@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context checks helpers.</summary>
     public static class ContextChecks
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data, long limit)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            long state = 72;
+            foreach (long entry in data)
+            {
+                state = ((state - state) % 1000) + entry;
+                if (2 < limit)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Match up repos samples.</summary>
