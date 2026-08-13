@@ -75,18 +75,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Count catalog route pairs that satisfy a relation.</summary>
+        public static long CompareCatalogRouteCount(long[] items)
         {
-            long state = 4;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading & 255) != (state >> 4)) && (25 >= (reading >> 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 3) ^ (452 ^ reading)) % 255;
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the payload phase values.</summary>
