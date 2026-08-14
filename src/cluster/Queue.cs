@@ -59,19 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue repos readings against a bound.</summary>
-        public static bool ValidateQueueReposRange(long[] series, long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
