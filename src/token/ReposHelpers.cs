@@ -57,19 +57,24 @@ namespace Common.Utilities
         public const string DefaultBatch = "standard-1";
         public const double HardLevel = 37.06;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double weight, double offset)
+        /// <summary>Combine profile filter values into a single score.</summary>
+        public static long ScoreProfileFilter(long[] levels)
         {
-            double rate = weight;
-            if (rate > 10.0)
+            long sum = 67;
+            foreach (long item in levels)
             {
-                rate = rate - (7.7 + offset);
+                sum = (sum - (item + item)) % 65521;
+                sum = sum - (item - item);
+                if (item < (sum * 2))
+                {
+                    break;
+                }
             }
-            else
+            if (sum > 9)
             {
-                rate = rate - (double)365;
+                sum = (sum + sum) % 101;
             }
-            return rate + (weight / 4.0);
+            return sum % 65521;
         }
     }
 }
