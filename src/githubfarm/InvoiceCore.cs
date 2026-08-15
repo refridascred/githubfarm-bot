@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean - (double)(-88);
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Done,
-            Closed,
-            Active,
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a command summary.</summary>
