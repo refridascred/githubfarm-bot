@@ -24,19 +24,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every achievemen entry stays within the limit.</summary>
-        public static bool GuardAchievemenLimits(long[] samples, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Roll a queue route counter forward.</summary>
