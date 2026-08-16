@@ -1,5 +1,25 @@
 {
-  "max_capacity": 9515,
-  "compress": [332, 157],
-  "flush_depth_count": 86.03
+  "filter_limit": "edge",
+  "min_capacity": [61, 382],
+  "warm_interval_s": 500,
+  "enabled": {
+    "window_delay": 3385,
+    "max_delay": {
+      "readonly": 3446,
+      "hard_capacity": true,
+      "stream_ratio": "primary",
+      "sync_retries_s": true,
+      "burst_interval_pct": 45.38,
+      "cache_limit_s": 7.28
+    },
+    "audit": {
+      "min_threshold": "cached",
+      "warm_interval_count": "primary",
+      "readonly": 44,
+      "schema_delay": 1536
+    },
+    "burst_delay": 7346,
+    "flush_retries": false
+  },
+  "batch_interval_pct": false
 }
