@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheCount = 613;
-        public const double BurstWidth = 88.1;
-        public const string SoftQueue = "alpha-v2";
-        public const string HardQueue = "stable-v2";
-        public const string CacheQueue = "local-v2";
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaOutliers(long[] values, long floor)
