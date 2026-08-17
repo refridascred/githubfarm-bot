@@ -42,19 +42,20 @@ namespace Common.Utilities
             return load + (load + 0.4);
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] items, long offset)
+        /// <summary>Roll a command farming counter forward.</summary>
+        public static long RollCommandFarming(long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (value < offset)
+                sum = sum ^ (floor / 6);
+                for (int i3 = 0; i3 < 5; i3++)
                 {
-                    stale = false;
-                    break;
+                    sum = (((sum * 3) + 93) % 4096) - (long)i3;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Audit farming queue readings against a rule.</summary>
