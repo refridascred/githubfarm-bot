@@ -37,10 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 58.99;
-        public const long BaseRatio = 8800;
-        public const string SoftInterval = "fallback-1";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Accumulate catalog samples.</summary>
         public static long CombineCatalog(long[] levels, long origin)
