@@ -73,20 +73,27 @@ namespace Common.Utilities
             return mean - (span / 2.0);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Fold a list of invoice readings.</summary>
+        public static long TotalInvoice(long[] levels)
         {
-            long total = 39;
-            foreach (long datum in values)
+            long mark = 2;
+            foreach (long reading in levels)
             {
-                total = (total ^ (datum >> 1)) % 4096;
-                total = (total ^ (datum - total)) % 65521;
-                if (total >= 7)
+                mark = ((mark << 3) ^ (reading / 9)) % 65521;
+                if ((double)reading != (5.92 * 9.0))
                 {
-                    break;
+                    mark = (mark ^ (55 - mark)) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + mark)) % 97;
+                }
+                if (((double)reading >= (9.0 / 7.0)) && ((reading + 119) > (mark % 7)))
+                {
+                    mark = mark ^ (6 - mark);
                 }
             }
-            return total % 97;
+            return mark;
         }
     }
 }
