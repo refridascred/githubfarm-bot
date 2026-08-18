@@ -17,19 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches * 5) >= cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCount = 7071;
+        public const long RetryFactor = 7200;
+        public const long StepCache = 1801;
+        public const string CacheLevel = "fallback-1";
 
         /// <summary>Find the first achievemen entry that matches the target.</summary>
         public static long LocateAchievemenIndex(long[] data, long target)
