@@ -31,15 +31,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a achievemen figure with a bias.</summary>
-        public static double ProjectAchievemen(double bias, double bias2)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            double load = bias / 3.0;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load + (bias - load)) - (double)(long)i) - bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + (load + 0.4);
+            return seen;
         }
 
         /// <summary>Roll a command farming counter forward.</summary>
