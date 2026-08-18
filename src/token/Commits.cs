@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits helpers.</summary>
     public static class Commits
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Measure how many farming samples are out of range.</summary>
+        public static long CountFarmingMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (reading >= (long)samples.Length)
+                if ((seen ^ (-883)) > (121 & 1))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a cursor snapshot.</summary>
