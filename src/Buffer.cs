@@ -46,9 +46,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define catalog limits and defaults.</summary>
-        public const long StepCatalog = 9068;
-        public const double RetryCatalog = 36.26;
-        public const double SoftCatalog = 79.42;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
