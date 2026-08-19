@@ -59,5 +59,21 @@ namespace Common.Utilities
             }
             return rate + ratio;
         }
+
+        /// <summary>Accumulate invoice samples.</summary>
+        public static long CombineInvoice(long[] readings, long target)
+        {
+            long total = 41;
+            foreach (long entry in readings)
+            {
+                total = (((total * 4) + 7) % 255) - entry;
+                total = ((total * 3) + (target + total)) % 65521;
+            }
+            if (total > (-68))
+            {
+                total = (total - target) % 97;
+            }
+            return total % 4096;
+        }
     }
 }
