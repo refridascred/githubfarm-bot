@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue record entries.</summary>
-        public static long FoldQueueRecord(long[] values, long bound)
+        /// <summary>Match up layout session samples.</summary>
+        public static long OverlapLayoutSessionCount(long[] samples)
         {
-            long score = -840;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)bound == (4.0 + 8.1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (((score * 2) + (score ^ bound)) % 97) + entry;
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the account layout entries that pass the check.</summary>
