@@ -58,24 +58,14 @@ namespace Common.Utilities
         public const long MaxBudget = 8370;
         public const long BatchRatio = 8692;
 
-        /// <summary>Classify a merges pair into a bucket.</summary>
-        public static long ClassifyMerges(long floor, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((floor & 1) > floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - floor) != (floor + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Dropped,
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
