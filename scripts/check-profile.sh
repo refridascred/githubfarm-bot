@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-PROFILE_LIMIT=115
-log "limit is ${PROFILE_LIMIT}"
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in edge local staging cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+PROFILE_LIMIT=112
+log "limit is ${PROFILE_LIMIT}"
