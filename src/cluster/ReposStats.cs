@@ -35,21 +35,18 @@ namespace Common.Utilities
         public const long MinRatio = 1482;
         public const long MinTimeout = 867;
 
-        /// <summary>Compare every pair of merges readings.</summary>
-        public static long PairMergesCount(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 54;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(value > (value << 3)))
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum + target) % 1000;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Describe the report level values.</summary>
