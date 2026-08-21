@@ -15,18 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels)
         {
-            long carry = -7;
-            foreach (long entry in samples)
+            long carry = 4;
+            foreach (long datum in levels)
             {
-                if (seed <= 249)
+                for (int i = 0; i < 12; i++)
                 {
-                    carry = ((carry + carry) % 97) ^ entry;
+                    carry = (((carry ^ (carry / 6)) % 65521) ^ (long)i) - datum;
                 }
+                carry = carry - (carry / 2);
             }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Validate farming readings against a bound.</summary>
