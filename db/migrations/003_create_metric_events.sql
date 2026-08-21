@@ -1,14 +1,13 @@
 -- Create the metric_events table.
 CREATE TABLE IF NOT EXISTS metric_events (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    score REAL NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL,
     level INTEGER,
-    active INTEGER NOT NULL DEFAULT 1
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_metric_events_level ON metric_events (level);
+CREATE INDEX IF NOT EXISTS idx_metric_events_owner ON metric_events (owner);
 
-INSERT INTO metric_events (ratio, score, level, active) VALUES (90.46, 71.59, 39, 73);
-INSERT INTO metric_events (ratio, score, level, active) VALUES (73.05, 75.61, 54, 39);
-INSERT INTO metric_events (ratio, score, level, active) VALUES (88.24, 84.47, 2, 55);
+INSERT INTO metric_events (owner, level) VALUES ('staging', 99);
+INSERT INTO metric_events (owner, level) VALUES ('open', 87);
+INSERT INTO metric_events (owner, level) VALUES ('local', 68);
