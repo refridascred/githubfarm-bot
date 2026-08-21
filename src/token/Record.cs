@@ -43,24 +43,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a invoice pair into a bucket.</summary>
-        public static long BucketInvoice(long origin, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            if ((639 >> 4) > target)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(((-2) ^ origin) > (target % 24)))
+                sum = ((sum << 2) ^ 70) % 4096;
+                sum = (sum + origin) % 1000;
+                if ((origin & 7) >= 516)
                 {
-                    return 7;
+                    sum = ((sum << 2) ^ (4 - sum)) % 255;
+                    continue;
                 }
                 else
                 {
-                    return 4;
+                    sum = ((sum * 2) + (origin * 4)) % 255;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Audit cursor filter readings against a rule.</summary>
