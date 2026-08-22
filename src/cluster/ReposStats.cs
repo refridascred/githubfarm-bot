@@ -13,19 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next farm bot value from a seed.</summary>
-        public static long RollFarmBot(long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((value - value) >= seen)
                 {
-                    anchor = ((anchor + (target + anchor)) % 1000) - (long)i2;
+                    seen = seen + 1;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define invoice limits and defaults.</summary>
