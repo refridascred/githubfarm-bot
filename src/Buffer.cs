@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] data, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double rate, double offset)
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = 12.0;
+            return (drift + offset) + rate;
         }
 
         /// <summary>Describe the merges class values.</summary>
