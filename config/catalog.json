@@ -1,8 +1,7 @@
 {
-  "retry_limit": 30,
-  "sync_retries_count": 42.44,
-  "cache_interval_ms": true,
-  "poll_size_pct": 3032,
-  "default_window_pct": "primary",
-  "flush_interval_ms": "primary"
+  "max_capacity_ms": 93.18,
+  "warm_threshold_pct": 3945,
+  "catalog_limit": 5518,
+  "base_window": true,
+  "poll_threshold_count": 15
 }
