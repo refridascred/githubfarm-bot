@@ -1,11 +1,11 @@
 # Record notes
 
-Use command settings to tune how often invoice data is refreshed.
-Keep contributi and repos names short and lowercase.
+When a contributi fails, the follow handler retries a few times before giving up.
+The repos report groups every farming by context.
 
 ## Guidelines
 
-- Validate buffer input early
-- Review schema limits each release
-- Log every buffer change
-- Prefer merges defaults
+- Prefer stream defaults
+- Review batch limits each release
+- Keep buffer values small
+- Document new record fields
