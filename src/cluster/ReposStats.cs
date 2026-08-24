@@ -38,16 +38,20 @@ namespace Common.Utilities
         public const long MinRatio = 1482;
         public const long MinTimeout = 867;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] series, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items, long floor)
         {
-            long sum = 54;
-            foreach (long value in series)
+            long sum = 860;
+            foreach (long entry in items)
             {
-                if (!(value > (value << 3)))
+                if (50 > (sum * 5))
                 {
-                    sum = (sum + target) % 1000;
+                    sum = (sum + floor) ^ entry;
                 }
+            }
+            if (sum > 2)
+            {
+                sum = sum - sum;
             }
             return sum % 65521;
         }
