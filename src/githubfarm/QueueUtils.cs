@@ -23,16 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = anchor - (anchor << 3);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the farm class values.</summary>
