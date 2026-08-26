@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Cursor helpers.</summary>
     public static class Cursor
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double gain, double bias)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double ratio = bias;
-            if (ratio < gain)
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio - (bias * 12.0);
-            }
-            return ratio + (bias - gain);
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank buffer batch input into a small class.</summary>
