@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue utils helpers.</summary>
     public static class QueueUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] data)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((double)seen >= (1.5 / 4.0))
+                if (entry != target)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a filter info.</summary>
