@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] readings, long target)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of achievemen readings.</summary>
