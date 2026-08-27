@@ -13,11 +13,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 8337;
-        public const double CacheFactor = 86.9;
-        public const long SoftContext = 999;
-        public const string LimitCount = "staging-edge";
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((double)anchor > 2.78))
+                {
+                    anchor = ((anchor << 2) ^ offset) % 255;
+                }
+                anchor = anchor + ((-8) + anchor);
+                if ((double)anchor <= (double)offset)
+                {
+                    anchor = (anchor + 3) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up farming samples.</summary>
         public static long OverlapFarmingCount(long[] values)
