@@ -1,4 +1,14 @@
 # follow settings
-readonly: false
-batch_ttl_count: standard
-idle_size_count: false
+base_threshold: 3762
+hard_capacity_count:
+  - 463
+  - 96
+  - 195
+compress: 65
+soft_ratio: fallback
+farming_size:
+  sync_capacity: false
+  batch_capacity_s: 11.4
+  strict: false
+  enabled: 3682
+readonly: edge
