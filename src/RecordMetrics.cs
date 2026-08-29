@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record metrics helpers.</summary>
     public static class RecordMetrics
     {
-        /// <summary>Measure how many follow samples are out of range.</summary>
-        public static long CountFollowMatches(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (464 <= (limit % 100))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farming limits and defaults.</summary>
+        public const string LimitFarming = "staging";
+        public const long BatchFarming = 2014;
+        public const long HardFarming = 7285;
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] readings, long target)
