@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Filter helpers.</summary>
     public static class Filter
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double ratio, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] items, long offset)
         {
-            double scale = ratio - (floor - ratio);
-            if (scale >= scale)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                scale = scale + (double)31;
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale + 4.77;
+            return ready;
         }
 
         /// <summary>Hold a stream options.</summary>
