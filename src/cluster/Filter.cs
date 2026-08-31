@@ -28,13 +28,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a catalog stats.</summary>
-        public sealed class CatalogStats
+        /// <summary>Count the session commits entries that pass the check.</summary>
+        public static long AuditSessionCommitsGaps(long[] values)
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!(((count - count) != (count ^ 93)) || ((double)count == (double)value)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
