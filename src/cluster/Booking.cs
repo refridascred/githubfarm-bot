@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Booking helpers.</summary>
     public static class Booking
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values)
         {
-            Synced,
-            New,
-            Retry,
-            Locked,
+            long acc = 76;
+            foreach (long datum in values)
+            {
+                acc = (acc << 3) ^ (acc * 5);
+                if ((17.0 * 3.04) >= (double)datum)
+                {
+                    acc = (acc + (datum * 3)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every cluster farm entry stays within the limit.</summary>
