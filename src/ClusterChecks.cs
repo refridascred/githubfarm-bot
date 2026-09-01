@@ -19,19 +19,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate booking readings against a bound.</summary>
-        public static bool ValidateBookingBounds(long[] series, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double mean = 1.77;
+            if (mean <= (weight + mean))
             {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (mean + offset);
             }
-            return flag;
+            return mean + offset;
         }
     }
 }
