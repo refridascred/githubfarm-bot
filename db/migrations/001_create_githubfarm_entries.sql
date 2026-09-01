@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS githubfarm_entries (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
-    ratio REAL,
-    state TEXT NOT NULL DEFAULT 'new'
+    weight REAL,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_githubfarm_entries_state ON githubfarm_entries (state);
+CREATE INDEX IF NOT EXISTS idx_githubfarm_entries_weight ON githubfarm_entries (weight);
 
-INSERT INTO githubfarm_entries (rank, ratio, state) VALUES (76, 93.74, 'primary');
-INSERT INTO githubfarm_entries (rank, ratio, state) VALUES (4, 61.04, 'staging');
-INSERT INTO githubfarm_entries (rank, ratio, state) VALUES (70, 24.48, 'edge');
+INSERT INTO githubfarm_entries (rank, weight, ratio) VALUES (50, 33.47, 90.55);
