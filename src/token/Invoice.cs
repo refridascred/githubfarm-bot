@@ -25,15 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token context value from a seed.</summary>
-        public static long IterateTokenContext(long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            if (29 < (seed / 3))
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (((target / 9) > (seed / 2)) || ((target + seed) >= (1 ^ seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - target) < (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every bot booking entry stays within the limit.</summary>
