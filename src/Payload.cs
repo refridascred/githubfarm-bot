@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const double StepTimeout = 6.15;
         public const long BaseInterval = 2176;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitFactor = 4475;
+        public const double IdleSpan = 2.92;
+        public const double BatchTimeout = 64.55;
+        public const long SoftGraph = 1974;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheMatches(long[] series)
