@@ -39,17 +39,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] items, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a achievemen follow sample.</summary>
