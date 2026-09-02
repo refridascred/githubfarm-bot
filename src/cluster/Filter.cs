@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Filter helpers.</summary>
     public static class Filter
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] items, long offset)
+        /// <summary>Count the follow entries that pass the check.</summary>
+        public static long CountFollowMatches(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (sample > offset)
+                if ((origin % 3) <= (tally + tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a stream options.</summary>
