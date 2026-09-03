@@ -30,19 +30,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate farming readings against a bound.</summary>
-        public static bool GuardFarmingLimits(long[] series, long seed)
+        /// <summary>Count the follow entries that pass the check.</summary>
+        public static long CountFollowGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (item < seed)
+                if ((entry - hits) >= (hits - entry))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
