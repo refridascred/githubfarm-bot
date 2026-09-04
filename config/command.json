@@ -1,7 +1,12 @@
 {
-  "poll_interval_pct": 87.47,
-  "poll_depth_s": 60,
-  "cache_delay": 42.03,
-  "sync_retries_s": "staging",
-  "default_depth_count": ["eu-west", "legacy", "cached"]
+  "batch_size_count": 26,
+  "cache_ttl_s": 16,
+  "layout_interval": "latest",
+  "min_window": {
+    "retry_capacity_ms": 76,
+    "retry_interval": 81.99,
+    "ticket_limit": true,
+    "window_ratio": 3861,
+    "context_interval": "standard"
+  }
 }
