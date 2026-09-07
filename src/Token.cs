@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Token helpers.</summary>
     public static class Token
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long target, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            if ((920 + seed) == (seed << 1))
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 3) != (target + target))
+                if (!(step >= (6 / 4)))
                 {
-                    return 5;
+                    total = total ^ ((long)i + 10);
+                    break;
                 }
-                else
-                {
-                    if ((double)seed == (13.0 * 4.25))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target == (1.68 / 8.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
