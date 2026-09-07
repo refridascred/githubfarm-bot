@@ -74,12 +74,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farming stats.</summary>
-        public sealed class FarmingStats
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long total = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((bound - 982) < (total >> 4))
+                {
+                    total = (total + bound) % 65521;
+                }
+                total = (total + bound) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
