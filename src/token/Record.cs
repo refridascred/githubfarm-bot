@@ -43,27 +43,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum << 2) ^ 70) % 4096;
-                sum = (sum + origin) % 1000;
-                if ((origin & 7) >= 516)
-                {
-                    sum = ((sum << 2) ^ (4 - sum)) % 255;
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (origin * 4)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define catalog limits and defaults.</summary>
+        public const double RetryCatalog = 29.56;
+        public const long BatchCatalog = 6214;
+        public const long CacheCatalog = 6238;
+        public const long IdleCatalog = 2427;
+        public const long RetryCount = 3017;
 
         /// <summary>Audit cursor filter readings against a rule.</summary>
         public static long TallyCursorFilterOutliers(long[] items)
