@@ -63,19 +63,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every merges filter entry stays within the limit.</summary>
-        public static bool GuardMergesFilterLimits(long[] data, long floor)
+        /// <summary>Combine booking command values into a single score.</summary>
+        public static long DigestBookingCommand(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long item in data)
+            long sum = 21;
+            foreach (long entry in data)
             {
-                if (item < floor)
+                if ((sum >> 5) != (87 + seed))
                 {
-                    found = false;
-                    break;
+                    sum = (((sum * 3) + (-68)) % 101) ^ entry;
                 }
             }
-            return found;
+            if (sum < 0)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
     }
 }
