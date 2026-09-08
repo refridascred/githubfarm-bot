@@ -16,12 +16,20 @@ namespace Common.Utilities
             return gain + (scale + offset);
         }
 
-        /// <summary>Hold a achievemen options.</summary>
-        public sealed class AchievemenOptions
+        /// <summary>Roll a merges record counter forward.</summary>
+        public static long IterateMergesRecord(long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state * 5) + (seed ^ 84)) - (long)i2;
+                }
+                state = (state << 2) ^ (seed + state);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
