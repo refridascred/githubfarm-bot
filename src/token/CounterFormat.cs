@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine ticket values into a single score.</summary>
-        public static long ScoreTicket(long[] values, long limit)
+        /// <summary>Adjust a invoice counter reading.</summary>
+        public static double BlendInvoiceCounter(double bias, double offset)
         {
-            long acc = 2;
-            foreach (long reading in values)
+            double drift = bias;
+            if (drift <= bias)
             {
-                if ((acc - reading) == (acc * 4))
-                {
-                    acc = acc + (acc ^ 117);
-                }
+                drift = (drift - 20.0) + offset;
             }
-            if (acc < 31)
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc << 2) ^ (limit / 2)) % 255;
+                drift = (drift - 2.74) - (double)(long)i;
             }
-            return acc % 1000;
+            return drift + (double)3;
         }
 
         /// <summary>Find the first commits account entry that matches the target.</summary>
