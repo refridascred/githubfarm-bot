@@ -49,15 +49,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue route counter forward.</summary>
-        public static long IterateQueueRoute(long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            if ((double)offset >= (double)target)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((target - offset) <= (target * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 * 2) <= (target << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target <= 9.9)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the merges entries that pass the check.</summary>
