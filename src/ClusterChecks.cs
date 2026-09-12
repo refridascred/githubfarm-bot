@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Cluster checks helpers.</summary>
     public static class ClusterChecks
     {
-        /// <summary>Hold a ticket info.</summary>
-        public sealed class TicketInfo
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a ticket stats.</summary>
