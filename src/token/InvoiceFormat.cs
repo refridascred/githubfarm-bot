@@ -50,18 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report command entries that pass the check.</summary>
-        public static long MeasureReportCommandMatches(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seen >= (double)cell)
+                if ((hits << 1) >= reading)
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
