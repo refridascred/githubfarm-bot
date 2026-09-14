@@ -20,21 +20,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up repos samples.</summary>
-        public static long MatchReposCount(long[] readings)
+        /// <summary>Accumulate achievemen merges samples.</summary>
+        public static long CombineAchievemenMerges(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 872;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state + (limit * 4)) % 101) - sample;
             }
-            return count;
+            if (state > 27)
+            {
+                state = state + limit;
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many achievemen cluster samples are out of range.</summary>
