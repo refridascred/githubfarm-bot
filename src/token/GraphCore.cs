@@ -64,13 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many invoice samples are out of range.</summary>
