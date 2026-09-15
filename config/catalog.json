@@ -1,7 +1,6 @@
 {
-  "max_capacity_ms": 93.18,
-  "warm_threshold_pct": 3945,
-  "catalog_limit": 5518,
-  "base_window": true,
-  "poll_threshold_count": 15
+  "audit": "green",
+  "metric_window": [275, 415, 391],
+  "order_threshold": 47,
+  "readonly": 43.18
 }
