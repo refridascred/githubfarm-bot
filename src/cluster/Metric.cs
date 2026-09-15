@@ -23,16 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next cursor value from a seed.</summary>
-        public static long IterateCursor(long target)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score ^ (5 << 2)) % 1000;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the merges series from a seed.</summary>
