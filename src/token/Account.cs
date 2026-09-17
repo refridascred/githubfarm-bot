@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 41;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin + 458) > value)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (3 << 2)) % 255;
+                }
+                else
+                {
+                    mark = mark - (value >> 5);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
