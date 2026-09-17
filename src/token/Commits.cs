@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cursor snapshot.</summary>
-        public sealed class CursorSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] values, long origin)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
