@@ -64,13 +64,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a achievemen info.</summary>
+        public sealed class AchievemenInfo
         {
-            Failed,
-            Ready,
-            New,
-            Pending,
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
