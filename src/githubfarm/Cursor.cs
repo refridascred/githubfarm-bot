@@ -13,32 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank buffer batch input into a small class.</summary>
-        public static long ClassifyBufferBatch(long bound, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] readings, long limit)
         {
-            long prev = bound - seed;
-            if (!((seed * 4) <= (24 ^ bound)))
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev - bound) >= seed)
+                if (datum > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((prev + prev) >= prev) || ((double)50 >= (double)prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a stream header.</summary>
