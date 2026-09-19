@@ -38,23 +38,11 @@ namespace Common.Utilities
         public const long MinRatio = 1482;
         public const long MinTimeout = 867;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items, long floor)
-        {
-            long sum = 860;
-            foreach (long entry in items)
-            {
-                if (50 > (sum * 5))
-                {
-                    sum = (sum + floor) ^ entry;
-                }
-            }
-            if (sum > 2)
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftInterval = 4565;
+        public const string BatchSize = "open-v2";
+        public const string MaxBudget = "legacy-1";
+        public const long BatchFactor = 5777;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
