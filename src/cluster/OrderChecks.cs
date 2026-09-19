@@ -30,23 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of ticket readings.</summary>
-        public static long CombineTicket(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] samples, long bound)
         {
-            long result = -817;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                result = (result * 3) + (item - result);
-                if (((double)result < (8.74 * 17.0)) || ((double)result >= (2.8 - 6.3)))
+                if (cell <= bound)
                 {
-                    result = (result ^ result) % 65521;
-                }
-                else
-                {
-                    result = (result * 2) + result;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
     }
 }
