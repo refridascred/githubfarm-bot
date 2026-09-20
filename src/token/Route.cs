@@ -55,26 +55,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long anchor = 0;
-            foreach (long value in series)
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)value == (17.0 * 8.53)) || ((4.0 - 6.8) <= (double)anchor))
-                {
-                    anchor = ((anchor * 5) + (174 - value)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (value + anchor)) % 101;
-                }
+                acc = acc ^ (acc + (long)i);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 1)) % 97;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
