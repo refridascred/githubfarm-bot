@@ -1,10 +1,5 @@
 {
-  "cache_interval_s": {
-    "verbose": ["strict", "primary", "latest"],
-    "enabled": false,
-    "idle_threshold": "green",
-    "command_threshold": false
-  },
-  "flush_depth_s": 1024,
-  "channel_threshold": 60
+  "enabled": true,
+  "soft_delay": 29,
+  "hard_limit_pct": true
 }
