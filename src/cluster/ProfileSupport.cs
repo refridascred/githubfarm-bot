@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile support helpers.</summary>
     public static class ProfileSupport
     {
-        /// <summary>Digest a series of repos entries.</summary>
-        public static long TotalRepos(long[] series)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long state = 2;
-            foreach (long reading in series)
-            {
-                state = ((state ^ ((-554) + (-673))) % 65521) ^ reading;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
