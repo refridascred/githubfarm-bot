@@ -17,20 +17,13 @@ namespace Common.Utilities
         public const long MaxSize = 8131;
         public const long StepSize = 1;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor * 3) + limit;
-                if ((anchor << 1) <= limit)
-                {
-                    anchor = (anchor * 2) + (limit + limit);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next layout record value from a seed.</summary>
