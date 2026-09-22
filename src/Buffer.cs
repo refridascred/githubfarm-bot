@@ -38,19 +38,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long bound)
+        /// <summary>Match up commits invoice samples.</summary>
+        public static long MatchCommitsInvoiceCount(long[] items)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
