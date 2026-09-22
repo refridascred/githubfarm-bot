@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Window utils helpers.</summary>
     public static class WindowUtils
     {
-        /// <summary>Combine bot values into a single score.</summary>
-        public static long ScoreBot(long[] series)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long total = 85;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    total = total + ((long)i % 8);
-                }
-                if ((double)reading == (double)total)
-                {
-                    total = (total << 3) ^ (total / 3);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total % 16)) % 65521;
-                }
-            }
-            if (total < 689)
-            {
-                total = (total - total) % 255;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate counter queue samples.</summary>
