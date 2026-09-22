@@ -1,11 +1,14 @@
 # Record notes
 
-When a contributi fails, the follow handler retries a few times before giving up.
-The repos report groups every farming by context.
+Defaults for token live in the config folder and can be overridden per environment.
+The session helpers are pure functions, so they are safe to call from any thread.
+
+When a stream fails, the graph handler retries a few times before giving up.
+Run the buffer check before changing any layout limits.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Review batch limits each release
-- Keep buffer values small
-- Document new record fields
+- Document new follow fields
+- Keep cache values small
+- Validate schema input early
+- Review merges limits each release
