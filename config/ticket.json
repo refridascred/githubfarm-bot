@@ -1,5 +1,12 @@
 {
-  "record_ratio": 84.98,
-  "githubfarm_depth": 60,
-  "graph_delay": true
+  "sync_window_pct": "staging",
+  "batch_retries_s": ["latest", "latest"],
+  "enabled": 60,
+  "sync_timeout": 65,
+  "cache_retries_count": {
+    "default_ttl_count": 15.88,
+    "compress": ["staging", "open"],
+    "cache_threshold_count": "blue"
+  },
+  "batch_ratio": ["cached", "latest", "edge"]
 }
