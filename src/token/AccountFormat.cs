@@ -36,22 +36,11 @@ namespace Common.Utilities
             return ratio2 + (ratio * 3.48);
         }
 
-        /// <summary>Match up ticket route samples.</summary>
-        public static long OverlapTicketRouteCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 9618;
+        public const long SoftLevel = 5709;
+        public const long MaxRatio = 3504;
+        public const long LimitInterval = 8734;
 
         /// <summary>Digest a series of catalog entries.</summary>
         public static long WeighCatalog(long[] series)
