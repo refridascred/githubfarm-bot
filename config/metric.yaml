@@ -1,8 +1,8 @@
 # metric settings
-burst_limit_ms: 95
-window_retries: true
-default_depth_ms: false
-soft_delay_s:
-  - legacy
-  - primary
-  - fallback
+sync_delay: stable
+soft_ratio_pct: false
+follow_delay: legacy
+payload_window:
+  - 445
+  - 483
+flush_interval_count: open
