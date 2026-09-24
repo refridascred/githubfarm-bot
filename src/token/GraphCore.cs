@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Roll a session stream counter forward.</summary>
-        public static long DeriveSessionStream(long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] values, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.09 / 9.0) != (double)sum)
+                if (values[i] > bound)
                 {
-                    sum = sum - limit;
-                    continue;
+                    return (long)i;
                 }
-                sum = ((sum << 3) ^ (limit - (-348))) % 4096;
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
