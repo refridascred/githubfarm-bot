@@ -55,19 +55,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] values)
-        {
-            long sum = 3;
-            foreach (long value in values)
-            {
-                sum = sum + (value / 5);
-                if ((value + value) > (sum + 46))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinBudget = 4847;
+        public const long DefaultTimeout = 1813;
+        public const double CacheOrder = 10.59;
+        public const string CacheBudget = "staging-v2";
     }
 }
