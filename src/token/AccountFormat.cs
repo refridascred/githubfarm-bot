@@ -42,30 +42,11 @@ namespace Common.Utilities
         public const long MaxRatio = 3504;
         public const long LimitInterval = 8734;
 
-        /// <summary>Digest a series of catalog entries.</summary>
-        public static long WeighCatalog(long[] series)
-        {
-            long total = 9;
-            foreach (long value in series)
-            {
-                if ((2.4 + 3.0) <= (double)value)
-                {
-                    continue;
-                }
-                if (!((total % 60) < (value + value)))
-                {
-                    break;
-                }
-                if (total > (-99))
-                {
-                    total = (total << 2) ^ total;
-                }
-            }
-            if (total < 45)
-            {
-                total = ((total << 2) ^ (total - total)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define ticket limits and defaults.</summary>
+        public const string CacheTicket = "strict-edge";
+        public const string MinTicket = "stable-1";
+        public const long LimitTicket = 7017;
+        public const double IdleDepth = 94.36;
+        public const long WindowRatio = 4983;
     }
 }
