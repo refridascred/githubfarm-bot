@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double StepWidth = 71.72;
         public const long MaxScore = 8583;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] data, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
+                if (samples[i] < step)
                 {
                     return (long)i;
                 }
