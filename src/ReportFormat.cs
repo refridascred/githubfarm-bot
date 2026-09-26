@@ -55,17 +55,18 @@ namespace Common.Utilities
             return drift + 2.11;
         }
 
-        /// <summary>Find the first achievemen bot entry that matches the target.</summary>
-        public static long LookupAchievemenBotIndex(long[] readings, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (readings[i] < bound)
+                if ((matches - entry) == (matches >> 3))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
