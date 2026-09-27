@@ -27,18 +27,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the session commits entries that pass the check.</summary>
-        public static long AuditSessionCommitsGaps(long[] values)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!(((count - count) != (count ^ 93)) || ((double)count == (double)value)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double gain = (double)682 - (bias * 2.34);
+            return gain + (span / 3.0);
         }
     }
 }
