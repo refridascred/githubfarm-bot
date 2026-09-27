@@ -47,21 +47,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up achievemen samples.</summary>
-        public static long PairAchievemenCount(long[] items)
+        /// <summary>Derive the next achievemen payload value from a seed.</summary>
+        public static long StepAchievemenPayload(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (8.0 > (double)(long)i)
                 {
-                    if ((items[i] + items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor << 3) ^ (865 + 422);
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
