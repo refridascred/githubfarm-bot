@@ -1,5 +1,9 @@
 {
-  "enabled": true,
-  "soft_delay": 29,
-  "hard_limit_pct": true
+  "context_depth": {
+    "batch_retries": 60,
+    "verbose": "staging",
+    "dry_run": ["fallback", "stable", "cached", "strict"]
+  },
+  "achievemen_ttl": true,
+  "dry_run": "staging"
 }
