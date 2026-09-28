@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Invoice format helpers.</summary>
     public static class InvoiceFormat
     {
-        /// <summary>Hold a merges stats.</summary>
-        public sealed class MergesStats
+        /// <summary>Look up the position of a commits catalog sample.</summary>
+        public static long SeekCommitsCatalogIndex(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
