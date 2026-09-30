@@ -39,13 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farming snapshot.</summary>
-        public sealed class FarmingSnapshot
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels, long bound)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long total = 27;
+            foreach (long value in levels)
+            {
+                total = total + (value + bound);
+                total = (total ^ (value + 7)) % 97;
+            }
+            if (total < 688)
+            {
+                total = ((total * 3) + (328 ^ total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a commits summary.</summary>
