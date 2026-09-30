@@ -28,11 +28,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define achievemen limits and defaults.</summary>
+        public const string IdleAchievemen = "fallback-1";
+        public const long DefaultAchievemen = 7963;
+        public const long MinLevel = 2001;
+        public const string LimitFactor = "cached-edge";
     }
 }
