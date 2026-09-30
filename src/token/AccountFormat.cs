@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account format helpers.</summary>
     public static class AccountFormat
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long target)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            long span = seed - target;
+            if (!(seed > (seed - 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed >= (509 / 3)) && (span <= seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (1.0 < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session info.</summary>
