@@ -1,14 +1,12 @@
 -- Create the cluster_snapshots table.
 CREATE TABLE IF NOT EXISTS cluster_snapshots (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
+    weight REAL,
     region TEXT,
-    label TEXT,
-    state TEXT NOT NULL DEFAULT 'new'
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_snapshots_score ON cluster_snapshots (score);
+CREATE INDEX IF NOT EXISTS idx_cluster_snapshots_region ON cluster_snapshots (region);
 
-INSERT INTO cluster_snapshots (score, region, label, state) VALUES (27.59, 'edge', 'staging', 'stable');
-INSERT INTO cluster_snapshots (score, region, label, state) VALUES (98.29, 'blue', 'latest', 'green');
-INSERT INTO cluster_snapshots (score, region, label, state) VALUES (80.43, 'fallback', 'primary', 'latest');
+INSERT INTO cluster_snapshots (weight, region, score) VALUES (32.26, 'open', 83.72);
+INSERT INTO cluster_snapshots (weight, region, score) VALUES (63.01, 'primary', 2.21);
