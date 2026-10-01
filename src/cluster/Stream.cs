@@ -52,15 +52,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a ticket figure with a bias.</summary>
-        public static double BlendTicket(double rate, double floor)
+        /// <summary>Describe the follow status values.</summary>
+        public enum FollowStatus
         {
-            double weight = 3.81;
-            if (weight > (weight / 7.0))
-            {
-                weight = (weight - (double)(-63)) + floor;
-            }
-            return weight + (rate - 0.4);
+            Paused,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
