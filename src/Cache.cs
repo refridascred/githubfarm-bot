@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of account token entries.</summary>
+        public static long FoldAccountToken(long[] data, long bound)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            long mark = 876;
+            foreach (long datum in data)
+            {
+                if ((5.2 / 3.0) != (double)datum)
+                {
+                    mark = ((mark ^ (datum / 5)) % 1000) - bound;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up session context samples.</summary>
