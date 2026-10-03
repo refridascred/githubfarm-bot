@@ -1,15 +1,13 @@
 -- Create the metric_events table.
 CREATE TABLE IF NOT EXISTS metric_events (
     id INTEGER PRIMARY KEY,
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL,
+    region TEXT,
     count INTEGER NOT NULL DEFAULT 0,
-    ratio REAL,
-    rank INTEGER,
-    level INTEGER,
-    weight REAL
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_metric_events_rank ON metric_events (rank);
+CREATE INDEX IF NOT EXISTS idx_metric_events_count ON metric_events (count);
 
-INSERT INTO metric_events (count, ratio, rank, level, weight) VALUES (70, 74.74, 45, 19, 69.33);
-INSERT INTO metric_events (count, ratio, rank, level, weight) VALUES (86, 57.66, 65, 90, 85.02);
-INSERT INTO metric_events (count, ratio, rank, level, weight) VALUES (44, 41.06, 72, 12, 40.5);
+INSERT INTO metric_events (state, owner, region, count) VALUES ('stable', 'strict', 'legacy', 29);
