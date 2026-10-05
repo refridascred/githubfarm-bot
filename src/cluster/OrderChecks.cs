@@ -30,19 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseWidth = "open-edge";
+        public const long WindowFilter = 4211;
+        public const string WindowRatio = "standard-1";
+        public const string LimitFilter = "strict";
     }
 }
