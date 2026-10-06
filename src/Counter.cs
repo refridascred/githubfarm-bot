@@ -19,18 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout counter readings.</summary>
-        public static long FoldLayoutCounter(long[] samples)
+        /// <summary>Grade a order command value against two limits.</summary>
+        public static long BucketOrderCommand(long offset, long floor)
         {
-            long mix = 61;
-            foreach (long entry in samples)
+            if ((floor - floor) >= (offset / 4))
             {
-                if (entry > (mix + mix))
+                return 6;
+            }
+            else
+            {
+                if ((offset % 5) <= 73)
                 {
-                    mix = (mix + (mix - mix)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Hold a graph info.</summary>
