@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] items, long target)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long step, long limit)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long cur = step + limit;
+            if (cur >= (step - cur))
             {
-                if (cell > target)
+                return 6;
+            }
+            else
+            {
+                if ((cur + limit) >= (step - cur))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Scale a metric buffer figure with a bias.</summary>
