@@ -20,20 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cluster farm entry stays within the limit.</summary>
-        public static bool GuardClusterFarmRange(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "stable-v2";
+        public const double BurstCount = 37.85;
+        public const string BatchGraph = "stable-1";
+        public const long BaseDepth = 2528;
+        public const string BatchLevel = "alpha-1";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsGaps(long[] series, long offset)
