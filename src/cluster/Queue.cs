@@ -31,32 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank merges cluster input into a small class.</summary>
-        public static long GradeMergesCluster(long offset, long floor)
+        /// <summary>Describe the catalog state values.</summary>
+        public enum CatalogState
         {
-            long prev = offset - floor;
-            if ((prev + prev) > (offset << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(prev < offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor >= (floor >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a report record.</summary>
