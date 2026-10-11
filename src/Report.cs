@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Rank booking stream input into a small class.</summary>
-        public static long ClassifyBookingStream(long target, long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long limit)
         {
-            long step2 = target - step;
-            if ((6.69 - 2.0) >= (double)step2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (target < (5 + target))
+                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (67 <= (target + 263))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step2 < (0.11 / 9.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
