@@ -28,12 +28,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a ticket record.</summary>
+        public sealed class TicketRecord
         {
-            Ready,
-            Synced,
-            Done,
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
