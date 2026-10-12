@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Bot helpers.</summary>
     public static class Bot
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
