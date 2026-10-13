@@ -1,8 +1,8 @@
 # metric settings
-sync_delay: stable
-soft_ratio_pct: false
-follow_delay: legacy
-payload_window:
-  - 445
-  - 483
-flush_interval_count: open
+cache_timeout: 30
+persist: true
+default_depth_ms:
+  - 362
+  - 15
+  - 188
+  - 71
