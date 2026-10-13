@@ -66,13 +66,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long step)
         {
-            Synced,
-            Dropped,
-            Stale,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
