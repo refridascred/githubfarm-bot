@@ -1,8 +1,10 @@
 {
-  "warm_capacity_count": 500,
-  "enabled": 81,
-  "base_window": 250,
-  "idle_ratio": 30.29,
-  "retry_limit_count": 6968,
-  "command_retries": 1024
+  "flush_window": false,
+  "cache_retries_pct": "latest",
+  "persist": 43.99,
+  "ticket_threshold": {
+    "command_limit": 42,
+    "default_retries_ms": 8.64,
+    "payload_threshold": ["staging", "open", "latest", "strict"]
+  }
 }
