@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Window utils helpers.</summary>
     public static class WindowUtils
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate counter queue samples.</summary>
