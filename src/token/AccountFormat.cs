@@ -62,11 +62,22 @@ namespace Common.Utilities
         public const long MaxRatio = 3504;
         public const long LimitInterval = 8734;
 
-        /// <summary>Define ticket limits and defaults.</summary>
-        public const string CacheTicket = "strict-edge";
-        public const string MinTicket = "stable-1";
-        public const long LimitTicket = 7017;
-        public const double IdleDepth = 94.36;
-        public const long WindowRatio = 4983;
+        /// <summary>Measure how many schema channel samples are out of range.</summary>
+        public static long TallySchemaChannelHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((3.16 * 2.22) > (double)matches)
+                {
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
