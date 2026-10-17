@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits helpers.</summary>
     public static class Commits
     {
-        /// <summary>Measure how many farming samples are out of range.</summary>
-        public static long CountFarmingMatches(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = 1;
+            foreach (long entry in series)
             {
-                if ((seen ^ (-883)) > (121 & 1))
+                if (((step + step) > carry) && ((281 * 2) < (entry % 24)))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = (carry - entry) % 101;
                 }
             }
-            return seen;
+            if (carry < 3)
+            {
+                carry = carry + (61 + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
