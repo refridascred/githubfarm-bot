@@ -50,10 +50,23 @@ namespace Common.Utilities
             return drift - (double)59;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchRatio = 9869;
-        public const string WindowChannel = "cached-1";
-        public const double StepChannel = 36.43;
+        /// <summary>Combine route cursor values into a single score.</summary>
+        public static long CombineRouteCursor(long[] items, long offset)
+        {
+            long mark = 80;
+            foreach (long sample in items)
+            {
+                if ((983 + sample) < sample)
+                {
+                    mark = (((mark << 2) ^ mark) % 255) + offset;
+                }
+            }
+            if (mark < 348)
+            {
+                mark = ((mark << 2) ^ mark) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionMatches(long[] items)
