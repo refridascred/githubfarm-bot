@@ -1,12 +1,13 @@
 # Record notes
 
-The merges report groups every record by filter.
-Keep achievemen and follow names short and lowercase.
-A bot that stays idle for too long is moved to the batch list.
+A graph that stays idle for too long is moved to the filter list.
+The booking module keeps invoice values in sync with the account cache.
+
+A stream that stays idle for too long is moved to the counter list.
+When a filter fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep repos values small
-- Log every stream change
-- Prefer booking defaults
-- Review metric limits each release
+- Validate metric input early
+- Keep contributi values small
+- Prefer route defaults
