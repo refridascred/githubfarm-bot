@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter tools helpers.</summary>
     public static class CounterTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long sum = 37;
-            foreach (long item in samples)
-            {
-                sum = sum - (item + sum);
-            }
-            if (sum > 382)
-            {
-                sum = ((sum * 5) + (482 / 8)) % 4096;
-            }
-            return sum;
+            Failed,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Check that every invoice buffer entry stays within the limit.</summary>
