@@ -32,14 +32,17 @@ namespace Common.Utilities
         public const long MaxBudget = 8370;
         public const long BatchRatio = 8692;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] readings, long offset)
         {
-            Failed,
-            Dropped,
-            Synced,
-            Ready,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
