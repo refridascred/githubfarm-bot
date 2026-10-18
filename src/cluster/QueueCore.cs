@@ -45,21 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Project the next follow value.</summary>
+        public static double SmoothFollow(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = weight;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (double)(long)i;
             }
-            return hits;
+            return mean - span;
         }
 
         /// <summary>Hold a farm entry.</summary>
