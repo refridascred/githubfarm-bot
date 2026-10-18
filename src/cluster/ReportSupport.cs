@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Grade a counter queue value against two limits.</summary>
-        public static long GradeCounterQueue(long target, long offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long bound = target + offset;
-            if ((bound ^ bound) != (bound * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)offset >= (double)target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3.2 * 5.9) > (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
