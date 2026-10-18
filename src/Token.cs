@@ -48,13 +48,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long step)
         {
-            public double Score { get; set; }
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
