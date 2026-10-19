@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Repos helpers.</summary>
     public static class Repos
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((93 + item) != (hits >> 3))
+                if ((((entry - entry) >= (entry << 2)) && (6 <= (tally & 255))) || ((entry >> 2) != (entry % 24)))
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
