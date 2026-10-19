@@ -1,12 +1,8 @@
 {
-  "githubfarm_retries": {
-    "layout_timeout": 250,
-    "max_threshold_pct": ["green", "staging"],
-    "default_retries": "primary",
-    "hard_capacity": "green"
-  },
-  "poll_capacity": 86,
-  "idle_delay_s": 2568,
-  "compress": false,
-  "verbose": 60
+  "compress": 9358,
+  "hard_threshold": "edge",
+  "commits_retries": 22,
+  "warm_delay": true,
+  "route_capacity": [193, 226],
+  "warm_depth_pct": 4619
 }
