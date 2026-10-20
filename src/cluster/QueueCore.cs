@@ -45,15 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next follow value.</summary>
-        public static double SmoothFollow(double weight, double span)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double mean = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - span;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a farm entry.</summary>
