@@ -19,24 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order command value against two limits.</summary>
-        public static long BucketOrderCommand(long offset, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            if ((floor - floor) >= (offset / 4))
+            long score = -1;
+            foreach (long reading in levels)
             {
-                return 6;
+                score = ((score << 3) ^ reading) % 97;
             }
-            else
-            {
-                if ((offset % 5) <= 73)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a graph info.</summary>
