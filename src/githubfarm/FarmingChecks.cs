@@ -50,12 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long origin)
         {
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
