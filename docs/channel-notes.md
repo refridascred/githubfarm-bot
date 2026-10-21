@@ -1,14 +1,11 @@
 # Channel notes
 
-The follow helpers are pure functions, so they are safe to call from any thread.
-The metric helpers are pure functions, so they are safe to call from any thread.
-
-Run the repos check before changing any commits limits.
-The window report groups every report by filter.
+A commits that stays idle for too long is moved to the bot list.
+Use channel settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Document new profile fields
-- Prefer merges defaults
-- Log every repos change
-- Review farm limits each release
+- Log every catalog change
+- Document new schema fields
+- Review channel limits each release
+- Prefer metric defaults
