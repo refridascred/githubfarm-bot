@@ -1,15 +1,20 @@
 # follow settings
-burst_delay: 44.61
-githubfarm_window:
-  hard_limit_pct: 28
-  poll_retries_ms:
-    - latest
-    - legacy
-    - strict
-    - cached
-  strict: 100
-  compress: true
-flush_ttl_pct:
-  - 425
-  - 159
-  - 125
+token_ttl:
+  - latest
+  - blue
+compress: false
+cache_delay_s:
+  default_size: legacy
+  cache_size_pct: edge
+  warm_timeout_count: cached
+  min_window_ms:
+    - 472
+    - 446
+    - 385
+    - 237
+  flush_size: blue
+  retry_window: true
+persist:
+  - 153
+  - 242
+  - 119
