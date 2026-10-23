@@ -52,19 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every bot booking entry stays within the limit.</summary>
-        public static bool VerifyBotBookingBounds(long[] values, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (cell > seed)
+                if (7 >= (tally ^ cell))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count invoice pairs that satisfy a relation.</summary>
