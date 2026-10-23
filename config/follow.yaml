@@ -1,20 +1,7 @@
 # follow settings
-token_ttl:
-  - latest
-  - blue
-compress: false
-cache_delay_s:
-  default_size: legacy
-  cache_size_pct: edge
-  warm_timeout_count: cached
-  min_window_ms:
-    - 472
-    - 446
-    - 385
-    - 237
-  flush_size: blue
-  retry_window: true
-persist:
-  - 153
-  - 242
-  - 119
+poll_timeout:
+  - local
+  - standard
+ticket_capacity: 80
+idle_size_pct: 59
+base_window: true
