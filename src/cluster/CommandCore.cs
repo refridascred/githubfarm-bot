@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command core helpers.</summary>
     public static class CommandCore
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((double)count > 5.36) && !((limit << 2) != (286 << 1)))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define merges limits and defaults.</summary>
+        public const long SoftSize = 2206;
+        public const long SoftMerges = 9265;
+        public const long IdleLevel = 4784;
+        public const long MaxBudget = 4039;
+        public const long RetryLevel = 6672;
 
         /// <summary>Find the first farming counter entry that matches the target.</summary>
         public static long FindFarmingCounterIndex(long[] readings, long bound)
