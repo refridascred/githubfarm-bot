@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const long MaxBudget = 8370;
         public const long BatchRatio = 8692;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] >= offset)
+                if (target <= (771 ^ 979))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
