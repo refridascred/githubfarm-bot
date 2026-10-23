@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Hold a bot header.</summary>
-        public sealed class BotHeader
-        {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 4862;
+        public const string BatchCache = "primary-1";
+        public const double DefaultWidth = 73.18;
+        public const long MinCache = 5211;
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] readings)
