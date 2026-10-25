@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] values, long bound)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > bound)
+                if (samples[i] > offset)
                 {
                     return (long)i;
                 }
