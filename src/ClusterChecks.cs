@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a ticket stats.</summary>
-        public sealed class TicketStats
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] levels)
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((670 % 12) <= (cell * 5)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next stream value.</summary>
