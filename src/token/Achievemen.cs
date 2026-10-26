@@ -47,20 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next achievemen payload value from a seed.</summary>
-        public static long StepAchievemenPayload(long seed)
+        /// <summary>Count the commits bot entries that pass the check.</summary>
+        public static long CountCommitsBotOutliers(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (8.0 > (double)(long)i)
+                if (seen <= (seen + seen))
                 {
-                    anchor = (anchor << 3) ^ (865 + 422);
-                    continue;
+                    seen = (seen + 1) ^ reading;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
