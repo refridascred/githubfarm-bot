@@ -83,19 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the merges entries that pass the check.</summary>
-        public static long CountMergesGaps(long[] levels, long limit)
+        /// <summary>Match up session filter samples.</summary>
+        public static long PairSessionFilterCount(long[] levels)
         {
             long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count % 12) < (543 - count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 1) ^ reading) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
