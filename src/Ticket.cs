@@ -28,11 +28,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            Synced,
+            Dropped,
+            Locked,
+            Stale,
         }
     }
 }
