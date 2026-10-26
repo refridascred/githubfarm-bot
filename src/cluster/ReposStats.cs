@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Repos stats helpers.</summary>
     public static class ReposStats
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values)
         {
-            Closed,
-            Dropped,
-            New,
+            long sum = 7;
+            foreach (long item in values)
+            {
+                if ((20 - sum) == (item << 1))
+                {
+                    sum = sum ^ (item / 7);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
