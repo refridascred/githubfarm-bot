@@ -48,22 +48,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] items)
+        /// <summary>Project the next stream cluster value.</summary>
+        public static double ScaleStreamCluster(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double bias = 4.9;
+            if (bias <= (double)2)
             {
-                if (matches >= (581 % 97))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = (bias - bias) - rate;
             }
-            return matches;
+            else
+            {
+                bias = bias + 10.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (span / 7.0);
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
