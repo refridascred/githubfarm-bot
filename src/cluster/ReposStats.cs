@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Repos stats helpers.</summary>
     public static class ReposStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] items)
         {
-            long sum = 7;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((20 - sum) == (item << 1))
+                if (((620 + 30) >= (hits + item)) && ((6 << 2) > (hits + item)))
                 {
-                    sum = sum ^ (item / 7);
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
