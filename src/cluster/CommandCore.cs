@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
