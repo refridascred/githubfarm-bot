@@ -50,12 +50,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 1096;
-        public const string LimitBatch = "cached-edge";
-        public const long MaxBatch = 8878;
-        public const string DefaultBatch = "standard-1";
-        public const double HardLevel = 37.06;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Combine profile filter values into a single score.</summary>
         public static long ScoreProfileFilter(long[] levels)
