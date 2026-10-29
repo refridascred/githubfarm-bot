@@ -36,17 +36,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next catalog value from a seed.</summary>
-        public static long DeriveCatalog(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total + (389 % 100)) % 97;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitTimeout = 51.76;
+        public const string IdleDepth = "latest";
+        public const string DefaultCount = "staging-1";
+        public const string WindowScore = "staging";
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] items, long seed)
