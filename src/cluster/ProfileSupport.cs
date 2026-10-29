@@ -38,12 +38,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Rank repos input into a small class.</summary>
+        public static long BucketRepos(long limit, long bound)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            if (!(limit < (bound % 97)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((bound + limit) > (bound << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 16) < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((limit + 71) > bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
