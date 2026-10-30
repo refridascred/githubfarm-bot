@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Window utils helpers.</summary>
     public static class WindowUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseRatio = 1833;
+        public const long BatchRatio = 8704;
+        public const string BurstLevel = "cached-1";
+        public const double LimitCount = 17.5;
+        public const long BaseFactor = 2305;
 
         /// <summary>Accumulate counter queue samples.</summary>
         public static long DigestCounterQueue(long[] readings, long origin)
