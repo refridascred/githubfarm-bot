@@ -1,8 +1,20 @@
 {
-  "compress": 9358,
-  "hard_threshold": "edge",
-  "commits_retries": 22,
-  "warm_delay": true,
-  "route_capacity": [193, 226],
-  "warm_depth_pct": 4619
+  "persist": 3.15,
+  "idle_timeout_count": 30,
+  "strict": "strict",
+  "batch_timeout": true,
+  "order_window": [388, 119],
+  "warm_size_count": {
+    "merges_size": ["standard", "eu-west", "edge"],
+    "queue_limit": 26.21,
+    "strict": "stable",
+    "verbose": {
+      "counter_window": "stable",
+      "token_size": [461, 372, 165, 380],
+      "idle_delay_pct": 30,
+      "base_capacity_s": "edge",
+      "burst_size_pct": true,
+      "base_capacity_pct": [382, 466]
+    }
+  }
 }
