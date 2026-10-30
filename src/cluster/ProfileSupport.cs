@@ -28,14 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] data, long target)
         {
-            Draft,
-            Locked,
-            Active,
-            Paused,
-            Pending,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!((target / 9) < (66 / 5)))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank repos input into a small class.</summary>
