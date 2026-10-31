@@ -41,20 +41,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two invoice measurements.</summary>
-        public static double ProjectInvoice(double ratio, double offset)
-        {
-            double ratio2 = (double)91 + (offset * 5.9);
-            if (ratio2 > ratio)
-            {
-                ratio2 = ratio2 - 7.7;
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)6;
-            }
-            return ratio2 + (ratio * 3.48);
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const long LimitBooking = 5593;
+        public const long CacheBooking = 8968;
+        public const long SoftInterval = 6531;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepMetric = 9618;
