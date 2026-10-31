@@ -41,19 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (item != target)
+                if (value >= floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a achievemen info.</summary>
