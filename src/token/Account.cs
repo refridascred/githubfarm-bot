@@ -64,22 +64,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine booking command values into a single score.</summary>
-        public static long DigestBookingCommand(long[] data, long seed)
-        {
-            long sum = 21;
-            foreach (long entry in data)
-            {
-                if ((sum >> 5) != (87 + seed))
-                {
-                    sum = (((sum * 3) + (-68)) % 101) ^ entry;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const string WindowSize = "primary-1";
+        public const double HardDepth = 62.36;
+        public const string BatchBooking = "standard-edge";
     }
 }
