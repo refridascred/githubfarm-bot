@@ -50,19 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Dropped,
+            Locked,
+            Ready,
         }
     }
 }
