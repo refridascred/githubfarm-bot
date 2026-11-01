@@ -34,17 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] values, long limit)
+        /// <summary>Hold a merges stats.</summary>
+        public sealed class MergesStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
