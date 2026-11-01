@@ -1,12 +1,11 @@
 # Farming notes
 
-Use queue settings to tune how often farm data is refreshed.
-Run the bot check before changing any farming limits.
-The account report groups every ticket by follow.
+Use session settings to tune how often cursor data is refreshed.
+The repos module keeps queue values in sync with the counter cache.
+When a booking fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new commits fields
-- Review catalog limits each release
-- Validate catalog input early
-- Log every catalog change
+- Document new graph fields
+- Validate buffer input early
+- Log every window change
