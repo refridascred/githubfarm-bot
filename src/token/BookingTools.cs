@@ -15,10 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSpan = 1939;
-        public const long MaxPayload = 8674;
-        public const double BurstCount = 13.4;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Check that every repos entry stays within the limit.</summary>
         public static bool ValidateReposRange(long[] data, long offset)
