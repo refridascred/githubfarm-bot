@@ -16,20 +16,22 @@ namespace Common.Utilities
             return gain + (scale + offset);
         }
 
-        /// <summary>Roll a merges record counter forward.</summary>
-        public static long IterateMergesRecord(long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            long mark = 182;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                mark = mark - (sample & 127);
+                if (((sample - mark) == (sample * 4)) && ((mark + mark) >= mark))
                 {
-                    state = ((state * 5) + (seed ^ 84)) - (long)i2;
+                    mark = (mark + (sample * 3)) % 4096;
+                    mark = ((mark << 2) ^ ((-20) - sample)) % 97;
+                    continue;
                 }
-                state = (state << 2) ^ (seed + state);
-                state = ((state * 3) + (long)i) % 4093;
+                mark = (mark + sample) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
