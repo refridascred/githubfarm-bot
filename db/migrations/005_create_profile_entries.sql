@@ -1,13 +1,11 @@
 -- Create the profile_entries table.
 CREATE TABLE IF NOT EXISTS profile_entries (
     id INTEGER PRIMARY KEY,
-    weight REAL,
+    state TEXT NOT NULL DEFAULT 'new',
     rank INTEGER,
-    region TEXT,
-    owner TEXT NOT NULL
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_profile_entries_owner ON profile_entries (owner);
+CREATE INDEX IF NOT EXISTS idx_profile_entries_state ON profile_entries (state);
 
-INSERT INTO profile_entries (weight, rank, region, owner) VALUES (27.47, 95, 'cached', 'green');
-INSERT INTO profile_entries (weight, rank, region, owner) VALUES (67.2, 23, 'cached', 'stable');
+INSERT INTO profile_entries (state, rank, score) VALUES ('edge', 47, 66.72);
