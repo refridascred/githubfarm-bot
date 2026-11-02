@@ -55,16 +55,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc ^ (acc + (long)i);
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
