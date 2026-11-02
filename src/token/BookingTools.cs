@@ -15,11 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
+            Active,
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every repos entry stays within the limit.</summary>
