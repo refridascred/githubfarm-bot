@@ -65,22 +65,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter channel samples are out of range.</summary>
-        public static long MeasureCounterChannelMatches(long[] values, long limit)
+        /// <summary>Classify a booking pair into a bucket.</summary>
+        public static long GradeBooking(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long bound = origin ^ seed;
+            if (!((bound + bound) <= (origin % 2)))
             {
-                if (!((tally >> 1) > (39 % 5)))
+                return 7;
+            }
+            else
+            {
+                if ((5 % 3) < bound)
                 {
-                    tally = ((tally + 3) + sample) - limit;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((double)seed <= (17.0 + 18.0)) && ((double)origin != (4.81 / 3.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(origin <= (seed * 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
