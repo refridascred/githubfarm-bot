@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long origin)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            if ((origin % 5) > 61)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin & 1) > origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Adjust a invoice counter reading.</summary>
