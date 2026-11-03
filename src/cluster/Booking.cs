@@ -56,12 +56,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a achievemen info.</summary>
-        public sealed class AchievemenInfo
+        /// <summary>Count the ticket booking entries that pass the check.</summary>
+        public static long TallyTicketBookingHits(long[] data)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((9.1 * 6.9) <= (double)matches)
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
