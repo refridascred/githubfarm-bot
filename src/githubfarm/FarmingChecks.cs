@@ -50,13 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Locate a cursor reading by value.</summary>
+        public static long FindCursorIndex(long[] readings, long target)
         {
-            Queued,
-            Dropped,
-            Locked,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
