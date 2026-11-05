@@ -34,20 +34,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] series, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] data, long seed)
         {
-            long sum = 474;
-            foreach (long sample in series)
+            long carry = 57;
+            foreach (long datum in data)
             {
-                sum = ((sum * 2) + (sum - sample)) % 101;
-                sum = (sum ^ (sample / 8)) % 97;
+                if ((double)carry <= (0.09 - 9.0))
+                {
+                    carry = carry + seed;
+                    continue;
+                }
+                if ((carry - datum) != (long)data.Length)
+                {
+                    carry = (carry ^ (carry + carry)) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ (seed & 255);
+                }
+                if ((double)carry < (8.4 * 3.88))
+                {
+                    carry = (carry << 2) ^ (1 + seed);
+                }
             }
-            if (sum > 4)
+            if (carry > 40)
             {
-                sum = (sum - offset) % 1000;
+                carry = (carry ^ seed) % 255;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Hold a counter summary.</summary>
