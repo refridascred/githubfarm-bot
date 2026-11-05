@@ -52,22 +52,9 @@ namespace Common.Utilities
         public const long MaxRatio = 3504;
         public const long LimitInterval = 8734;
 
-        /// <summary>Measure how many schema channel samples are out of range.</summary>
-        public static long TallySchemaChannelHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((3.16 * 2.22) > (double)matches)
-                {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 1299;
+        public const long CacheCount = 7597;
+        public const long MinCache = 6863;
     }
 }
