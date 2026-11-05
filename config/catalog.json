@@ -1,6 +1,13 @@
 {
-  "audit": "green",
-  "metric_window": [275, 415, 391],
-  "order_threshold": 47,
-  "readonly": 43.18
+  "burst_delay_pct": {
+    "enabled": ["local", "blue"],
+    "commits_depth": "staging",
+    "hard_ratio": 250,
+    "flush_ratio": "stable",
+    "default_ttl_count": 45.49
+  },
+  "sync_threshold": 1024,
+  "order_capacity": "legacy",
+  "merges_capacity": 500,
+  "cache_capacity": ["blue", "primary", "blue", "legacy"]
 }
