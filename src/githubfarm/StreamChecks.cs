@@ -44,24 +44,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] series, long target)
+        /// <summary>Adjust a window channel reading.</summary>
+        public static double SmoothWindowChannel(double weight, double floor)
         {
-            long acc = 571;
-            foreach (long datum in series)
+            double drift = (floor - 6.83) * 2.9;
+            if (drift <= weight)
             {
-                if ((acc + acc) >= (424 << 2))
-                {
-                    acc = (acc << 3) ^ (acc ^ acc);
-                }
-                else
-                {
-                    acc = (acc ^ target) % 1000;
-                    acc = (acc * 4) + (acc + 82);
-                }
-                acc = (acc * 5) + (datum + 1);
+                drift = drift - (floor * 8.0);
             }
-            return acc;
+            else
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)34) + (double)(long)i;
+            }
+            return drift - floor;
         }
     }
 }
