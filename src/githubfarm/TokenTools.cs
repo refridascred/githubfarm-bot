@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long lane = bound - target;
+            if (bound <= (lane - lane))
             {
-                if ((((item + matches) > matches) || ((item * 2) < (46 & 15))) && ((item >> 3) < matches))
+                return 0;
+            }
+            else
+            {
+                if ((lane & 15) < lane)
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)lane > (6.46 / 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound * 3) == (bound - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
