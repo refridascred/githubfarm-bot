@@ -38,31 +38,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
-        {
-            long acc = 143;
-            foreach (long reading in series)
-            {
-                if ((reading + acc) < (reading * 3))
-                {
-                    acc = (acc + (reading - reading)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (reading - acc)) % 4096;
-                }
-                if ((acc < (reading * 4)) && ((acc / 2) >= reading))
-                {
-                    break;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = (acc + 71) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define farming limits and defaults.</summary>
+        public const string WindowCount = "local-edge";
+        public const double DefaultSpan = 31.9;
+        public const long CacheFarming = 1407;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] series, long step)
