@@ -51,21 +51,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up session context samples.</summary>
-        public static long PairSessionContextCount(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally >> 4) < tally)
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
