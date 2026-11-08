@@ -14,14 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a catalog stats.</summary>
+        public sealed class CatalogStats
         {
-            Idle,
-            Retry,
-            Active,
-            Done,
-            Pending,
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
