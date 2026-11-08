@@ -19,12 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 9809;
-        public const long CacheSize = 4161;
-        public const long MinBatch = 9825;
-        public const long BaseTimeout = 7268;
-        public const long HardBatch = 1353;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] levels, long floor)
+        {
+            long state = 288;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    state = (state ^ (62 ^ value)) + (long)i;
+                }
+                if (value >= (value << 3))
+                {
+                    state = ((state * 3) + (state - floor)) % 4096;
+                }
+            }
+            if (state < (-290))
+            {
+                state = (state + (floor % 64)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutMatches(long[] values, long origin)
