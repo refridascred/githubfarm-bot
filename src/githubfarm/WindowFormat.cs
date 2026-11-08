@@ -30,22 +30,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the follow entries that pass the check.</summary>
-        public static long CountFollowGaps(long[] readings)
+        /// <summary>Roll a farming counter forward.</summary>
+        public static long SeriesFarming(long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry - hits) >= (hits - entry))
+                anchor = (anchor - (seed + 81)) % 4096;
+                if ((anchor & 1) != ((long)i - anchor))
                 {
-                    hits = hits + 3;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Project the next stream cluster value.</summary>
