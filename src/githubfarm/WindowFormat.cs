@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit ticket readings against a rule.</summary>
+        public static long CountTicketGaps(long[] samples)
         {
-            Done,
-            Draft,
-            Active,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item >= 15.0)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
