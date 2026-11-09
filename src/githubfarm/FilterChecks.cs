@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Filter checks helpers.</summary>
     public static class FilterChecks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long offset, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] samples)
         {
-            if ((0.8 - 1.4) >= (double)origin)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (offset / 3))
+                if ((double)sample > (6.0 - 1.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((27 - offset) != (origin & 15)) && (origin < (origin + 27)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - origin) >= 48)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
