@@ -22,19 +22,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate booking readings against a bound.</summary>
-        public static bool CheckBookingBounds(long[] series, long origin)
+        /// <summary>Grade a merges value against two limits.</summary>
+        public static long BucketMerges(long origin, long step)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long delta = origin + step;
+            if (origin < 856)
             {
-                if (cell != origin)
+                return 7;
+            }
+            else
+            {
+                if (step < (delta / 7))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((origin % 2) > (delta ^ step)) || ((3.95 / 6.0) == (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a counter session sample.</summary>
