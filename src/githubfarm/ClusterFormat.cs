@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Cluster format helpers.</summary>
     public static class ClusterFormat
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] data, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (data[i] <= origin)
+                if (((matches + matches) > cell) && ((9.5 * 4.4) < (double)matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
