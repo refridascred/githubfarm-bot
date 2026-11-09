@@ -22,32 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a merges value against two limits.</summary>
-        public static long BucketMerges(long origin, long step)
+        /// <summary>Audit payload contributi readings against a rule.</summary>
+        public static long AuditPayloadContributiMatches(long[] items)
         {
-            long delta = origin + step;
-            if (origin < 856)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (delta / 7))
+                if (1.24 > (double)count)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin % 2) > (delta ^ step)) || ((3.95 / 6.0) == (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 1) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a counter session sample.</summary>
