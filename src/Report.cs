@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Audit context payload readings against a rule.</summary>
+        public static long MeasureContextPayloadHits(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
+                if ((seed + seed) >= 983)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
