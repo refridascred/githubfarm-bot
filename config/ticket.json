@@ -1,10 +1,14 @@
 {
-  "flush_window": false,
-  "cache_retries_pct": "latest",
-  "persist": 43.99,
-  "ticket_threshold": {
-    "command_limit": 42,
-    "default_retries_ms": 8.64,
-    "payload_threshold": ["staging", "open", "latest", "strict"]
-  }
+  "idle_depth": ["open", "stable", "stable", "local"],
+  "graph_delay": 3000,
+  "readonly": ["fallback", "primary"],
+  "repos_size": {
+    "invoice_threshold": 40.31,
+    "burst_ratio_ms": 7838,
+    "sync_timeout_count": 72.56,
+    "commits_threshold": 73.19,
+    "flush_window": 3277,
+    "dry_run": 8793
+  },
+  "window_depth": ["eu-west", "blue", "strict"]
 }
