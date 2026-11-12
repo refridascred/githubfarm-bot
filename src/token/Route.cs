@@ -41,18 +41,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits cursor values into a single score.</summary>
-        public static long FoldCommitsCursor(long[] series, long floor)
+        /// <summary>Grade a farming layout value against two limits.</summary>
+        public static long ClassifyFarmingLayout(long offset, long offset2)
         {
-            long mix = 4;
-            foreach (long entry in series)
+            long bound = offset + offset2;
+            if (((bound / 5) == (offset2 & 31)) && ((offset % 64) != (offset & 3)))
             {
-                if ((3 + 786) <= (mix % 60))
+                return 3;
+            }
+            else
+            {
+                if (((offset2 - bound) < (offset << 2)) && ((16 - offset) > offset2))
                 {
-                    mix = (((mix ^ mix) % 65521) + entry) + floor;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
