@@ -12,17 +12,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] values, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long origin, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = origin - floor;
+            if (90 <= gap)
             {
-                if (values[i] == origin)
+                return 2;
+            }
+            else
+            {
+                if (origin >= (floor + gap))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((5 + origin) > (121 % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
