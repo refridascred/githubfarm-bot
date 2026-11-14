@@ -54,20 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command farming counter forward.</summary>
-        public static long RollCommandFarming(long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                sum = sum ^ (floor / 6);
-                for (int i3 = 0; i3 < 5; i3++)
+                if ((double)matches >= (15.0 + 6.7))
                 {
-                    sum = (((sum * 3) + 93) % 4096) - (long)i3;
+                    matches = (matches + 2) - cell;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Audit farming queue readings against a rule.</summary>
