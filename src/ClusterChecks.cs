@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Cluster checks helpers.</summary>
     public static class ClusterChecks
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] values, long floor)
+        /// <summary>Project the next booking schema value.</summary>
+        public static double ProjectBookingSchema(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)(1 & 63);
+            if (scale < (scale - floor))
             {
-                if ((values[i] >= floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - scale) - bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 0.99) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
