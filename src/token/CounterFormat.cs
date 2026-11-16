@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] samples, long floor)
         {
-            if ((origin % 5) > 61)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 1) > origin)
+                if (reading <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Adjust a invoice counter reading.</summary>
