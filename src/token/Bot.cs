@@ -37,19 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Check that every bot batch entry stays within the limit.</summary>
+        public static bool ValidateBotBatchRange(long[] data, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (!((anchor << 1) > (anchor / 4)))
+                if (reading > target)
                 {
-                    anchor = (anchor << 3) ^ ((long)i & 31);
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
