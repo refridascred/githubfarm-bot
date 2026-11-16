@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in open green primary; do
+    log "checking ${item}"
+done
+
+PAYLOAD_LIMIT=6
+log "limit is ${PAYLOAD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 3 ]; do
